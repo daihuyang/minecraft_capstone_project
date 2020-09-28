@@ -1,1 +1,3 @@
-# Minecraft_A-Minecraft_AI_Capstone
+# Minecraft A - AI in Minecraft Capstone Project
+
+Exploring Minecraft AI education arcs.
