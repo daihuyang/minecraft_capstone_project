@@ -1,0 +1,120 @@
+components
+
+trying to execute a machine learning algorithm in the game?
+
+teach students how to do ai programming easier
+
+collect data to have a machine learning algorithm to run on
+
+Relying on what children love about playing minecraft. Has utility to the player.
+
+Section 1
+python and communicating with the game
+- machine learning
+	+ transforming data and making it a good for use in machine learning
+- write python code to record the game
+	+ minecraft builtins - minecraft runtime built into the game?
+	+ we write code to store data
+- run models
+	+ see if our python libraries can run models
+		+ say hey this tool cannot run in the game or say it can (tech stack)
+___ lets collect data ___
+
+Sect 2
+- should we move this outside of the game?
+
+Sect 3
+- can we just make a quick website and have it wrap around work inside of the game
+
+
+--------------
+electron app does not work with azure notebooks
+if we want it to work, we need to figure out how to get jupyter notebooks hosted in the electron app
+host python runtime in the electron app
+we are using the electron app as a front end
+Solid set of engineering work
+if it has to go inside of the game, we need a good reason
+	- if it doesn't run in the game, then that is a good reason
+python implementation without restrictions?
+deciding what kind of libraries that we are using
+decision matrix
+run our own python app outside of the game?
+	+ allows multiple people to work on it?
+Teach folks how the game actually communicates with all of these devices
+once we understand the communication channel 
+
+IDEA IS: Get a simple scenario working end to end
+
+connects to the game through websockets
+understand how the game kernel they have today and ...
+send it a message saying the 
+automating the chat commands is what this is???? Jeff made it sound like that
+everytime something moves forward, an event is fired
+
+python is talking to the game, finding slash commands
+	- any time a player dies, python is told
+	- understand how data is flowed
+	- electron app has that stuff wired in
+encryption of websockets
+no blasting agent commands
+request command, then get response. You must get response back
+queue commands, calling them one at a time
+set up 
+
+minecraft builtins python library
+
+in game, python does not currently allow file changes or web development
+
+electron app is nice in way
+
+Code Connection
+
+End of the day is what works in our model?
+	- model is running in python?
+
+steps
+break into different areas
+	communicate with python api
+	data transform
+	modeling
+	feedback in game
+	take all of these pieces and try to hook it up to Jupyter someone could have an interactive experience with it
+
+Step 1 - how does the game communicate with the python side, what is the protocol?
+play with documentation. Get agent to move
+See how things are working underneath
+
+Step 2
+make a table or something to store the data
+
+--------------------------
+how to get jupyter notebooks in the game - illustrated by the School of Mines
+
+C:\Program Files (x86)\Microsoft Studios\Minecraft Education
+ - python is inside the game
+C:\Program Files (x86)\Microsoft Studios\Minecraft Education Edition\data\python
+ - minecraft builtins
+
+execute_command
+ - we can execute commands and get them back
+ - everyone is able
+
+---------------------
+wants the data visualizations 
+
+inflection point
+	can we just use python3.8?
+	python___ folder
+		use different python runtime
+
+overarching goal
+	introduce students into data analysis
+	next is use that information to make their game experience better
+	using machine learning (more advanced students) to even be smarter
+
+
+--------------
+getting beta 14?
+
+--------------
+yash sleep deprived for the next 18 years cuz he will have a child
