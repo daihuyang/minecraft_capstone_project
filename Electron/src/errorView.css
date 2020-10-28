@@ -1,0 +1,36 @@
+#TitleText {
+  position: absolute;
+  left: 60px;
+  top: 8px;
+  margin: auto;
+  width: auto;
+  text-align: left;
+  padding-top: 15px;
+  padding-left: 21px;
+  font-size: 24pt;
+  color: #413e3e;
+}
+
+#TitleText.left {
+  left: 12px;
+}
+
+#DownloadLink {
+  position: absolute;
+  bottom: 60px;
+  width: 95%;
+  text-align: center;
+  color: #06c2ff;
+  font-size: 20pt;
+  -webkit-app-region: no-drag;
+}
+
+#ErrorLabel {
+  position: absolute;
+  margin: auto;
+  top: 200px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  color: white;
+}
