@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    // These could likely be the same, but I don't know how to run the tsc file in mac
+    "windows": {
+        "command": "${workspaceRoot}/node_modules/.bin/tsc.cmd",
+        "args": ["-p", "."]
+    },
+    "osx": {
+        "command": "node",
+        "args": ["${workspaceRoot}/node_modules/.bin/tsc", "-p", "."]
+    },
+    "isShellCommand": true,
+    "showOutput": "silent",
+    "problemMatcher": "$tsc"
+}
