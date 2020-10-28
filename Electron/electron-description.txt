@@ -1,0 +1,4 @@
+electron is what we are using to connect our jupyter notebooks to the minecraft kernal
+- in our upcoming meeting
+	+ we have to ask about issues about connecting to the minecraft kernal
+	+ ask about methods of hiding this from the user
