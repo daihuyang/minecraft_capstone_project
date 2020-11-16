@@ -121,6 +121,8 @@ export class SocketServer {
                     message = this.encryption.decrypt(data);
                 }
 
+                getApp().debugLog(message);
+
                 if (this.rawListenerCallback != null) {
                     this.rawListenerCallback(message);
                 }

@@ -92,6 +92,7 @@ export class ConnectionInitializer implements ICommandListener {
 
                 this.connectionStage = ConnectionStage.CreatingAgent;
                 this.sendCommand('agent create');
+                //this.sendCommand('weather rain');
                 break;
             }
 
