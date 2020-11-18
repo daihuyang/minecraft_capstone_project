@@ -36,9 +36,14 @@
   visibility: visible;
 }
 
-#CustomButtonA {
+#ThenThatButton {
   top: 300px;
   left: 335px;
+}
+
+#CustomButtonA {
+  top: 300px;
+  left: 595px;
 }
 
 #CustomButtonB {

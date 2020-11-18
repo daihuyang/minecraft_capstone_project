@@ -120,7 +120,7 @@ function handleBackButton(event: MouseEvent){
  */
 export function setupNavigationBar() {
     setupMCButtonEvents(backButton);
-    backButton.textContent = "AI Connection";
+    backButton.textContent = "Group A Connect";
     backButton.addEventListener('click', handleBackButton);
 
     setupMCButtonEvents(minButton);
