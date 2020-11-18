@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "mfs",
+    "name": "nv",
+    "uuid": "59d024ec-2251-11eb-adc1-0242ac120005",
+    "version": [ 0, 0, 1 ],
+    "min_engine_version": [ 1, 14, 0 ]
+  },
+  "modules": [
+    {
+        "description": "Example vanilla behavior pack",
+        "type": "data",
+        "uuid": "fa6e90c8-c925-460f-8155-c8a60b753caa",
+        "version": [0, 0, 1]
+    }
+  ]
+}
