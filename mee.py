@@ -72,6 +72,7 @@ async def startup(websocket, path):
     # When a block is placed we get called.
     # Things we care about
     await subscribe_callback(websocket, "BlockPlaced", handle_block_placed)
+    await subscribe_callback(websocket, "ItemSmelted", on_response)
     try:
         # Handle any message recieved.
         async for message in websocket:

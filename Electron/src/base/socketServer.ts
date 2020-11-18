@@ -107,6 +107,8 @@ export class SocketServer {
             this.connectedClient = client;
             getApp().debugLog(`Connected! ${this.getConnectedIP()}`);
             socketServer.callbacks.onConnected();
+            // attempting to subscribe to an event
+            this.subscribeToEvent("BlockPlaced", null);
 
             this.connectedClient.on('close', (code: number, message: string) => {
                 socketServer.callbacks.onClosed();
@@ -120,8 +122,6 @@ export class SocketServer {
                 if (this.encryption.enabled()) {
                     message = this.encryption.decrypt(data);
                 }
-
-                getApp().debugLog(message);
 
                 if (this.rawListenerCallback != null) {
                     this.rawListenerCallback(message);
@@ -283,6 +283,7 @@ export class SocketServer {
     }
 
     subscribeToEvent(eventName: string, callback: (event: any) => void) {
+        getApp().debugLog("They called " + eventName);
         this.callbacks.eventCallbacks[eventName] = callback;
         let subscribeBody = {
             "header": {
