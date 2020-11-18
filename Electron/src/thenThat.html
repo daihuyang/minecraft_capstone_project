@@ -22,10 +22,22 @@
         <button type="button" id="MaximizeButton" class="hidden"></button>
         <button class="exitButton" id="CloseButton"></button>
         <p id="LoadingLabel">
-            <!-- Script is going to update loading text -->
+            <!-- This will be our temporary body (CSS is unaltered) -->
+            <div class="dialog-body">
+                <h1 style="display: inline;">If </h1>
+                <select class="dropdown" name="minecraft-events" id="minecraft-events">
+                    <option value="BlockPlaced">Block Placed</option>
+                    <option value="ItemSmelted">Item Smelted</option>
+                </select>
+                <h1 style="display: inline;"> Then </h1>
+                <select class="dropdown" name="minecraft-command" id="minecraft-command">
+                    <option value="option1">Placeholder</option>
+                    <option value="option2">Placeholder</option>
+                </select>
+            </div>
         </p>
 
-        <p id="msg">Test</p>
+        <p id="msg" style="display: none;">Test</p>
         <div id="ExitDialog" class="dialog-overlay">
             <div class="dialog">
                 <div class="dialog-body">

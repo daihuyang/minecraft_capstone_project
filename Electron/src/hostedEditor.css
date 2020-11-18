@@ -225,3 +225,9 @@ body.hideBackground {
 .btn-bevel:focus {
     outline: 0
 }
+
+.dropdown {
+    font-family: 'mojangles', Fallback, Impact;
+    min-width: 100px;
+    min-height: 40px;
+}
