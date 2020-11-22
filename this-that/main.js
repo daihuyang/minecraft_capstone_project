@@ -1,3 +1,4 @@
+let {PythonShell} = require('python-shell')
 const { app, BrowserWindow } = require('electron')
 
 function createWindow () {
@@ -26,3 +27,20 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+let options = {
+  mode: 'text',
+  pythonOptions: ['-u'], // get print results in real-time
+  scriptPath: '.'
+};
+
+// PythonShell.run('hello.py', options, function  (err,results)  {
+//   if  (err)  throw err;
+//   console.log('hello.py finished.');
+//   console.log('results', results);
+// });
+
+let shell = new PythonShell('mee.py', options);
+shell.on('message', function(message){
+  console.log(message);
+});
