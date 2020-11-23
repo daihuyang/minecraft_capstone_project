@@ -1,7 +1,5 @@
 let {PythonShell} = require('python-shell')
 
-document.getElementsByTagName("h1")[0].innerHTML = "connector.js loaded";
-
 let inputArgs = ["testing", 1, 34*2];
 let options = {
   mode: 'text',
@@ -12,5 +10,5 @@ let options = {
 
 let shell = new PythonShell('mee.py', options);
 shell.on('message', function(message){
-  document.getElementsByTagName("h1")[0].innerHTML = message;
+  console.log(message);
 });
