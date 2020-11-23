@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Hello Losers!</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+  <meta charset="UTF-8">
+  <title>Minecraft If This, Then That</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
-    <h1>Minecraft Test</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <script>
-        require('./connector.js');
-    </script>
+  <div id="if-then-div">
+    <div class="containers" id="if-container">
+      <div id="if-div"><img src="resources/if-dialog.png" id="if-image"></div>
+      <select name="events" id="events">
+        <option value="NoEvent" selected="selected">Select an Event</option>
+        <option value="BlockPlaced">Block Placed</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+      </select>
+    </div>
+    <div class="containers" id="response-container">
+      <div id="then-div"><img src="resources/then-dialog.png" id="then-image"></div>
+      <select name="response" id="response">
+        <option value="NoResp" selected="selected">Select a Response</option>
+        <option value="SetTimeDay">Set Time to Day</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+      </select>
+    </div>
+  </div>
+  <script>
+      require('./connector.js');
+  </script>
 </body>
 </html>

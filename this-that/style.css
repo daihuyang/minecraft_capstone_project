@@ -2,7 +2,76 @@
   font-family: mojangles;
   src: url(./Fonts/mojangles.ttf);
 }
+html {
+  height: 100%;
+}
 
 body{
   font-family: mojangles, Fallback, Impact;
+  background-image: url("../Electron/resources/background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+select{
+  position: relative;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+#if-then-div {
+  /* background-color: blue; */
+  height: 79%;
+  width: 93%;
+  margin-top: 10.5%;
+  margin-left: 3%;
+  margin-bottom: 3.5%;
+}
+
+div.containers {
+  height: 50%;
+  width: 100%;
+  margin: 0%;
+}
+
+#if-div {
+  float: left;
+  height: 100%;
+  width: 50%;
+  vertical-align: middle;
+}
+
+#if-image {
+  display: block;
+  height: 50%;
+  width: auto;
+  margin: 10% auto auto auto;
+}
+
+#events {
+  width: 25%;
+  margin-top: 10%;
+  display: inline-block;
+}
+
+#then-div {
+  float: left;
+  height: 100%;
+  width: 50%;
+  vertical-align: middle;
+}
+
+#then-image {
+  display: block;
+  height: 50%;
+  width: auto;
+  margin: 10% auto auto auto;
+}
+
+#response {
+  width: 25%;
+  margin-top: 10%;
+  display: inline-block;
 }
