@@ -2,7 +2,7 @@ const electron = require("electron");
 
 let {PythonShell} = require('python-shell')
 
-let copyButton = document.getElementById("CopyButton");
+// Python Shell connection
 
 let inputArgs = ["testing", 1, 34*2];
 let options = {
@@ -17,8 +17,22 @@ shell.on('message', function(message){
   document.getElementById("CommandLabel").value = message;
 });
 
+
+// Document Buttons
+let copyButton = document.getElementById("CopyButton");
+
+
+
 copyButton.addEventListener('click', (event) => {
   electron.clipboard.writeText(document.getElementById("CommandLabel").value);
+  // Websocket Connection to send when client has run
+  // currently tied to copyButton, to be moved to the run button
+  let socket = new WebSocket("ws://localhost:8765");
+  socket.send("BlockPlaced");
+  /*
+  We should have this send the event that is being subscribed to 
+  and the command to execute when that event occurs
+  */
 });
 
 copyButton.addEventListener('mouseover', (event) => {
