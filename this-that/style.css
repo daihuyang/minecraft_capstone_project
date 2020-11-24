@@ -116,7 +116,7 @@ div.containers {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-#Runbutton{
+#RunButton{
   background: url(./resources/button.png);
   background-size:100%;
   text-align: center;
@@ -132,10 +132,10 @@ div.containers {
   -webkit-app-region: no-drag;
   background-size: 100%;
 }
-#Runbutton.hover, #CopyButton.focus{
+#RunButton.hover, #CopyButton.focus{
   background: url(./resources/buttonHover.png);
 }
-#Runbuttpn.active{
+#RunButtpn.active{
   background: url(./resources/buttonPress.png);
 }
 
