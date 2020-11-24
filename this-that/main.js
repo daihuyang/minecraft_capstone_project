@@ -1,12 +1,16 @@
 const { app, BrowserWindow } = require('electron')
 
+// var img = new Image();
+// img.src='./resources/background.png';
+
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 905,
+    height: 532,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    frame: true
   })
 
   win.loadFile('index.html')
