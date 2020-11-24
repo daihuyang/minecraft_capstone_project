@@ -10,7 +10,7 @@
 
 <body>
   <div>
-    <h2>Type or copy the below into the Minecraft chat</h2>
+    <h2 id="minecraft-title">Type or copy the below into the Minecraft chat</h2>
   </div>
   <div id="connection-div">
     <input type="text" id="CommandLabel" value="" disabled/>
@@ -35,6 +35,9 @@
         <option value="NewDay">New Day</option>
       </select>
     </div>
+  </div>
+  <div id="runbutton">
+    <button type="button" src="resources/button.png" id="Runbutton">Run</button>
   </div>
   <script>
       require('./connector.js');

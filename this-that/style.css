@@ -15,6 +15,10 @@ body{
   height: 100%;
 }
 
+#minecraft-title{
+text-align: center;
+}
+
 select{
   position: relative;
   margin: 10px;
@@ -38,6 +42,17 @@ div.containers {
 
 #connection-div {
   position: absolute;
+  left:50px;
+  top: 80px;
+
+}
+
+#CommandLabel{
+  /* display: inline-block; */
+   float: left; 
+   height:97px;
+   
+   
 }
 
 #if-div {
@@ -51,12 +66,17 @@ div.containers {
   display: block;
   height: 50%;
   width: auto;
-  margin: 10% auto auto auto;
+  margin-left:35%;
+  margin-top: 12%;
 }
 
 #events {
+
   width: 25%;
-  margin-top: 10%;
+ 
+  position: absolute; 
+  bottom: 210px;
+  right: 300px;
   display: inline-block;
 }
 
@@ -71,12 +91,16 @@ div.containers {
   display: block;
   height: 50%;
   width: auto;
-  margin: 10% auto auto auto;
+  margin-left:35%;
+  margin-bottom: 35%;
+  
 }
 
 #response {
   width: 25%;
-  margin-top: 10%;
+  position: absolute;
+  bottom: 80px;
+  right: 300px;
   display: inline-block;
 }
 
@@ -84,10 +108,35 @@ div.containers {
   background: url(./resources/copy.png);
   width: 97px;
   height: 97px;
-  position: absolute;
+  /* position: absolute; */
+  right:20px;
+  top: 50px;
+
   -webkit-app-region: no-drag;
   background-repeat: no-repeat;
   background-size: 100%;
+}
+#Runbutton{
+  background: url(./resources/button.png);
+  background-size:100%;
+  text-align: center;
+  color:white;
+  font-family: mojangles, Fallback, Impact;
+  font-size: large;
+  display: inline-block;
+  bottom:40px;
+  right:50px;
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+#Runbutton.hover, #CopyButton.focus{
+  background: url(./resources/buttonHover.png);
+}
+#Runbuttpn.active{
+  background: url(./resources/buttonPress.png);
 }
 
 #CopyButton.hover, #CopyButton.focus {
