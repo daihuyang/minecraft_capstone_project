@@ -135,7 +135,7 @@ div.containers {
 #RunButton.hover, #CopyButton.focus{
   background: url(./resources/buttonHover.png);
 }
-#RunButtpn.active{
+#RunButton.active{
   background: url(./resources/buttonPress.png);
 }
 
