@@ -11,7 +11,7 @@
 
 <body>
   <div>
-    <h2 id="minecraft-title">Type or copy the below into the Minecraft chat</h2>
+    <h2 id="minecraft-title">Type or copy this command into Minecraft chat</h2>
   </div>
   <div id="connection-div">
     <input type="text" id="CommandLabel" value="" disabled/>
@@ -20,8 +20,8 @@
   <div id="if-then-div">
     <div class="containers" id="if-container">
       <div id="if-div"><img src="resources/if-dialog.png" id="if-image"></div>
-      <select name="events" id="events">
-        <option value="NoEvent" selected="selected">Select an Event</option>
+      <select name="events" class="custom-select" id="events">
+        <option value="NoEvent" selected disabled hidden>Select an Event</option>
         <option value="BlockPlaced">Block Placed</option>
         <option value="MobSpawned">Mob Spawned</option>
         <option value="NewDay">New Day</option>
@@ -29,14 +29,14 @@
     </div>
     <div class="containers" id="response-container">
       <div id="then-div"><img src="resources/then-dialog.png" id="then-image"></div>
-      <select name="response" id="response">
+      <!-- <select name="response" id="response">
         <option value="NoResp" selected="selected">Select a Response</option>
         <option value="SetTimeDay">Set Time to Day</option>
         <option value="MobSpawned">Mob Spawned</option>
         <option value="NewDay">New Day</option>
-      </select>
-      <select class="custom-select" data-role="select">
-        <option value="NoResp" selected="selected">Select a Response</option>
+      </select> -->
+      <select class="custom-select" id="response-selection" data-role="select">
+        <option value="NoResp" selected disabled hidden>Select a Response</option>
         <option value="SetTimeDay">Set Time to Day</option>
         <option value="MobSpawned">Mob Spawned</option>
         <option value="NewDay">New Day</option>

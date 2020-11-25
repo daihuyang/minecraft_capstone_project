@@ -16,7 +16,9 @@ body{
 }
 
 #minecraft-title{
-text-align: center;
+  font-family: mojangles, Fallback, Impact;
+  margin-top: 15px;
+  text-align: center;
 }
 
 select{
@@ -26,12 +28,11 @@ select{
 }
 
 #if-then-div {
-  /* background-color: blue; */
-  height: 79%;
+  height: 350px;
   width: 93%;
   margin-top: 10.5%;
   margin-left: 3%;
-  margin-bottom: 3.5%;
+  /* margin-bottom: 3.5%; */
 }
 
 div.containers {
@@ -42,57 +43,51 @@ div.containers {
 
 #connection-div {
   position: absolute;
-  left:50px;
+  left: 50px;
   top: 80px;
-
 }
 
 #CommandLabel{
-  /* display: inline-block; */
-   float: left; 
-   height:97px;
-   
-   
+  float: left; 
+  height:97px;
 }
 
 #if-div {
-  float: left;
+  display: inline-block;
   height: 100%;
-  width: 50%;
+  width: 40%;
+  margin-top: 10px;
   vertical-align: middle;
 }
 
 #if-image {
   display: block;
-  height: 50%;
+  height: 60%;
   width: auto;
   margin-left:35%;
   margin-top: 12%;
 }
 
 #events {
-
-  width: 25%;
- 
+  float: right;
   position: absolute; 
-  bottom: 210px;
-  right: 300px;
-  display: inline-block;
+  margin-top: 80px;
+  vertical-align: middle;
 }
 
 #then-div {
   float: left;
   height: 100%;
-  width: 50%;
-  vertical-align: middle;
+  width: 40%;
+  /* vertical-align: middle; */
 }
 
 #then-image {
-  display: block;
-  height: 50%;
+  float: left;
+  height: 60%;
   width: auto;
-  margin-left:35%;
-  margin-bottom: 35%;
+  margin-left: 35%;
+  /* margin-top: 10%; */
   
 }
 
@@ -104,11 +99,14 @@ div.containers {
   display: inline-block;
 }
 
+#response-selection {
+  margin-top: 30px;
+}
+
 #CopyButton {
   background: url(./resources/copy.png);
   width: 97px;
   height: 97px;
-  /* position: absolute; */
   right:20px;
   top: 50px;
 
@@ -124,8 +122,8 @@ div.containers {
   font-family: mojangles, Fallback, Impact;
   font-size: large;
   display: inline-block;
-  bottom:40px;
-  right:50px;
+  bottom: 60px;
+  right: 60px;
   width: 160px;
   height: 60px;
   position: absolute;
