@@ -2,8 +2,7 @@ const electron = require("electron");
 
 let {PythonShell} = require('python-shell')
 
-let copyButton = document.getElementById("CopyButton");
-let runButton = document.getElementById("RunButton")
+// Python Shell connection
 
 let inputArgs = ["testing", 1, 34*2];
 let options = {
@@ -17,6 +16,12 @@ let shell = new PythonShell('mee.py', options);
 shell.on('message', function(message){
   document.getElementById("CommandLabel").value = message;
 });
+
+
+// Document Buttons
+let copyButton = document.getElementById("CopyButton");
+let runButton = document.getElementById("RunButton")
+
 
 copyButton.addEventListener('click', (event) => {
   electron.clipboard.writeText(document.getElementById("CommandLabel").value);

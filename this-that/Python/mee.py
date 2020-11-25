@@ -71,16 +71,24 @@ def on_response(response_str):
         for evt_id, sub in subs:
             sub(body)
 
-async def startup(websocket, path):
-    print("Connection Established!")
+async def listen_for_selection(websocket):
+    return await websocket.recv()
 
-    # When a block is placed we get called.
-    # Things we care about
-    await subscribe_callback(websocket, "BlockPlaced", handle_block_placed)
-    await subscribe_callback(websocket, "ItemSmelted", on_response)
+async def startup(websocket, path):
+    test_file = open("test.txt", "a")
+    test_file.write("Connection Established!\n")
+    
+    event_selected = "no_event"
+    event_selected = await listen_for_selection(websocket)
+    test_file.write(f"{event_selected}\n")
+
+    if event_selected in {"BlockPlaced", "ItemSmelted"}:
+        await subscribe_callback(websocket, event_selected, handle_block_placed)
+    
     try:
         # Handle any message recieved.
         async for message in websocket:
+            test_file.write(f"message: {message}\n")
             on_response(message)
             data = json.loads(message)
             with open("events.json", "a") as json_file:
