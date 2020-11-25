@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft If This, Then That</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+</head>
+
+<body>
+  <div>
+    <h2 id="minecraft-title">Type or copy this command into Minecraft chat</h2>
+  </div>
+  <div id="connection-div">
+    <input type="text" id="CommandLabel" value="" disabled/>
+    <button type="button" id="CopyButton"></button>
+  </div>
+  <div id="if-then-div">
+    <div class="containers" id="if-container">
+      <div id="if-div"><img src="resources/if-dialog.png" id="if-image"></div>
+      <select name="events" class="custom-select" id="events">
+        <option value="NoEvent" selected disabled hidden>Select an Event</option>
+        <option value="BlockPlaced">Block Placed</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+      </select>
+    </div>
+    <div class="containers" id="response-container">
+      <div id="then-div"><img src="resources/then-dialog.png" id="then-image"></div>
+      <!-- <select name="response" id="response">
+        <option value="NoResp" selected="selected">Select a Response</option>
+        <option value="SetTimeDay">Set Time to Day</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+      </select> -->
+      <select class="custom-select" id="response-selection" data-role="select">
+        <option value="NoResp" selected disabled hidden>Select a Response</option>
+        <option value="SetTimeDay">Set Time to Day</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+    </select>
+    </div>
+  </div>
+  <div id="runbutton">
+    <button type="button" src="resources/button.png" id="RunButton">Run</button>
+  </div>
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+  <script>
+      require('./connector.js');
+  </script>
+</body>
+</html>
