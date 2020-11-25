@@ -1,5 +1,5 @@
 const electron = require("electron");
-//const { remote } = require('electron');
+const { remote } = require('electron');
 const { BrowserWindow } = require('electron').remote
 
 let {PythonShell} = require('python-shell')
@@ -19,7 +19,7 @@ function createWindow () {
   //win.webContents.openDevTools()
 }
 
-createWindow();
+
 
 // Python Shell connection
 
@@ -120,6 +120,10 @@ closeButton.addEventListener('mousedown', (event) => {
 
 closeButton.addEventListener('mouseup', (event) => {
   closeButton.classList.remove("active")
+
+  createWindow();
+  let win2= remote.getCurrentWindow();
+  win2.close();
 });
 
 closeButton.addEventListener('focus', (event) => {
