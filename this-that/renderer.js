@@ -39,8 +39,8 @@ shell.on('message', function(message){
 
 // Document Buttons
 let copyButton = document.getElementById("CopyButton");
-let runButton = document.getElementById("RunButton")
-
+let runButton = document.getElementById("RunButton");
+let closeButton = document.getElementById("CloseButton");
 
 copyButton.addEventListener('click', (event) => {
   electron.clipboard.writeText(document.getElementById("CommandLabel").value);
@@ -100,4 +100,32 @@ runButton.addEventListener('focus', (event) => {
 
 runButton.addEventListener('blur', (event) => {
   runButton.classList.remove('focus');
+});
+
+closeButton.addEventListener('mouseover', (event) => {
+  closeButton.classList.add('hover');
+});
+
+closeButton.addEventListener('mouseleave', (event) => {
+  closeButton.classList.remove('hover');
+  closeButton.classList.remove('active');
+  closeButton.classList.remove('focus');
+});
+
+closeButton.addEventListener('mousedown', (event) => {
+  if (event.button == 0){
+    closeButton.classList.add('active');
+  }
+});
+
+closeButton.addEventListener('mouseup', (event) => {
+  closeButton.classList.remove("active")
+});
+
+closeButton.addEventListener('focus', (event) => {
+  closeButton.classList.add('focus');
+});
+
+closeButton.addEventListener('blur', (event) => {
+  closeButton.classList.remove('focus');
 });
