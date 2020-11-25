@@ -75,22 +75,26 @@ async def listen_for_selection(websocket):
     return await websocket.recv()
 
 async def startup(websocket, path):
-    test_file = open("test.txt", "a")
-    test_file.write("Connection Established!\n")
-    
-    event_selected = "no_event"
-    event_selected = await listen_for_selection(websocket)
-    test_file.write(f"{event_selected}\n")
-
-    if event_selected in {"BlockPlaced", "ItemSmelted"}:
-        await subscribe_callback(websocket, event_selected, handle_block_placed)
+    # test_file = open("test.txt", "a")
+    # test_file.write("Connection Established!\n")
+    weather = "clear"
+    event_selected = "BlockPlaced"
+    await subscribe_callback(websocket, event_selected, handle_block_placed)
     
     try:
         # Handle any message recieved.
         async for message in websocket:
-            test_file.write(f"message: {message}\n")
             on_response(message)
             data = json.loads(message)
+
+            if "BlockPlaced" in message:
+                if weather == "clear":
+                    weather = "rain"
+                else:
+                    weather = "clear"
+       
+                await execute_command(websocket, f"weather {weather}")
+            
             with open("events.json", "a") as json_file:
                 json.dump(data, json_file) # data / message something might be weird
     except:

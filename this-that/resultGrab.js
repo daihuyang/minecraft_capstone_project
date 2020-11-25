@@ -22,6 +22,21 @@ ipcRenderer.on('request-json', (event,arg) =>{
         eventsOccured.push(JSON.parse(arg.slice(indices[i-1]+1,indices[i]+1)));
     }
     //eventsOccured.push(JSON.parse(arg.slice(indices[indices.length-1])+1));
+    let dictionary = {};
+    for(var i=0; i < eventsOccured.length; i++){
+        // reading one short
+        if(eventsOccured["body"]["eventName"] == "BlockPlaced"){
+            // if (dictionary[eventsOccured["properties"]["block"]] == undefined)
+            //     dictionary[eventsOccured["properties"]["block"]]= 1;
+            // else
+            //     dictionary[eventsOccured["properties"]["block"]]++;
+            
+            eventHeader.innerHTML = ":)";
+        }
+    }
+    // let maxTest = Object.values(dictionary);
+    // // let i = arr.indexOf(Math.max(...dictionary));
+    // let somethingFun = Object.keys(dictionary);
 
-    occuredHeader.innerHTML = eventsOccured.length;
+    occuredHeader.innerHTML = eventsOccured.length + 1; // "Huge Win for us"
 });
