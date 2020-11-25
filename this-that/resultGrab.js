@@ -23,22 +23,31 @@ ipcRenderer.on('request-json', (event,arg) =>{
     }
     //eventsOccured.push(JSON.parse(arg.slice(indices[indices.length-1])+1));
     let dictionary = {};
+    let eventCounter = 0;
     for(var i=0; i < eventsOccured.length; i++){
         // reading one short
         if(eventsOccured[i]["body"]["eventName"] == "BlockPlaced"){
+            eventCounter++;
             if(!dictionary.hasOwnProperty(String(eventsOccured[i]["body"]["properties"]["Block"]))){
-                dictionary[String(eventsOccured[i]["body"]["properties"]["block"])] = 1;
-                eventHeader.innerHTML += dictionary.hasOwnProperty(String(eventsOccured[i]["body"]["properties"]["Block"]));
+                dictionary[String(eventsOccured[i]["body"]["properties"]["Block"])] = 1;
             }else{
-                dictionary[String(eventsOccured[i]["body"]["properties"]["block"])]++;
+                dictionary[String(eventsOccured[i]["body"]["properties"]["Block"])]++;
             }
         }
 
     }
-    // let maxTest = Object.values(dictionary);
-    // let i = arr.indexOf(Math.max(...maxTest));
-    // let somethingFun = Object.keys(dictionary);
+    let maxTest = Object.values(dictionary);
+    let somethingFun = Object.keys(dictionary);
 
-    //eventHeader.innerHTML = dictionary.hasOwnProperty("grass");
-    occuredHeader.innerHTML = eventsOccured.length + 1; // "Huge Win for us"
+    let max = -1;
+    let ind = -1;
+    for(var i = 0; i < maxTest.length; i++){
+        if(maxTest[i] > max){
+            max = maxTest[i];
+            ind = i;
+        }
+    }
+
+    eventHeader.innerHTML = somethingFun[ind];
+    occuredHeader.innerHTML = eventCounter; // "Huge Win for us"
 });
