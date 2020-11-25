@@ -25,18 +25,20 @@ ipcRenderer.on('request-json', (event,arg) =>{
     let dictionary = {};
     for(var i=0; i < eventsOccured.length; i++){
         // reading one short
-        if(eventsOccured["body"]["eventName"] == "BlockPlaced"){
-            // if (dictionary[eventsOccured["properties"]["block"]] == undefined)
-            //     dictionary[eventsOccured["properties"]["block"]]= 1;
-            // else
-            //     dictionary[eventsOccured["properties"]["block"]]++;
-            
-            eventHeader.innerHTML = ":)";
+        if(eventsOccured[i]["body"]["eventName"] == "BlockPlaced"){
+            if(!dictionary.hasOwnProperty(String(eventsOccured[i]["body"]["properties"]["Block"]))){
+                dictionary[String(eventsOccured[i]["body"]["properties"]["block"])] = 1;
+                eventHeader.innerHTML += dictionary.hasOwnProperty(String(eventsOccured[i]["body"]["properties"]["Block"]));
+            }else{
+                dictionary[String(eventsOccured[i]["body"]["properties"]["block"])]++;
+            }
         }
+
     }
     // let maxTest = Object.values(dictionary);
-    // // let i = arr.indexOf(Math.max(...dictionary));
+    // let i = arr.indexOf(Math.max(...maxTest));
     // let somethingFun = Object.keys(dictionary);
 
+    //eventHeader.innerHTML = dictionary.hasOwnProperty("grass");
     occuredHeader.innerHTML = eventsOccured.length + 1; // "Huge Win for us"
 });
