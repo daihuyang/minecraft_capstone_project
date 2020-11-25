@@ -1,6 +1,25 @@
 const electron = require("electron");
+//const { remote } = require('electron');
+const { BrowserWindow } = require('electron').remote
 
 let {PythonShell} = require('python-shell')
+
+function createWindow () {
+  const win = new BrowserWindow({
+    width: 905,
+    height: 532,
+    webPreferences: {
+      nodeIntegration: true
+    },
+    frame: true,
+    resizable: false
+  })
+
+  win.loadFile('results.html')
+  //win.webContents.openDevTools()
+}
+
+createWindow();
 
 // Python Shell connection
 

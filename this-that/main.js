@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const { Notification } = require('electron')
 
 // var img = new Image();
 // img.src='./resources/background.png';
@@ -8,7 +9,8 @@ function createWindow () {
     width: 905,
     height: 532,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     },
     frame: true,
     resizable: false
