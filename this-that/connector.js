@@ -20,7 +20,7 @@ shell.on('message', function(message){
 
 // Document Buttons
 let copyButton = document.getElementById("CopyButton");
-
+let runButton = document.getElementById("RunButton")
 
 
 copyButton.addEventListener('click', (event) => {
@@ -53,4 +53,32 @@ copyButton.addEventListener('focus', (event) => {
 
 copyButton.addEventListener('blur', (event) => {
   copyButton.classList.remove('focus');
+});
+
+runButton.addEventListener('mouseover', (event) => {
+  runButton.classList.add('hover');
+});
+
+runButton.addEventListener('mouseleave', (event) => {
+  runButton.classList.remove('hover');
+  runButton.classList.remove('active');
+  runButton.classList.remove('focus');
+});
+
+runButton.addEventListener('mousedown', (event) => {
+  if (event.button == 0){
+    runButton.classList.add('active');
+  }
+});
+
+runButton.addEventListener('mouseup', (event) => {
+  runButton.classList.remove("active")
+});
+
+runButton.addEventListener('focus', (event) => {
+  runButton.classList.add('focus');
+});
+
+runButton.addEventListener('blur', (event) => {
+  runButton.classList.remove('focus');
 });

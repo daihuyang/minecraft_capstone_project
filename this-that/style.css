@@ -15,6 +15,12 @@ body{
   height: 100%;
 }
 
+#minecraft-title{
+  font-family: mojangles, Fallback, Impact;
+  margin-top: 15px;
+  text-align: center;
+}
+
 select{
   position: relative;
   margin: 10px;
@@ -22,12 +28,11 @@ select{
 }
 
 #if-then-div {
-  /* background-color: blue; */
-  height: 79%;
+  height: 350px;
   width: 93%;
   margin-top: 10.5%;
   margin-left: 3%;
-  margin-bottom: 3.5%;
+  /* margin-bottom: 3.5%; */
 }
 
 div.containers {
@@ -38,56 +43,98 @@ div.containers {
 
 #connection-div {
   position: absolute;
+  left: 50px;
+  top: 80px;
+}
+
+#CommandLabel{
+  float: left; 
+  height:97px;
 }
 
 #if-div {
-  float: left;
+  display: inline-block;
   height: 100%;
-  width: 50%;
+  width: 40%;
+  margin-top: 10px;
   vertical-align: middle;
 }
 
 #if-image {
   display: block;
-  height: 50%;
+  height: 60%;
   width: auto;
-  margin: 10% auto auto auto;
+  margin-left:35%;
+  margin-top: 12%;
 }
 
 #events {
-  width: 25%;
-  margin-top: 10%;
-  display: inline-block;
+  float: right;
+  position: absolute; 
+  margin-top: 80px;
+  vertical-align: middle;
 }
 
 #then-div {
   float: left;
   height: 100%;
-  width: 50%;
-  vertical-align: middle;
+  width: 40%;
+  /* vertical-align: middle; */
 }
 
 #then-image {
-  display: block;
-  height: 50%;
+  float: left;
+  height: 60%;
   width: auto;
-  margin: 10% auto auto auto;
+  margin-left: 35%;
+  /* margin-top: 10%; */
+  
 }
 
 #response {
   width: 25%;
-  margin-top: 10%;
+  position: absolute;
+  bottom: 80px;
+  right: 300px;
   display: inline-block;
+}
+
+#response-selection {
+  margin-top: 30px;
 }
 
 #CopyButton {
   background: url(./resources/copy.png);
   width: 97px;
   height: 97px;
-  position: absolute;
+  right:20px;
+  top: 50px;
+
   -webkit-app-region: no-drag;
   background-repeat: no-repeat;
   background-size: 100%;
+}
+#RunButton{
+  background: url(./resources/button.png);
+  background-size:100%;
+  text-align: center;
+  color:white;
+  font-family: mojangles, Fallback, Impact;
+  font-size: large;
+  display: inline-block;
+  bottom: 60px;
+  right: 60px;
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+#RunButton.hover, #CopyButton.focus{
+  background: url(./resources/buttonHover.png);
+}
+#RunButton.active{
+  background: url(./resources/buttonPress.png);
 }
 
 #CopyButton.hover, #CopyButton.focus {
@@ -110,4 +157,10 @@ input[type=text] {
   -webkit-app-region: no-drag;
   border: none;
   padding: 0px 0px 0px 0px;
+}
+
+.custom-select{
+  font-family: mojangles, Fallback, Impact;
+  height: 40px;
+  font-size: 25px;
 }
