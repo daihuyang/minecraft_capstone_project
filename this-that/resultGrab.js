@@ -21,7 +21,7 @@ ipcRenderer.on('request-json', (event,arg) =>{
     for(var i=1; i < indices.length; i++){
         eventsOccured.push(JSON.parse(arg.slice(indices[i-1]+1,indices[i]+1)));
     }
-    //eventsOccured.push(JSON.parse(arg.slice(indices[indices.length-1])+1));
+    eventsOccured.push(JSON.parse(arg.slice(indices[indices.length-1]+1)));
     let dictionary = {};
     let eventCounter = 0;
     for(var i=0; i < eventsOccured.length; i++){
