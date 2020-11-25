@@ -160,3 +160,9 @@ input[type=text] {
   border: none;
   padding: 0px 0px 0px 0px;
 }
+
+.custom-select{
+  font-family: mojangles, Fallback, Impact;
+  height: 40px;
+  font-size: 25px;
+}

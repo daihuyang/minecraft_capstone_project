@@ -6,6 +6,7 @@
   <title>Minecraft If This, Then That</title>
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
 </head>
 
 <body>
@@ -34,11 +35,18 @@
         <option value="MobSpawned">Mob Spawned</option>
         <option value="NewDay">New Day</option>
       </select>
+      <select class="custom-select" data-role="select">
+        <option value="NoResp" selected="selected">Select a Response</option>
+        <option value="SetTimeDay">Set Time to Day</option>
+        <option value="MobSpawned">Mob Spawned</option>
+        <option value="NewDay">New Day</option>
+    </select>
     </div>
   </div>
   <div id="runbutton">
     <button type="button" src="resources/button.png" id="RunButton">Run</button>
   </div>
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
   <script>
       require('./connector.js');
   </script>
