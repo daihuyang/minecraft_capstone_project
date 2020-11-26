@@ -5,8 +5,11 @@ import typing
 import websockets
 # this is for passing initialization arguments (from JS)
 import sys
+import random
 
 to_minecraft = "none"
+minecraft_response = "none"
+dummy_socket = ""
 
 # Dictionary to keep track of subscriptions that occur.
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
@@ -74,18 +77,34 @@ async def listen_for_selection(websocket):
     return await websocket.recv()
 
 async def startup(websocket, path):
-    await subscribe_callback(websocket, "BlockPlaced", handle_block_placed)
-
+    #await subscribe_callback(websocket, to_minecraft, handle_block_placed)
+    global dummy_socket
+    dummy_socket = websocket
+    # response-specific variables
+    command_to_run = ""
+    if minecraft_response == "weather":
+        command_to_run = "toggledownfall"
+    elif minecraft_response == "explode":
+        command_to_run = "summon tnt"
+    elif minecraft_response == "teleport":
+        command_to_run = "tp"
     try: 
         # Handle any message recieved.
         async for message in websocket:
             on_response(message)
             data = json.loads(message)
 
-            print(data["body"]["eventName"] == "BlockPlaced")
+            # we should only try executing a command if the event was triggered by the player
+            if "eventName" in data["body"]:
+                print(f"""{str(data["body"]["eventName"])} + {str(to_minecraft)} + {(str(data["body"]["eventName"]) == str(to_minecraft))}""")
+                # case that desired event is triggered
+                if str(data["body"]["eventName"]) == str(to_minecraft):
+                    if command_to_run == "tp":
+                        x = random.randint(1,5)
+                        y = random.randint(1,5)
+                        command_to_run = f"{command_to_run} ~+{x} ~+{y} ~+2"
 
-            if data["body"]["eventName"] == "BlockPlaced":
-                await execute_command(websocket, "weather rain")
+                    await execute_command(websocket, command_to_run)
 
             with open("events.json", "a") as json_file:
                 json.dump(data, json_file) # data / message something might be weird
@@ -99,16 +118,21 @@ start_server = websockets.serve(
     subprotocols=["com.microsoft.minecraft.wsencrypt"],
     ping_interval=None)
 
-# async def listen_to_js(websocket, path):
-#     try:
-#         async for message in websocket:
-#             to_minecraft = message
-#             print("/connect localhost:8765")
-#     except:
-#         raise
+async def listen_to_js(websocket, path):
+    try:
+        async for message in websocket:
+            global to_minecraft
+            global minecraft_response 
+            to_minecraft = message.split(",")[0]
+            minecraft_response = message.split(",")[1]
+            # print("/connect localhost:8765")
+            # print(len(to_minecraft))
+            await subscribe_callback(dummy_socket, "BlockPlaced", handle_block_placed)
+    except:
+        raise
 
-# start_js_server = websockets.serve(listen_to_js, "localhost", 8766)
+start_js_server = websockets.serve(listen_to_js, "localhost", 8766)
 
 asyncio.get_event_loop().run_until_complete(start_server)
-# asyncio.get_event_loop().run_until_complete(start_js_server)
+asyncio.get_event_loop().run_until_complete(start_js_server)
 asyncio.get_event_loop().run_forever()
