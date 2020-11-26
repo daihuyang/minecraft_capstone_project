@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Base Electron app, should become a this-that UI using the MEE.py script to connect with MEE.",
   "main": "main.js",
+  "build":{
+    "extraResources": "Python"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",

@@ -1,6 +1,9 @@
 const electron = require("electron");
 const { remote } = require('electron');
+const app = require('electron').remote.app;
+const { run } = require("python-shell");
 const { BrowserWindow } = require('electron').remote; //added semicolon
+const path = require('path');
 
 let {PythonShell} = require('python-shell')
 
@@ -24,16 +27,22 @@ let copyButton = document.getElementById("CopyButton");
 let runButton = document.getElementById("RunButton");
 let closeButton = document.getElementById("CloseButton");
 
+runButton.style.display = "none";
+
 // Python shell connection + message receiving
 let options = {
   mode: 'text',
   pythonOptions: ['-u'], // get print results in real-time
-  scriptPath: './Python/',
 };
-let shell = new PythonShell('mee.py', options);
+let shell = new PythonShell(path.join(app.getAppPath(), 'Python/mee.py'), options);
 shell.on('message', function(message){
   document.getElementById("CommandLabel").value = message;
-  runButton.style.display = "none";
+  if(message.includes("success")){
+    runButton.style.display="block";
+    copyButton.style.display = "none";
+    document.querySelector("#CommandLabel").style.display = "none";
+    document.querySelector("#minecraft-title").innerHTML = "Connected! Run Your Commands!";
+  }
 });
 
 copyButton.addEventListener('click', (event) => {
@@ -86,6 +95,15 @@ runButton.addEventListener('mousedown', (event) => {
 
 runButton.addEventListener('mouseup', (event) => {
   runButton.classList.remove("active")
+  let eventSelector = document.getElementById("events");
+  let responseSelector = document.getElementById("response-selection");
+  let sock = new WebSocket("ws://localhost:8766/");
+  let message = String(eventSelector.value) + "," + String(responseSelector.value);
+  sock.onopen = function(event){
+    sock.send(message)
+    sock.onclose = function () {}; // disable onclose handler first
+    sock.close();
+  };
 });
 
 runButton.addEventListener('focus', (event) => {

@@ -89,6 +89,7 @@ async def listen_for_selection(websocket, path):
         raise
 
 async def startup(websocket, path):
+    print("Connection success!")
     mine_socket = websocket
     # await subscribe_callback(websocket, event_selected, handle_block_placed)
     
@@ -102,7 +103,7 @@ async def startup(websocket, path):
             # we should only try executing a command if the event was triggered by the player
             if "eventName" in data["body"]:
                 # case that desired event is triggered
-                if data["body"]["eventName"] == trigger_event:
+                if data["body"]["eventName"] == trigger_event or ("camera" in message and trigger_event == "CameraUsed"):
                     command = ""
                     if minecraft_response == "Teleport":
                         x = random.randint(1,5)
@@ -113,9 +114,13 @@ async def startup(websocket, path):
                     elif minecraft_response == "ChangeWeather":
                         command = "toggledownfall"
                     elif minecraft_response == "Tom":
-                        command = "summon ~ ~+5 ~ anvil"
+                        command = "setblock ~ ~+5 ~ anvil"
                     elif minecraft_response == "SpawnChicken":
                         command = "summon chicken"
+                    elif minecraft_response == "Trampoline":
+                        command = "setblock ~ ~-1 ~ slime"
+                    elif minecraft_response == "ChangeTime":
+                        command = "time add 8000"
 
                     await execute_command(websocket, command)
 
@@ -126,7 +131,6 @@ async def startup(websocket, path):
 
 
 print("/connect localhost:8765")
-
 start_server = websockets.serve(
     startup,
     "localhost",

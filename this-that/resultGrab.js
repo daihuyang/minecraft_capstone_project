@@ -34,8 +34,8 @@ ipcRenderer.on('request-json', (event,arg) =>{
                 dictionary[String(eventsOccured[i]["body"]["properties"]["Block"])]++;
             }
         }
-
     }
+    
     let maxTest = Object.values(dictionary);
     let somethingFun = Object.keys(dictionary);
 

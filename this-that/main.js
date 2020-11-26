@@ -3,6 +3,8 @@ const {ipcMain} = require('electron');
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
 
+if (require('electron-squirrel-startup')) return app.quit();
+
 ipcMain.on('request-mainprocess-action', (event, arg) => {
   if(arg == 0){
     app.quit();
@@ -38,7 +40,7 @@ function createWindow () {
   })
 
   win.loadFile('index.html')
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
 
 function writeToCons(msg){
