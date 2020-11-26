@@ -8,6 +8,7 @@ import sys
 import random
 
 minecraft_response = "none"
+trigger_event = "none"
 dummy_socket = ""
 
 # Dictionary to keep track of subscriptions that occur.
@@ -61,6 +62,9 @@ def handle_block_placed(response):
         print(f'Item: {response["properties"]["ToolItemType"]}')
         # print(f'Test: {response["properties"]}')
 
+def handle_all(response):
+    pass
+
 def on_response(response_str):
     response = json.loads(response_str)
     header = response["header"]
@@ -95,15 +99,23 @@ async def startup(websocket, path):
 
             # we should only try executing a command if the event was triggered by the player
             if "eventName" in data["body"]:
-                print(f"""{str(data["body"]["eventName"])} + {str(to_minecraft)} + {(str(data["body"]["eventName"]) == str(to_minecraft))}""")
                 # case that desired event is triggered
-                if str(data["body"]["eventName"]) == str(to_minecraft):
-                    if command_to_run == "tp":
+                if data["body"]["eventName"] == trigger_event:
+                    command = ""
+                    if minecraft_response == "Teleport":
                         x = random.randint(1,5)
                         y = random.randint(1,5)
-                        command_to_run = f"{command_to_run} ~+{x} ~+{y} ~+2"
+                        command = f"tp ~+{x} ~+{y} ~+2"
+                    elif minecraft_response == "Explode":
+                        command = "summon tnt"
+                    elif minecraft_response == "ChangeWeather":
+                        command = "toggledownfall"
+                    elif minecraft_response == "Tom":
+                        command = "summon ~ ~+5 ~ anvil"
+                    elif minecraft_response == "SpawnChicken":
+                        command = "summon chicken"
 
-                    await execute_command(websocket, command_to_run)
+                    await execute_command(websocket, command)
 
             with open("events.json", "a") as json_file:
                 json.dump(data, json_file) # data / message something might be weird
@@ -121,11 +133,11 @@ async def listen_to_js(websocket, path):
     try:
         async for message in websocket:
             global minecraft_response
-            to_minecraft = message.split(",")[0]
+            global trigger_event
+            trigger_event = message.split(",")[0]
             minecraft_response = message.split(",")[1]
-            # print("/connect localhost:8765")
-            # print(len(to_minecraft))
-            await subscribe_callback(dummy_socket, to_minecraft, handle_block_placed)
+            # subscribing to event now
+            await subscribe_callback(dummy_socket, trigger_event, handle_all)
     except:
         raise
 
