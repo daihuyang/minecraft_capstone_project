@@ -1,6 +1,6 @@
 const electron = require("electron");
 const ipcRenderer = electron.ipcRenderer;
-//const {ipcMain} = require('electron');
+// const {ipcMain} = require('electron');
 
 let eventHeader = document.getElementById("event-header");
 let occuredHeader = document.getElementById("occured-header");
@@ -50,4 +50,41 @@ ipcRenderer.on('request-json', (event,arg) =>{
 
     eventHeader.innerHTML = somethingFun[ind];
     occuredHeader.innerHTML = eventCounter; // "Huge Win for us"
+});
+
+
+
+
+// Document Buttons
+let dismissButton = document.getElementById("DismissButton");
+
+dismissButton.addEventListener('mouseover', (event) => {
+    dismissButton.classList.add('hover');
+});
+
+dismissButton.addEventListener('mouseleave', (event) => {
+    dismissButton.classList.remove('hover');
+    dismissButton.classList.remove('active');
+    dismissButton.classList.remove('focus');
+});
+
+dismissButton.addEventListener('mousedown', (event) => {
+    if (event.button == 0){
+        dismissButton.classList.add('active');
+    }
+});
+
+dismissButton.addEventListener('mouseup', (event) => {
+    dismissButton.classList.remove("active");
+
+    // close window
+    ipcRenderer.send('request-mainprocess-action', 0);
+});
+
+dismissButton.addEventListener('focus', (event) => {
+    dismissButton.classList.add('focus');
+});
+
+dismissButton.addEventListener('blur', (event) => {
+    dismissButton.classList.remove('focus');
 });

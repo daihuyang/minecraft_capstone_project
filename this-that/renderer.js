@@ -1,6 +1,6 @@
 const electron = require("electron");
 const { remote } = require('electron');
-const { BrowserWindow } = require('electron').remote
+const { BrowserWindow } = require('electron').remote; //added semicolon
 
 let {PythonShell} = require('python-shell')
 

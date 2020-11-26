@@ -4,6 +4,10 @@ const { ipcRenderer } = require('electron');
 const fs = require('fs');
 
 ipcMain.on('request-mainprocess-action', (event, arg) => {
+  if(arg == 0){
+    app.quit();
+  }
+
   // prints received message to console
   console.log(arg);
   // reads file

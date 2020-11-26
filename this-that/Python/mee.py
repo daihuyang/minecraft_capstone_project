@@ -108,5 +108,12 @@ start_server = websockets.serve(
     subprotocols=["com.microsoft.minecraft.wsencrypt"],
     ping_interval=None)
 
+# websockets.serve(
+#     startup,
+#     "localhost",
+#     8765,
+#     subprotocols=["com.microsoft.minecraft.wsencrypt"],
+#     ping_interval=None)
+
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
