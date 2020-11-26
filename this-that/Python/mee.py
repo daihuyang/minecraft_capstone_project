@@ -7,7 +7,6 @@ import websockets
 import sys
 import random
 
-to_minecraft = "none"
 minecraft_response = "none"
 dummy_socket = ""
 
@@ -121,13 +120,12 @@ start_server = websockets.serve(
 async def listen_to_js(websocket, path):
     try:
         async for message in websocket:
-            global to_minecraft
-            global minecraft_response 
+            global minecraft_response
             to_minecraft = message.split(",")[0]
             minecraft_response = message.split(",")[1]
             # print("/connect localhost:8765")
             # print(len(to_minecraft))
-            await subscribe_callback(dummy_socket, "BlockPlaced", handle_block_placed)
+            await subscribe_callback(dummy_socket, to_minecraft, handle_block_placed)
     except:
         raise
 
