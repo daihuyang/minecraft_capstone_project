@@ -14,33 +14,27 @@ function createWindow () {
     frame: true,
     resizable: false
   })
-
+  
   win.loadFile('results.html')
   //win.webContents.openDevTools()
 }
-
-
-
-// Python Shell connection
-
-let inputArgs = ["testing", 1, 34*2];
-let options = {
-  mode: 'text',
-  pythonOptions: ['-u'], // get print results in real-time
-  scriptPath: './Python/',
-  args: inputArgs
-};
-
-let shell = new PythonShell('mee.py', options);
-shell.on('message', function(message){
-  document.getElementById("CommandLabel").value = message;
-});
-
 
 // Document Buttons
 let copyButton = document.getElementById("CopyButton");
 let runButton = document.getElementById("RunButton");
 let closeButton = document.getElementById("CloseButton");
+
+// Python shell connection + message receiving
+let options = {
+  mode: 'text',
+  pythonOptions: ['-u'], // get print results in real-time
+  scriptPath: './Python/',
+};
+let shell = new PythonShell('mee.py', options);
+shell.on('message', function(message){
+  document.getElementById("CommandLabel").value = message;
+  runButton.style.display = "none";
+});
 
 copyButton.addEventListener('click', (event) => {
   electron.clipboard.writeText(document.getElementById("CommandLabel").value);

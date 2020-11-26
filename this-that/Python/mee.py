@@ -74,13 +74,18 @@ async def listen_for_selection(websocket):
     return await websocket.recv()
 
 async def startup(websocket, path):
-    await subscribe_callback(websocket, to_minecraft, handle_block_placed)
+    await subscribe_callback(websocket, "BlockPlaced", handle_block_placed)
 
     try: 
         # Handle any message recieved.
         async for message in websocket:
             on_response(message)
             data = json.loads(message)
+
+            print(data["body"]["eventName"] == "BlockPlaced")
+
+            if data["body"]["eventName"] == "BlockPlaced":
+                await execute_command(websocket, "weather rain")
 
             with open("events.json", "a") as json_file:
                 json.dump(data, json_file) # data / message something might be weird
@@ -94,16 +99,16 @@ start_server = websockets.serve(
     subprotocols=["com.microsoft.minecraft.wsencrypt"],
     ping_interval=None)
 
-async def listen_to_js(websocket, path):
-    try:
-        async for message in websocket:
-            to_minecraft = message
-            print("/connect localhost:8765")
-    except:
-        raise
+# async def listen_to_js(websocket, path):
+#     try:
+#         async for message in websocket:
+#             to_minecraft = message
+#             print("/connect localhost:8765")
+#     except:
+#         raise
 
-start_js_server = websockets.serve(listen_to_js, "localhost", 8766)
+# start_js_server = websockets.serve(listen_to_js, "localhost", 8766)
 
 asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_until_complete(start_js_server)
+# asyncio.get_event_loop().run_until_complete(start_js_server)
 asyncio.get_event_loop().run_forever()
