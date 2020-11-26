@@ -14,6 +14,9 @@ dummy_socket = ""
 # Dictionary to keep track of subscriptions that occur.
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 
+event_selected = "nothing"
+mine_socket = None
+
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     if not isinstance(event_name, str):
         raise TypeError("expected 'str' for event_name")
@@ -76,23 +79,22 @@ def on_response(response_str):
         for evt_id, sub in subs:
             sub(body)
 
-async def listen_for_selection(websocket):
-    return await websocket.recv()
+async def listen_for_selection(websocket, path):
+    try:
+        async for message in websocket:
+            event_selected = message
+            open("test.txt", "a").writable(message)
+            await subscribe_callback(mine_socket, "BlockPlaced", handle_block_placed)
+    except:
+        raise
 
 async def startup(websocket, path):
-    #await subscribe_callback(websocket, to_minecraft, handle_block_placed)
-    global dummy_socket
-    dummy_socket = websocket
-    # response-specific variables
-    command_to_run = ""
-    if minecraft_response == "weather":
-        command_to_run = "toggledownfall"
-    elif minecraft_response == "explode":
-        command_to_run = "summon tnt"
-    elif minecraft_response == "teleport":
-        command_to_run = "tp"
-    try: 
+    mine_socket = websocket
+    # await subscribe_callback(websocket, event_selected, handle_block_placed)
+    
+    try:
         # Handle any message recieved.
+        
         async for message in websocket:
             on_response(message)
             data = json.loads(message)
@@ -122,6 +124,9 @@ async def startup(websocket, path):
     except:
         raise
 
+
+print("/connect localhost:8765")
+
 start_server = websockets.serve(
     startup,
     "localhost",
@@ -143,6 +148,6 @@ async def listen_to_js(websocket, path):
 
 start_js_server = websockets.serve(listen_to_js, "localhost", 8766)
 
-asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_until_complete(start_js_server)
+asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
