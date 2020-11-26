@@ -90,7 +90,8 @@ async def listen_for_selection(websocket, path):
 
 async def startup(websocket, path):
     print("Connection success!")
-    mine_socket = websocket
+    global dummy_socket
+    dummy_socket = websocket
     # await subscribe_callback(websocket, event_selected, handle_block_placed)
     
     try:
