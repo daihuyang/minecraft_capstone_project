@@ -1,6 +1,9 @@
 const electron = require("electron");
-//const { remote } = require('electron');
-const { BrowserWindow } = require('electron').remote
+const { remote } = require('electron');
+const app = require('electron').remote.app;
+const { run } = require("python-shell");
+const { BrowserWindow } = require('electron').remote; //added semicolon
+const path = require('path');
 
 let {PythonShell} = require('python-shell')
 
@@ -14,33 +17,33 @@ function createWindow () {
     frame: true,
     resizable: false
   })
-
+  
   win.loadFile('results.html')
   //win.webContents.openDevTools()
 }
 
-createWindow();
+// Document Buttons
+let copyButton = document.getElementById("CopyButton");
+let runButton = document.getElementById("RunButton");
+let closeButton = document.getElementById("CloseButton");
 
-// Python Shell connection
+runButton.style.display = "none";
 
-let inputArgs = ["testing", 1, 34*2];
+// Python shell connection + message receiving
 let options = {
   mode: 'text',
   pythonOptions: ['-u'], // get print results in real-time
-  scriptPath: './Python/',
-  args: inputArgs
 };
-
-let shell = new PythonShell('mee.py', options);
+let shell = new PythonShell(path.join(app.getAppPath(), 'Python/mee.py'), options);
 shell.on('message', function(message){
   document.getElementById("CommandLabel").value = message;
+  if(message.includes("success")){
+    runButton.style.display="block";
+    copyButton.style.display = "none";
+    document.querySelector("#CommandLabel").style.display = "none";
+    document.querySelector("#minecraft-title").innerHTML = "Connected! Run Your Commands!";
+  }
 });
-
-
-// Document Buttons
-let copyButton = document.getElementById("CopyButton");
-let runButton = document.getElementById("RunButton")
-
 
 copyButton.addEventListener('click', (event) => {
   electron.clipboard.writeText(document.getElementById("CommandLabel").value);
@@ -92,6 +95,15 @@ runButton.addEventListener('mousedown', (event) => {
 
 runButton.addEventListener('mouseup', (event) => {
   runButton.classList.remove("active")
+  let eventSelector = document.getElementById("events");
+  let responseSelector = document.getElementById("response-selection");
+  let sock = new WebSocket("ws://localhost:8766/");
+  let message = String(eventSelector.value) + "," + String(responseSelector.value);
+  sock.onopen = function(event){
+    sock.send(message)
+    sock.onclose = function () {}; // disable onclose handler first
+    sock.close();
+  };
 });
 
 runButton.addEventListener('focus', (event) => {
@@ -100,4 +112,36 @@ runButton.addEventListener('focus', (event) => {
 
 runButton.addEventListener('blur', (event) => {
   runButton.classList.remove('focus');
+});
+
+closeButton.addEventListener('mouseover', (event) => {
+  closeButton.classList.add('hover');
+});
+
+closeButton.addEventListener('mouseleave', (event) => {
+  closeButton.classList.remove('hover');
+  closeButton.classList.remove('active');
+  closeButton.classList.remove('focus');
+});
+
+closeButton.addEventListener('mousedown', (event) => {
+  if (event.button == 0){
+    closeButton.classList.add('active');
+  }
+});
+
+closeButton.addEventListener('mouseup', (event) => {
+  closeButton.classList.remove("active")
+
+  createWindow();
+  let win2= remote.getCurrentWindow();
+  win2.close();
+});
+
+closeButton.addEventListener('focus', (event) => {
+  closeButton.classList.add('focus');
+});
+
+closeButton.addEventListener('blur', (event) => {
+  closeButton.classList.remove('focus');
 });
