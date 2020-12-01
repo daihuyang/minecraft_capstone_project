@@ -48,8 +48,8 @@ ipcRenderer.on('request-json', (event,arg) =>{
         }
     }
 
-    eventHeader.innerHTML = somethingFun[ind];
-    occuredHeader.innerHTML = eventCounter; // "Huge Win for us"
+    eventHeader.innerHTML += somethingFun[ind];
+    occuredHeader.innerHTML += eventCounter; // "Huge Win for us"
 });
 
 
