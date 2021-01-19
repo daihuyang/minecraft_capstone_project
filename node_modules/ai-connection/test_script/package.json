@@ -1,0 +1,16 @@
+{
+  "name": "testscript",
+  "version": "1.0.0",
+  "description": "Test script for LTC helper app",
+  "main": "main.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "sync-request": "^3.0.1",
+    "typescript": "^2.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "private": true,
+  "author": "",
+  "license": "UNLICENSED"
+}
