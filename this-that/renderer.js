@@ -14,7 +14,7 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true
     },
-    frame: true,
+    frame: false,
     resizable: false
   })
   
@@ -26,6 +26,7 @@ function createWindow () {
 let copyButton = document.getElementById("CopyButton");
 let runButton = document.getElementById("RunButton");
 let closeButton = document.getElementById("CloseButton");
+let messageWindow = document.querySelector("#CommandLabel");
 
 runButton.style.display = "none";
 
@@ -40,7 +41,7 @@ shell.on('message', function(message){
   if(message.includes("success")){
     runButton.style.display="block";
     copyButton.style.display = "none";
-    document.querySelector("#CommandLabel").style.display = "none";
+    messageWindow.value = "";
     document.querySelector("#minecraft-title").innerHTML = "Connected! Run Your Commands!";
   }
 });
@@ -104,6 +105,7 @@ runButton.addEventListener('mouseup', (event) => {
     sock.onclose = function () {}; // disable onclose handler first
     sock.close();
   };
+  confirmAction();
 });
 
 runButton.addEventListener('focus', (event) => {
@@ -145,3 +147,17 @@ closeButton.addEventListener('focus', (event) => {
 closeButton.addEventListener('blur', (event) => {
   closeButton.classList.remove('focus');
 });
+
+async function confirmAction(){
+  messageWindow.value = "*";
+  await new Promise(r => setTimeout(r, 200));
+  messageWindow.value = "--";
+  for(var i = 2; i < 9; i++){
+    await new Promise(r => setTimeout(r, 100));
+    messageWindow.value += "-";
+  }
+  await new Promise(r => setTimeout(r, 100));
+  messageWindow.value = "Instructions Updated!";
+  await new Promise(r => setTimeout(r, 3000));
+  messageWindow.value = "";
+}
