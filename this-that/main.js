@@ -35,7 +35,6 @@ function createWindow () {
       nodeIntegration: true,
       enableRemoteModule: true
     },
-    frame: false,
     resizable: false
   })
 
