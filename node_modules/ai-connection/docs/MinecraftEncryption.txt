@@ -1,0 +1,47 @@
+Minecraft’s Websocket Encryption Protocol
+1 Introduction
+1.1 Background
+	All communication sent to and received by Minecraft must ultimately be valid JSON in accordance with RFC 7159 and must follow the Minecraft JSON command format. Connecting to Minecraft happens over an unsecure websocket connection. All unsecure communication is sent as websocket text frames. At any time during the connection, the server can request encryption (without authentication) by initiating the Key Exchange defined in section 2.2.
+1.2 Term Definitions
+The following are definitions for the terms used throughout this specification:
+•	Client: A Minecraft Game released for any supported platform.
+•	Server: Any endpoint that hosts a websocket server with support for this sub protocol.
+2 Encryption Sub Protocol
+2.1 Enabling Encryption
+See the following notes about enabling encryption:
+•	After a connection is established, the only commands that will be accepted by the Minecraft Client are “closewebsocket” and “enableencryption”. The latter begins the Key Exchange defined in section 2.2
+•	Data transfer on the websocket connection will remain encrypted for the life of the connection.
+•	Encrypted data is sent as websocket binary frames.
+•	Encryption is discarded when the connection ends; requiring a new Key Exchange to re-enable encryption.
+2.1.1 Requiring Encryption on the Client
+	The client has an option under Settings->Profile->Require Encrypted Websockets.
+•	When enabled:
+o	This sub protocol is required in the opening websocket handshake
+o	Available commands are limited until completion of the Key Exchange defined in section 2.2.
+•	When disabled:
+o	No limitation to available commands.
+o	Server may still follow this protocol and Client will respect it.
+2.1.1 Enabling Encryption on the Server
+	Send a websocket text frame with the command “enableencryption” using the Minecraft JSON command format.
+2.2 Key Exchange
+	(1) The server creates an “Elliptic Curve Diffie Hellman” key pair using the “p384” named curve.
+	(2) The server takes the DER encoded public key and stores it in a string using base 64 encoding. See section 3.1 for format details.
+	(3) The server computes 16 bytes of salt using a cryptographic random function and stores it in a string using base 64 encoding.
+	(4) The server sends the “enableencryption” command to the client, supplying the public key and salt from steps 2 and 3 respectively. See section 3.2 for an example.
+	(5) The client sends a response to the “enableencryption” command containing its public key in the format described by step 2. See section 3.3 for an example.
+	(6) The server derives the shared secret from the client’s public key provided in step 5.
+	(7) The server prepends the raw 16 bytes of salt from step 3 with the shared secret from step 6 and uses a “sha256” hash on it, resulting in the cipher key.
+2.3 Sending and Receiving Data
+•	 “AES256” encryption is used in “CFB” mode with no padding.
+•	The initialization vector for the first block is the first 16 bytes of the cipher key computed from section 2.2.
+•	Block size is 16 bytes, key size is 32 bytes.
+•	Before sending, server should interpret message as utf8 string and encrypt it, sending the result a binary websocket frame.
+•	When receiving binary websocket frames, server should always decrypt and interpret as utf8 string.
+3.0 Examples
+3.1 Public key format
+The public key is in DER encoding, then base 64 encoded. The ASN.1 notation for the key is shown below. The bit string contains the standard octet string representation for EC keys defined in section 2.3.3 of the “Standards For Efficient Cryptography 1” (http://www.secg.org/SEC1-Ver-1.0.pdf)
+ 
+3.2 Example “enableencryption” command request
+ 
+3.2 Example “enableencryption” command response
+ 

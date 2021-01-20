@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hostedEditor.css">
+</head>
+
+<body>
+    <div>
+        <div id="Header" class="hidden">
+            <div id="HeaderLeft"></div>
+            <div id="HeaderMiddle"></div>
+            <div id="HeaderRight"></div>
+        </div>
+        <p id="TitleText">
+            <!-- Script is going to update title text -->
+        </p>
+        <button type="button" id="BackButton"></button>
+        <button type="button" id="MinimizeButton"></button>
+        <button type="button" id="MaximizeButton" class="hidden"></button>
+        <button class="exitButton" id="CloseButton"></button>
+        <p id="LoadingLabel">
+            <!-- Script is going to update loading text -->
+        </p>
+
+        <webview id="Editor" class="hide" src="https://studio.code.org/projects/minecraft_codebuilder/" preload="./ipcRendererInjector.js"></webview>
+        <div id="ExitDialog" class="dialog-overlay">
+            <div class="dialog">
+                <div class="dialog-body">
+                    <p id="quitBody"></p>
+                    <p id="disclamerBody"></p>
+                </div>
+                <div class="dialog-footer">
+                    <button class="btn-bevel" id="ExitButton"></button>
+                    <button class="btn-bevel" id="ChooseEditorButton"></button>
+                    <button class="btn-bevel" id ="CancelButton"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        require('./CodeStudio.js')
+    </script>
+</body>
+
+</html>
