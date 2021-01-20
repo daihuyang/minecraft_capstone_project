@@ -1,0 +1,213 @@
+@font-face {
+  font-family: mojangles;
+  src: url(./Fonts/mojangles.ttf);
+}
+html {
+  height: 100%;
+}
+
+body{
+  font-family: mojangles, Fallback, Impact;
+  background-image: url(./resources/background.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+#minecraft-title{
+  font-family: mojangles, Fallback, Impact;
+  margin-top: 15px;
+  text-align: center;
+}
+
+select{
+  position: relative;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+#if-then-div {
+  height: 350px;
+  width: 93%;
+  margin-top: 10.5%;
+  margin-left: 3%;
+  /* margin-bottom: 3.5%; */
+}
+
+div.containers {
+  height: 50%;
+  width: 100%;
+  margin: 0%;
+}
+
+#connection-div {
+  position: absolute;
+  left: 50px;
+  top: 80px;
+}
+
+#CommandLabel{
+  float: left; 
+  height:97px;
+}
+
+#if-div {
+  display: inline-block;
+  height: 100%;
+  width: 40%;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+
+#if-image {
+  display: block;
+  height: 60%;
+  width: auto;
+  margin-left:35%;
+  margin-top: 12%;
+}
+
+#events {
+  float: right;
+  position: absolute; 
+  margin-top: 80px;
+  vertical-align: middle;
+}
+
+#then-div {
+  float: left;
+  height: 100%;
+  width: 40%;
+  /* vertical-align: middle; */
+}
+
+#then-image {
+  float: left;
+  height: 60%;
+  width: auto;
+  margin-left: 35%;
+  /* margin-top: 10%; */
+  
+}
+
+#response {
+  width: 25%;
+  position: absolute;
+  bottom: 80px;
+  right: 300px;
+  display: inline-block;
+}
+
+#response-selection {
+  margin-top: 30px;
+}
+
+#CopyButton {
+  background: url(./resources/copy.png);
+  width: 97px;
+  height: 97px;
+  right: 20px;
+  top: 50px;
+  -webkit-app-region: no-drag;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+#RunButton{
+  background: url(./resources/button.png);
+  background-size:100%;
+  text-align: center;
+  color:white;
+  font-family: mojangles, Fallback, Impact;
+  font-size: large;
+  display: inline-block;
+  bottom: 115px;
+  right: 50px;
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+#RunButton.hover, #CopyButton.focus, #CloseButton.hover {
+  background: url(./resources/buttonHover.png);
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+#RunButton.active, #CloseButton.active {
+  background: url(./resources/buttonPress.png);
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+#CopyButton.hover, #CopyButton.focus {
+  background: url(./resources/copyHover.png);
+}
+
+#CopyButton.active {
+  background: url(./resources/copyPress.png);
+}
+
+#CloseButton.hover{
+  background: url(./resources/buttonHover.png);
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+#CloseButton.active {
+  background: url(./resources/buttonPress.png);
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+#CloseButton {
+  background: url(./resources/button.png);
+  background-size:100%;
+  text-align: center;
+  color:white;
+  font-family: mojangles, Fallback, Impact;
+  font-size: large;
+  display: inline-block;
+  bottom: 50px;
+  right: 50px;
+  width: 160px;
+  height: 60px;
+  position: absolute;
+  -webkit-app-region: no-drag;
+  background-size: 100%;
+}
+
+input[type=text] {
+  font-family: 'mojangles', Fallback, Impact;
+  font-size: 100%;
+  font-size: 24pt;
+  color: white;
+  text-align: center;
+  width: 671px;
+  height: 97px;
+  background: url(./resources/textbox.png);
+  -webkit-app-region: no-drag;
+  border: none;
+  padding: 0px 0px 0px 0px;
+}
+
+.custom-select{
+  font-family: mojangles, Fallback, Impact;
+  height: 40px;
+  font-size: 25px;
+}
