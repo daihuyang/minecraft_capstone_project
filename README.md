@@ -2,7 +2,7 @@
 
 Exploring Minecraft AI education arcs.
 ## About the Project 
-![ideCapture](http://url/to/ide-capture.PNG)
+![ideCapture](ide-capture.PNG)
 
 We are building a Minecraft in-game Python editor that consists: 
 
