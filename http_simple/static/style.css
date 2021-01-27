@@ -89,7 +89,7 @@ button:active {
 }
 
 textarea {
-    color: white;
+    color: red;
     font-size: 1.6em;
     display: block;
     background-image: url(../this-that/resources/textbox.png);
