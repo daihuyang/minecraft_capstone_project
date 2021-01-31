@@ -1,10 +1,16 @@
 window.onload = function () {
     const runButton = document.querySelector(".button3");
     const textBox = document.querySelector("#textbox");
+    const outputArea = document.querySelector(".output-area");
     
     runButton.addEventListener("click", function () {
         var pythonCommand = textBox.value;
         openSocket(pythonCommand);
+    });
+
+    const outputSocket = new Websocket("ws://localhost:3005/"); // recieves the output of the python code
+    outputSocket.addEventListener("message", function (event) {
+	outputArea.value = event.data;
     });
 }
 
