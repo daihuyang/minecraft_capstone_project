@@ -1,12 +1,18 @@
 import asyncio
 import websockets
+import sys
+import io
 
 async def hello(websocket, path):
-    command = await websocket.recv()
-    test = exec(command)
-    print(test)
+    try:
+        async for message in websocket:
+            output = io.StringIO()
+            exec(message)
+            print(output.getvalue());
+            output.close()
 
-
+    except:
+        raise
 
 start_server = websockets.serve(hello, "localhost", 3001)
 

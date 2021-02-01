@@ -1,13 +1,26 @@
 window.onload = function () {
-    var sock;
-    openSocket();
+    // initialize socket
+    let sock = new WebSocket("ws://localhost:3001/"); // change later
+    // tell Python that Javascript is ready
+    sock.onopen = function(event){
+        sock.send("print('Hi')");
+        //sock.send('JAVASCRIPT READY');
+    };
     const runButton = document.querySelector(".button3");
     const textBox = document.querySelector("#textbox");
-    const outputArea = document.querySelector(".output-area");
+    let outputArea = document.querySelector(".output-area");
     
     runButton.addEventListener("click", function () {
-        var pythonCommand = textBox.value;
-        sendReceive(pythonCommand);
+        let pythonCommand = textBox.value;
+        //sendReceive(sock,pythonCommand);
+        sock.send(pythonCommand);
+        // let recv = "";
+        // //let responseRecv = false;
+        // sock.onmessage = function(event){
+        //     let recv = event.data;
+        //     //let responseRecv = true;
+        //     outputArea.html = recv;
+        // }
     });
 
     // const outputSocket = new Websocket("ws://localhost:3005/"); // recieves the output of the python code
@@ -15,17 +28,6 @@ window.onload = function () {
 	// outputArea.value = event.data;
     // });
 }
-
-// initialize comm with Python
-function openSocket() {
-    // initialize socket
-    sock = new WebSocket("ws://localhost:3001/"); // change later
-    // tell Python that Javascript is ready
-    sock.onopen = function(event){
-        sock.send("JAVASCRIPT UP");
-    };
-}
-
 
 function sendReceive(sock,message){
     sock.send(message);
