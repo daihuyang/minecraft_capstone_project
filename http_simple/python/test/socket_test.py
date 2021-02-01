@@ -3,7 +3,8 @@ import websockets
 
 async def hello(websocket, path):
     command = await websocket.recv()
-    exec(command)
+    test = exec(command)
+    print(test)
 
 
 
