@@ -16,10 +16,11 @@ window.onresize = window.onload = function () {
     windowWidth = this.innerWidth;
     document.getElementById("bodyEl").style.height = windowHeight + "px";
     document.getElementById("bodyEl").style.width = windowWidth + "px";
-    // document.getElementById("ide-title").innerHTML = "Width: " + windowWidth + " & Height: " + windowHeight;
 };
 
 var textGroupCounter = 2;
+
+// cloneNode()
 
 function addTextGroup() {
     console.log("hi");

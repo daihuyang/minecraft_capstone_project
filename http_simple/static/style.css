@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: mojangles, Fallback, Impact;
-    background-image: url(resources/full-background.png);
+    background-image: url(../resources/full_background.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100%;
@@ -47,7 +47,7 @@ div#text-section {
     width: calc(90%);
     height: calc(72%);
     max-height: 660px; /* This sets the maximum area for scrolling to begin */
-    background-image: url(resources/full-foreground.png);
+    background-image: url(../resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     overflow-y: scroll;
@@ -68,7 +68,7 @@ textarea {
     color: white;
     font-size: 1.6em;
     display: block;
-    background-image: url(resources/textbox.png);
+    background-image: url(../resources/textbox.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: calc(85%);
@@ -80,7 +80,7 @@ textarea {
 button {
     font-family: mojangles;
     font-weight: bold;
-    background-image: url(resources/button.png);
+    background-image: url(../resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
@@ -108,11 +108,11 @@ div.button-group button {
 }
 
 button:hover {
-    background-image: url(resources/buttonHover.png);
+    background-image: url(../resources/buttonHover.png);
 }
 
 button:active {
-    background-image: url(resources/buttonPress.png);
+    background-image: url(../resources/buttonPress.png);
 }
 
 div#bottom-section {
@@ -126,7 +126,7 @@ div#bottom-section {
 #run-all-button, #add-button {
     font-family: mojangles;
     font-weight: bold;
-    background-image: url(resources/button.png);
+    background-image: url(../resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 1em 0em 0em calc(25%);
@@ -135,11 +135,11 @@ div#bottom-section {
 }
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
-    background-image: url(resources/buttonHover.png);
+    background-image: url(../resources/buttonHover.png);
 }
 
 #run-all-button:active, #add-button:active, .run-button:active, .remove-button:active {
-    background-image: url(resources/buttonPress.png);
+    background-image: url(../resources/buttonPress.png);
 }
 
 
