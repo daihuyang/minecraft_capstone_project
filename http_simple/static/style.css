@@ -8,98 +8,140 @@ html {
     font-size: 16px;
     width: 100%;
     height: 100%;
+    margin: calc(0%) calc(0%) calc(0%) calc(0%);
+    padding: calc(0%) calc(0%) calc(0%) calc(0%);
 }
 
 body {
-    position: relative;
-    place-items: center;
-    width: 100%;
-    height: 100%;
     font-family: mojangles, Fallback, Impact;
-    background-image: url(./resources/full_background.png);
-    background-size: cover;
+    background-image: url(../resources/full_background.png);
     background-repeat: no-repeat;
-    background-size: 100% 960px;
-    margin: 48px 0% 0% 0%;
-}
-
-h1 {
-    font-size: 2.6em;
-    display: block;
-    text-align: center;
-    padding: 0% 0% 0% 0%;
-}
-div.foreground{
-    width: 80%;
-    height: 70%;
-    margin: 5em 10% 3em 10%;
-    background-image: url(./resources/full_foreground.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-div.text-section {
-    width: 90%;
+    background-size: 100% 100%;
     height: 100%;
-    margin: 64px 5% 5% 5%;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    margin: calc(0%) calc(0%) calc(0%) calc(0%);
+    padding: calc(0%) calc(0%) calc(0%) calc(0%);
+}
+
+div#header-section {
+    height: calc(7%);
+    width: calc(100%);
+    margin: calc(0%) calc(0%) calc(1%) calc(0%);
+    padding: calc(4%) calc(0%) calc(0%) calc(0%);
+}
+
+h1#ide-title {
+    font-size: 2.6em;
+    margin: 0em 0em 0em 0em;
+    padding: calc(0%) calc(0%) calc(0%) calc(0%);
+    height: calc(100%);
+    width: calc(100%);
+    vertical-align: middle;
+    text-align: center;
+    justify-content: center;
+}
+
+div#text-section {
+    width: calc(90%);
+    height: calc(72%);
+    max-height: 660px; /* This sets the maximum area for scrolling to begin */
+    background-image: url(../resources/full_foreground.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: calc(0%) calc(3%) calc(0%) calc(3%);
+    padding: calc(2%) calc(2%) calc(2%) calc(2%);
 }
 
 div.text-group {
-    width: 100%;
-    height: 100%;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    clear:left;
+    width: calc(100%);
+    height: 216px;
+    margin: calc(0%) calc(0%) calc(0%) calc(0%);
+    padding: calc(0%) calc(0%) calc(0%) calc(0%);
+}
+
+textarea {
+    color: white;
+    font-size: 1.6em;
+    display: block;
+    background-image: url(../resources/textbox.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: calc(85%);
+    height: 192px;
+    margin: calc(0%) calc(0%) calc(0%) calc(0%);
+    padding: 10px calc(0%) 0% 10px;
 }
 
 button {
     font-family: mojangles;
     font-weight: bold;
-    background-image: url(../this-that/resources/button.png);
+    background-image: url(../resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
+    width: calc(100%);
+    height: 41px;
+}
+
+div.button-group {
+    float: right;
+    width: calc(13%);
+    height: calc(100%);
+    margin: calc(0%) calc(0%) calc(0%) calc(0%);
+    padding: calc(0%) calc(0%) calc(0%) calc(0%);
+    align-items: center;
+}
+
+div.button-group button {
+    display: block;
+    margin: calc(1em) 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+}
+
+.run-button, .remove-button {
+
+}
+
+button:hover {
+    background-image: url(../resources/buttonHover.png);
+}
+
+button:active {
+    background-image: url(../resources/buttonPress.png);
+}
+
+div#bottom-section {
+    height: calc(10%);
+    width: calc(90%);
+    margin: calc(0%) calc(3%) calc(0%) calc(3%);
+    padding: calc(4px) calc(0%) calc(4px) calc(0%);
+    text-align: justify;
+}
+
+#run-all-button, #add-button {
+    font-family: mojangles;
+    font-weight: bold;
+    background-image: url(../resources/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 1em 0em 0em calc(25%);
     width: 117px;
     height: 41px;
 }
 
-button:hover {
-    background-image: url(../this-that/resources/buttonHover.png);
+#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
+    background-image: url(../resources/buttonHover.png);
 }
 
-button:active {
-    background-image: url(../this-that/resources/buttonPress.png);
+#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active {
+    background-image: url(../resources/buttonPress.png);
 }
 
-#RunButton{
-    font-family: mojangles;
-    font-weight: bold;
-    background-image: url(../this-that/resources/button.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    bottom: 115px;
-    right: 50px;
-    width: 160px;
-    height: 60px;
-}
-#RunButton:hover {
-    background-image: url(../this-that/resources/buttonHover.png);
-}
-#RunButton:active {
-    background-image: url(../this-that/resources/buttonPress.png);
-}
-
-textarea {
-    color: red;
-    font-size: 1.6em;
-    display: block;
-    background-image: url(../this-that/resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 98%;
-    height: 128px;
-    margin: 12px 2% 24px 0%;
-    padding: 1% 0% 1% 2%;
-}
 
 
 
