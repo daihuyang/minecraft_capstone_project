@@ -8,3 +8,5 @@ def run_server():
     REPL_interface = HTTPServer(server_address=('', 3000), RequestHandlerClass=CGIHTTPRequestHandler)
     # Start the web server
     REPL_interface.serve_forever()
+
+run_server()
