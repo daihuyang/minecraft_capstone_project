@@ -1,19 +1,21 @@
-# For receiving code from communicator.js
+# For receiving code from communicator.js and connecting with Minecraft
 import asyncio
 import websockets
 import io
+# Required for communicating with Minecraft
+import json
+import uuid
+import typing
 # HTTP Server
 from multiprocessing import Process
 import serve
 
-global minecraft_socket
+minecraft_socket = ""
+_SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     '''
-    Sends JSON message over Websocket
-
-    Whenever a message is received from Minecraft,
-    there must be a response sent back.
+    Subscribes to minecraft event by sending JSON object
     '''
     if not isinstance(event_name, str):
         raise TypeError("expected 'str' for event_name")
@@ -66,8 +68,11 @@ def handle_message(message):
     data = json.load(message)
     return data
 
+def handle_all(message):
+    pass
+
 # Communicates with Minecraft WebSockets
-async def minecraft_connection(websocket, path):
+async def connect_minecraft(websocket, path):
     '''
     NOTE: Requires Player to use "/connect localhost:<port>" to connect
 
@@ -75,15 +80,16 @@ async def minecraft_connection(websocket, path):
     Stores events that occur in a CSV file
     '''
     print("Connected to Minecraft")
+    global minecraft_socket
     minecraft_socket = websocket # initializes the global variable
     try:
         async for message in websocket:
-            data = handle_message(message)
+            data = message
             
             #TODO: Store Data
             print(data)
 
-            await subscribe(websocket, )
+            # subscribe_callback? Does Minecraft require a response?
     except:
         raise
             
@@ -116,13 +122,33 @@ async def receive_code(websocket, path):
 
 
 if __name__ == "__main__":
+    # Initialize Minecraft WebSocket connection
+    print("starting websockets")
+    print("/connect localhost:8765")
+    start_mine_server = websockets.serve(
+        connect_minecraft,
+        "localhost",
+        8765,
+        subprotocols=["com.microsoft.minecraft.wsencrypt"],
+        ping_interval=None
+    )
+    start_pillbox_server = websockets.serve(
+        subscribe_to_event_list,
+        "localhost",
+        3005 # Pillbox port
+    )
+
     # Starts Child Process for HTTP Server on port 3000, which Minecraft is listening to
     print("starting http server")
-    p = Process(target=serve.run_server, args=(3000,))
-    p.start()
+    http_process = Process(target=serve.run_server, args=(3000,))
+    http_process.start()
 
     print("starting kernel")
     # Listens to receive code from webpage
     start_server = websockets.serve(receive_code, "localhost", 3001)
+
+    # Run all Async
     asyncio.get_event_loop().run_until_complete(start_server)
+    asyncio.get_event_loop().run_until_complete(start_pillbox_server)
+    asyncio.get_event_loop().run_until_complete(start_mine_server)
     asyncio.get_event_loop().run_forever()
