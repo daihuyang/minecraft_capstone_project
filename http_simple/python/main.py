@@ -6,6 +6,8 @@ import io
 from multiprocessing import Process
 import serve
 
+global minecraft_socket
+
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     '''
     Sends JSON message over Websocket
@@ -55,22 +57,52 @@ async def execute_command(websocket, command: str, *args):
 
     await websocket.send(json.dumps(message))
 
-async def get_event_list(websocket, path):
+def handle_message(message):
     '''
-    Retrieves a list of Minecraft events to subscribe to
-    from the webpage's pillbox
+    Handles JSON objects received over minecraft connection
+
+    This will be what gets stored in the database we are using
+    '''
+    data = json.load(message)
+    return data
+
+# Communicates with Minecraft WebSockets
+async def minecraft_connection(websocket, path):
+    '''
+    NOTE: Requires Player to use "/connect localhost:<port>" to connect
+
+    Creates the websocket connection with Minecraft.
+    Stores events that occur in a CSV file
+    '''
+    print("Connected to Minecraft")
+    minecraft_socket = websocket # initializes the global variable
+    try:
+        async for message in websocket:
+            data = handle_message(message)
+            
+            #TODO: Store Data
+            print(data)
+
+            await subscribe(websocket, )
+    except:
+        raise
+            
+
+# Communicates with JavaScript Pillbox
+async def subscribe_to_event_list(websocket, path):
+    '''
+    Retrieves a comma separated list of events from the pillbox.
+    Subscribes to each event in the comma separated list
     '''
     try:
         async for message in websocket:
             # message assumed to be a comma separated list of events
-            global event_list
             event_list = message.split(",")
-            # subscribe to each event
+            # subscribes to each event in the list
             for event in event_list:
                 await subscribe_callback(minecraft_socket, event, handle_all)
     except:
         raise
-
 
 async def receive_code(websocket, path):
     try:
@@ -79,7 +111,6 @@ async def receive_code(websocket, path):
             exec(message)
             print(output.getvalue())
             output.close()
-
     except:
         raise
 
