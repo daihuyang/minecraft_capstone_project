@@ -43,6 +43,35 @@ h1#ide-title {
     justify-content: center;
 }
 
+button.minecraft-button {
+    font-family: mojangles;
+    font-weight: bold;
+    background-image: url(../resources/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0% 0% 0% 0%;
+    width: calc(100%);
+    height: 41px;
+}
+
+
+
+.selector-div {
+    width: calc(90%);
+    margin: calc(0%) calc(3%) calc(0%) calc(3%);
+    padding: calc(0%) calc(2%) calc(2%) calc(2%);
+}
+
+.event-selector {
+    width: calc(80%);
+    height: 64px;
+}
+
+#update-button {
+    width: 132px;
+    height: 44px;
+}
+
 div#text-section {
     width: 90%;
     height: 72%;
@@ -94,17 +123,6 @@ div.text-group {
     padding: 10px 0% 0% 10px;
 } */
 
-button {
-    font-family: mojangles;
-    font-weight: bold;
-    background-image: url(./resources/button.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0% 0% 0% 0%;
-    width: 100%;
-    height: 41px;
-}
-
 div.button-group {
     float: right;
     width: 13%;
@@ -120,8 +138,19 @@ div.button-group button {
     padding: 0% 0% 0% 0%;
 }
 
-.run-button, .remove-button {
+div#bottom-section {
+    height: calc(7%);
+    width: calc(30%);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: calc(0%) calc(35%) calc(0%) calc(35%);
+    padding: 0px 0px 0px 0px;
+}
 
+.run-button, .remove-button {
+    margin: auto;
 }
 
 button:hover {
@@ -140,16 +169,18 @@ div#bottom-section {
     text-align: justify;
 }
 
+
 #run-all-button, #add-button {
     font-family: mojangles;
     font-weight: bold;
     background-image: url(./resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 1em 0em 0em 25%;
-    width: 117px;
+    margin: 0em 0em 0em 0em;
+    width: 128px;
     height: 41px;
 }
+
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
     background-image: url(./resources/buttonHover.png);
