@@ -61,19 +61,3 @@ $(".event-selector").select2({
 //     buttonGroup.appendChild(runButton);
 //     buttonGroup.appendChild(removeButton);
 // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
