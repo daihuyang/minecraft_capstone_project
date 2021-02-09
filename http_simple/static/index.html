@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Minecraft IDE Editor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- for pillbox -->
-    <script type="text/javascript" src="./js/structure.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body id="bodyEl">
     <div id="header-section">
         <h1 id="ide-title">Minecraft IDE Editor</h1>
     </div>
+    <div class="selector-div">
+        <select class="event-selector" name="events[]" multiple="multiple">
+            <option value="event1">Event 1</option>
+            <option value="event2">Event 2</option>
+        </select>
+        <button type="button" id="update-button" class="minecraft-button">Update</button>
+    </div>
     <div id="text-section">
         <div class="text-group">
             <div class="button-group">
-                <button type="button" name="run-button-1" class="run-button">RUN</button>
-                <button type="button" name="remove-button-1" class="remove-button">REMOVE</button>
+                <button type="button" class="run-button minecraft-button">RUN</button>
+                <button type="button" class="remove-button minecraft-button">REMOVE</button>
             </div>
-            <textarea name="text-input-1" class="text-area" rows="6"></textarea>
-        </div>
-        <div class="text-group">
-            <div class="button-group">
-                <button type="button" name="run-button-2" class="run-button">RUN</button>
-                <button type="button" name="remove-button-2" class="remove-button">REMOVE</button>
-            </div>
-            <textarea name="text-input-2" class="text-area" rows="6"></textarea>
+            <div class="code-input" contenteditable="true"><br /><br /><br /><br /><br /></div>
         </div>
     </div>
     <div id="bottom-section">
-        <button type="button" id="add-button">ADD</button>
-        <button type="button" id="run-all-button">RUN ALL</button>
+        <button type="button" id="add-button" class="minecraft-button">ADD</button>
+        <button type="button" id="run-all-button" class="minecraft-button">RUN ALL</button>
     </div>
-
+    <script type="text/javascript" src="./js/structure.js"></script>
 </body>
 
 </html>
