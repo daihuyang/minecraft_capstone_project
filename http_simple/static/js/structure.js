@@ -1,5 +1,4 @@
 // window.onload = function(){
-    var addButton = document.querySelector("#add-button");
     $('#add-button').click(function(){
         // max of 10 entries currently
         if($('.text-group').length < 10){
@@ -14,6 +13,11 @@
             });
         }
     });
+
+    // $('#update-button').click(function(){
+    //     var chosenEvents = $('.event-selector')[0].val();
+    //     alert(chosenEvents);
+    // });
     // document.querySelector('.code-input').addEventListener('input',function(){
     //     $('.code-input').css('background-size','cover')
     // });

@@ -161,15 +161,6 @@ button:active {
     background-image: url(./resources/buttonPress.png);
 }
 
-div#bottom-section {
-    height: 10%;
-    width: 90%;
-    margin: 0% 3% 0% 3%;
-    padding: 4px 0% 4px 0%;
-    text-align: justify;
-}
-
-
 #run-all-button, #add-button {
     font-family: mojangles;
     font-weight: bold;
