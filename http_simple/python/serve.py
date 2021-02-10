@@ -1,5 +1,6 @@
 import os
 from http.server import HTTPServer, CGIHTTPRequestHandler
+from multiprocessing import Process
 
 def run_server(port):
     # Make sure the server is pointed towards the correct directory
