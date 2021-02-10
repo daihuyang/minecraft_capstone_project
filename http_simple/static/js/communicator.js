@@ -3,15 +3,18 @@ window.onload = function () {
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     // tell Python that Javascript is ready
     sock.onopen = function(event){
-        sock.send("print('Hi')");
+        //sock.send("print('Hi')");
         //sock.send('JAVASCRIPT READY');
     };
-    const runButton = document.querySelector(".button3");
-    const textBox = document.querySelector("#textbox");
+    // TODO: move to classes, away from IDs
+    const runButton = document.querySelector(".run-button");
+    alert(runButton);
+    const textBox = document.querySelector(".text-area");
     let outputArea = document.querySelector(".output-area");
     
     runButton.addEventListener("click", function () {
         let pythonCommand = textBox.value;
+        alert(pythonCommand);
         //sendReceive(sock,pythonCommand);
         sock.send(pythonCommand);
         // let recv = "";
