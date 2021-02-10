@@ -9,10 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- for pillbox -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="./js/structure.js"></script>
+    <script type="text/javascript" src="./js/communicator.js"></script>
 </head>
 <body id="bodyEl">
     <div id="header-section">
-        <h1 id="ide-title">Minecraft IDE Editor</h1>
+        <h1 id="ide-title">REPL</h1>
     </div>
     <div class="selector-div">
         <select class="event-selector" name="events[]" multiple="multiple">
@@ -24,7 +26,6 @@
     <div id="text-section">
         <div class="text-group">
             <div class="button-group">
-
                 <button type="button" class="run-button minecraft-button">RUN</button>
                 <button type="button" class="remove-button minecraft-button">REMOVE</button>
             </div>
@@ -35,6 +36,5 @@
         <button type="button" id="add-button" class="minecraft-button">ADD</button>
         <button type="button" id="run-all-button" class="minecraft-button">RUN ALL</button>
     </div>
-    <script type="text/javascript" src="./js/structure.js"></script>
 </body>
 </html>
