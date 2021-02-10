@@ -1,6 +1,6 @@
 // window.onload = function(){
     var addButton = document.querySelector("#add-button");
-    addButton.onclick = function(){
+    $('#add-button').click(function(){
         // max of 10 entries currently
         if($('.text-group').length < 10){
             var newBox = $('.text-group').first().clone();
@@ -13,7 +13,7 @@
                 }
             });
         }
-    }
+    });
     // document.querySelector('.code-input').addEventListener('input',function(){
     //     $('.code-input').css('background-size','cover')
     // });
