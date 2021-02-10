@@ -8,7 +8,6 @@ window.onload = function () {
     };
     // TODO: move to classes, away from IDs
     const runButton = document.querySelector(".run-button");
-    alert(runButton);
     const textBox = document.querySelector(".text-area");
     let outputArea = document.querySelector(".output-area");
     
