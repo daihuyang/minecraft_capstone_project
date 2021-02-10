@@ -14,3 +14,5 @@ We are building a Minecraft in-game Python editor that consists:
   *   An output window: this window will collect and visualize the game data from the commands from python cells once the **RUN** or **RUN ALL** is clicked. 
 
 ## Installation 
+
+## Installation 2
