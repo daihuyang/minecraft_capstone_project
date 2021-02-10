@@ -63,7 +63,7 @@ button.minecraft-button {
 }
 
 .event-selector {
-    width: calc(80%);
+    width: calc(60S%);
     height: 64px;
 }
 
@@ -154,6 +154,23 @@ button:active {
     margin: 0em 0em 0em 0em;
     width: 128px;
     height: 41px;
+}
+
+.code-input {
+    float: left;
+    color: white;
+    font-size: smaller;
+    background-color: dark;
+    background-color: rgb(69,69,69);
+    border: 4px solid black;
+    /* background-image: url(./resources/textbox.png);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    width: 80%;
+    resize: vertical; 
+    vertical-align: center;
+    margin: 0% 0% 0% 0%;
+    padding: 0.3em 0.1em 0.3em 0.1em;
 }
 
 
