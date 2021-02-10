@@ -3,10 +3,10 @@ import websockets
 import sys
 import io
 
-async def hello(websocket, path):
+async def receive_code(websocket, path):
     try:
         async for message in websocket:
-            output = io.StringIO()
+            output = io.StringIO() #outputs the code
             exec(message)
             print(output.getvalue())
             output.close()
@@ -14,7 +14,7 @@ async def hello(websocket, path):
     except:
         raise
 
-start_server = websockets.serve(hello, "localhost", 3001)
+start_server = websockets.serve(receive_code, "localhost", 3001)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

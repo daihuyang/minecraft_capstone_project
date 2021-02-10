@@ -65,7 +65,7 @@ div.text-group {
 }
 
 textarea {
-    color: white;
+    color: red;
     font-size: 1.6em;
     display: block;
     background-image: url(../resources/textbox.png);

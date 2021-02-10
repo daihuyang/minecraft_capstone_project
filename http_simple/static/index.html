@@ -7,11 +7,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- for pillbox -->
     <script type="text/javascript" src="./js/structure.js"></script>
+    <script type="text/javascript" src="./js/communicator.js"></script>
 </head>
 
 <body id="bodyEl">
     <div id="header-section">
-        <h1 id="ide-title">Minecraft IDE Editor</h1>
+        <h1 id="ide-title">REPL</h1>
     </div>
     <div id="text-section">
         <div class="text-group">
@@ -21,19 +22,11 @@
             </div>
             <textarea name="text-input-1" class="text-area" rows="6"></textarea>
         </div>
-        <div class="text-group">
-            <div class="button-group">
-                <button type="button" name="run-button-2" class="run-button">RUN</button>
-                <button type="button" name="remove-button-2" class="remove-button">REMOVE</button>
-            </div>
-            <textarea name="text-input-2" class="text-area" rows="6"></textarea>
-        </div>
     </div>
     <div id="bottom-section">
         <button type="button" id="add-button">ADD</button>
         <button type="button" id="run-all-button">RUN ALL</button>
     </div>
-
 </body>
 
 </html>
