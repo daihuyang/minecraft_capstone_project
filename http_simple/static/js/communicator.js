@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function(){
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     // tell Python that Javascript is ready
@@ -29,7 +29,7 @@ window.onload = function () {
     // outputSocket.addEventListener("message", function (event) {
 	// outputArea.value = event.data;
     // });
-}
+});
 
 function sendReceive(sock,message){
     sock.send(message);
