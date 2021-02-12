@@ -50,20 +50,18 @@ button.minecraft-button {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
-    width: calc(100%);
+    width: 100%;
     height: 41px;
 }
 
-
-
 .selector-div {
-    width: calc(90%);
-    margin: calc(0%) calc(3%) calc(0%) calc(3%);
-    padding: calc(0%) calc(2%) calc(2%) calc(2%);
+    width: 90%;
+    margin: 0% 3% 0% 3%;
+    padding: 0% 2% 2% 2%;
 }
 
 .event-selector {
-    width: calc(60S%);
+    width: 60%;
     height: 64px;
 }
 
@@ -100,28 +98,11 @@ div.text-group {
     background-color: dark;
     background-color: rgb(69,69,69);
     border: 4px solid black;
-    /* background-image: url(./resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: cover; */
     width: 80%;
     resize: vertical; 
     margin: 0% 0% 0% 0%;
     padding: 0.3em 0.1em 0.3em 0.1em;
 }
-
-/* div[contenteditable]{
-    float: left;
-    color: white;
-    font-size: smaller;
-    display: block;
-    background-image: url(./resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 80%;
-    height: 50px;
-    margin: 0% 0% 0% 0%;
-    padding: 10px 0% 0% 10px;
-} */
 
 div.button-group {
     float: right;
@@ -134,18 +115,22 @@ div.button-group {
 
 div.button-group button {
     display: block;
-    margin: 1em 0% 0% 0%;
+    margin: 0.1em 0% 0% 0%;
     padding: 0% 0% 0% 0%;
 }
 
+div.button-group button:nth-child(2) {
+    margin: 1em 0% 0% 0%;
+}
+
 div#bottom-section {
-    height: calc(7%);
-    width: calc(30%);
+    height: 7%;
+    width: 30%;
     display:flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: calc(0%) calc(35%) calc(0%) calc(35%);
+    margin: 0% 35% 0% 35%;
     padding: 0px 0px 0px 0px;
 }
 
@@ -188,7 +173,6 @@ button:active {
     margin: 0% 0% 0% 0%;
     padding: 0.3em 0.1em 0.3em 0.1em;
 }
-
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
     background-image: url(./resources/buttonHover.png);

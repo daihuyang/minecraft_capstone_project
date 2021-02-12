@@ -4,7 +4,7 @@ from multiprocessing import Process
 
 def run_server(port):
     # Make sure the server is pointed towards the correct directory
-    os.chdir('../static/')
+    os.chdir('./static/')
     # Create server object listening the port 3000
     REPL_interface = HTTPServer(server_address=('', port), RequestHandlerClass=CGIHTTPRequestHandler)
     # Start the web server
