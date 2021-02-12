@@ -12,6 +12,7 @@ import serve
 
 minecraft_socket = ""
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
+active_subscriptions = set()
 
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     '''
@@ -87,9 +88,12 @@ async def connect_minecraft(websocket, path):
             data = message
             
             #TODO: Store Data
-            print(data)
+            for event in active_subscriptions:
+                # only store events that the player is subscribed to
+                pass
 
-            # subscribe_callback? Does Minecraft require a response?
+
+            print(data)
     except:
         raise
             
@@ -102,8 +106,14 @@ async def subscribe_to_event_list(websocket, path):
     '''
     try:
         async for message in websocket:
+            # Currently there is no means of unsubscribing to events
+            #   Our unsubscription is handled via the acitve_subscription set
+
             # message assumed to be a comma separated list of events
             event_list = message.split(",")
+
+            global active_subscriptions
+            active_subscriptions = set(event_list)
             # subscribes to each event in the list
             for event in event_list:
                 await subscribe_callback(minecraft_socket, event, handle_all)
@@ -132,6 +142,7 @@ if __name__ == "__main__":
         subprotocols=["com.microsoft.minecraft.wsencrypt"],
         ping_interval=None
     )
+
     start_pillbox_server = websockets.serve(
         subscribe_to_event_list,
         "localhost",
