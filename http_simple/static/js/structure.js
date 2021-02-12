@@ -22,11 +22,8 @@ $(document).ready(function(){
     /////////////////////////////////////
     // future home of pillbox handling //
     /////////////////////////////////////
-    // $('#update-button').click(function(){
-    //     var chosenEvents = $('.event-selector')[0].val();
-    //     alert(chosenEvents);
-    // });
-    // document.querySelector('.code-input').addEventListener('input',function(){
-    //     $('.code-input').css('background-size','cover')
-    // });
+    $('#update-button').click(function(){
+        var chosenEvents = $('.event-selector').val();
+        alert(chosenEvents);
+    });
 });
