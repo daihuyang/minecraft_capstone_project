@@ -1,7 +1,9 @@
 # For receiving code from communicator.js and connecting with Minecraft
 import asyncio
 import websockets
-import io
+from io import StringIO
+import contextlib
+import sys
 # Required for communicating with Minecraft
 import json
 import uuid
@@ -11,6 +13,7 @@ from multiprocessing import Process
 import serve
 
 minecraft_socket = ""
+code_output_socket = ""
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
 
@@ -123,12 +126,25 @@ async def subscribe_to_event_list(websocket, path):
 async def receive_code(websocket, path):
     try:
         async for message in websocket:
-            output = io.StringIO() #outputs the code
-            exec(message)
-            print(output.getvalue())
-            output.close()
+            with stdoutIO() as s:
+                exec(message)
+                
+            print(s.getvalue())
     except:
         raise
+
+@contextlib.contextmanager
+def stdoutIO(stdout=None):
+    # store original standard out
+    old = sys.stdout 
+    # define new place for system to output
+    if stdout is None:
+        stdout = StringIO()
+    # send new output area
+    sys.stdout = stdout
+    yield stdout
+    # reset sys.stdout
+    sys.stdout = old
 
 
 if __name__ == "__main__":
