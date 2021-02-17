@@ -10,7 +10,9 @@ import uuid
 import typing
 # HTTP Server
 from multiprocessing import Process
-import serve
+import serve 
+# For handling event output
+import csv
 
 minecraft_socket = ""
 code_output_socket = ""
@@ -62,6 +64,16 @@ async def execute_command(websocket, command: str, *args):
     }
 
     await websocket.send(json.dumps(message))
+
+def to_csv(event_data):
+    '''
+    Writes a Minecraft event to CSV (JSON -> CSV).
+
+    Events must all be of the same type, to ensure no header conflicts.
+
+    ONLY FOR PEER TESTING
+    '''
+
 
 def handle_message(message):
     '''
