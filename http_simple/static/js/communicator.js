@@ -2,10 +2,10 @@ $(document).ready(function(){
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     // tell Python that Javascript is ready
-    sock.onopen = function(event){
-        //sock.send("print('Hi')");
-        //sock.send('JAVASCRIPT READY');
-    };
+
+    // sock.onmessage = function(event){
+    //     alert(event.data)
+    // };
     // TODO: move to classes, away from IDs
     const runButton = document.querySelector(".run-button");
     const textBox = document.querySelector(".text-area");
@@ -16,13 +16,7 @@ $(document).ready(function(){
         alert(pythonCommand);
         //sendReceive(sock,pythonCommand);
         sock.send(pythonCommand);
-        // let recv = "";
-        // //let responseRecv = false;
-        // sock.onmessage = function(event){
-        //     let recv = event.data;
-        //     //let responseRecv = true;
-        //     outputArea.html = recv;
-        // }
+        
     });
 
     // const outputSocket = new Websocket("ws://localhost:3005/"); // recieves the output of the python code

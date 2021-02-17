@@ -13,7 +13,6 @@ from multiprocessing import Process
 import serve
 
 minecraft_socket = ""
-code_output_socket = ""
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
 
@@ -114,7 +113,7 @@ async def subscribe_to_event_list(websocket, path):
 
             # message assumed to be a comma separated list of events
             event_list = message.split(",")
-
+            print(event_list)
             global active_subscriptions
             active_subscriptions = set(event_list)
             # subscribes to each event in the list
@@ -125,11 +124,18 @@ async def subscribe_to_event_list(websocket, path):
 
 async def receive_code(websocket, path):
     try:
+        code_return = "NO CODE RETURN"
+        received_msg = False
         async for message in websocket:
+            received_msg = True
+            print(message)
             with stdoutIO() as s:
                 exec(message)
-                
-            print(s.getvalue())
+
+            code_return = s.getvalue()
+
+        if received_msg:
+            await websocket.send(code_return)      
     except:
         raise
 
