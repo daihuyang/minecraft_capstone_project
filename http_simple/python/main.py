@@ -126,7 +126,7 @@ async def subscribe_to_event_list(websocket, path):
 
             # message assumed to be a comma separated list of events
             event_list = message.split(",")
-
+            print(event_list)
             global active_subscriptions
             active_subscriptions = set(event_list)
             # subscribes to each event in the list
