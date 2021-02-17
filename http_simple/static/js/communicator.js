@@ -12,7 +12,7 @@ $(document).ready(function(){
     let outputArea = document.querySelector(".output-area");
     
     runButton.addEventListener("click", function () {
-        let pythonCommand = textBox.value;
+        var pythonCommand = $(e.target).parent().parent().children('.code-input').text();
         alert(pythonCommand);
         //sendReceive(sock,pythonCommand);
         sock.send(pythonCommand);
