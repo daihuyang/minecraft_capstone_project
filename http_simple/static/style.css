@@ -3,6 +3,11 @@
     src: url(./resources/fonts/mojangles.ttf);
 }
 
+@font-face {
+    font-family: hack;
+    src: url(./resources/fonts/Hack-Regular.ttf);
+}
+
 html {
     font-family: mojangles;
     font-size: 16px;
@@ -26,17 +31,17 @@ body {
 }
 
 div#header-section {
-    height: 7%;
+    height: 1%;
     width: 100%;
     margin: 0% 0% 1% 0%;
-    padding: 4% 0% 0% 0%;
+    padding: 3% 0% 0% 0%;
 }
 
 h1#ide-title {
     font-size: 2.6em;
     margin: 0em 0em 0em 0em;
     padding: 0% 0% 0% 0%;
-    height: 100%;
+    height: 80%;
     width: 100%;
     vertical-align: middle;
     text-align: center;
@@ -50,20 +55,18 @@ button.minecraft-button {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
-    width: calc(100%);
+    width: 100%;
     height: 41px;
 }
 
-
-
 .selector-div {
-    width: calc(90%);
-    margin: calc(0%) calc(3%) calc(0%) calc(3%);
-    padding: calc(0%) calc(2%) calc(2%) calc(2%);
+    width: 90%;
+    margin: 0% 3% 0% 3%;
+    padding: 0% 2% 2% 2%;
 }
 
 .event-selector {
-    width: calc(60S%);
+    width: 82%;
     height: 64px;
 }
 
@@ -74,8 +77,8 @@ button.minecraft-button {
 
 div#text-section {
     width: 90%;
-    height: 72%;
-    max-height: 660px; /* This sets the maximum area for scrolling to begin */
+    height: 74%;
+    max-height: 720px; /* This sets the maximum area for scrolling to begin */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -88,64 +91,51 @@ div#text-section {
 div.text-group {
     clear:left;
     width: 100%;
-    height: 216px;
+    height: 128px;
     margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    padding: 1em 0% 0% 0%;
 }
 
-.code-input {
+/* .code-input {
     float: left;
     color: white;
     font-size: smaller;
     background-color: dark;
     background-color: rgb(69,69,69);
     border: 4px solid black;
-    /* background-image: url(./resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: cover; */
     width: 80%;
     resize: vertical; 
     margin: 0% 0% 0% 0%;
     padding: 0.3em 0.1em 0.3em 0.1em;
-}
-
-/* div[contenteditable]{
-    float: left;
-    color: white;
-    font-size: smaller;
-    display: block;
-    background-image: url(./resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 80%;
-    height: 50px;
-    margin: 0% 0% 0% 0%;
-    padding: 10px 0% 0% 10px;
 } */
 
 div.button-group {
     float: right;
     width: 13%;
     height: 100%;
-    margin: 0% 0% 0% 0%;
+    margin: 0em 0em 0em 0em;
     padding: 0% 0% 0% 0%;
     align-items: center;
 }
 
 div.button-group button {
     display: block;
-    margin: 1em 0% 0% 0%;
+    margin: 0.1em 0% 0% 0%;
     padding: 0% 0% 0% 0%;
 }
 
+div.button-group button:nth-child(2) {
+    margin: 1em 0% 0% 0%;
+}
+
 div#bottom-section {
-    height: calc(7%);
-    width: calc(30%);
+    height: 7%;
+    width: 30%;
     display:flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: calc(0%) calc(35%) calc(0%) calc(35%);
+    margin: 0% 35% 0% 35%;
     padding: 0px 0px 0px 0px;
 }
 
@@ -176,19 +166,17 @@ button:active {
     float: left;
     color: white;
     font-size: smaller;
+    font-family: hack;
+    text-decoration: none;
     background-color: dark;
     background-color: rgb(69,69,69);
     border: 4px solid black;
-    /* background-image: url(./resources/textbox.png);
-    background-repeat: no-repeat;
-    background-size: cover; */
     width: 80%;
     resize: vertical; 
     vertical-align: center;
-    margin: 0% 0% 0% 0%;
-    padding: 0.3em 0.1em 0.3em 0.1em;
+    margin: 0em 0em 0em 1em;
+    padding: 0.6em 0.6em 0.6em 0.6em;
 }
-
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
     background-image: url(./resources/buttonHover.png);

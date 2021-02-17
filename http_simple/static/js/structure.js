@@ -1,4 +1,4 @@
-// window.onload = function(){
+$(document).ready(function(){
     $('#add-button').click(function(){
         // max of 10 entries currently
         if($('.text-group').length < 10){
@@ -14,61 +14,16 @@
         }
     });
 
-    // $('#update-button').click(function(){
-    //     var chosenEvents = $('.event-selector')[0].val();
-    //     alert(chosenEvents);
-    // });
-    // document.querySelector('.code-input').addEventListener('input',function(){
-    //     $('.code-input').css('background-size','cover')
-    // });
-// };
+    // select2 select box styling using jQuery
+    $(".event-selector").select2({
+        placeholder: "Select an event"
+    });
 
-// Global variables of the updated pixel values of the HTML body's width and height based on the users window size
-var windowHeight;
-var windowWidth;
-
-// gets the user's inner-window height and width and sets Global variables, as well as the CSS properties for the body.
-window.onresize = window.onload = function () {
-    windowHeight = this.innerHeight;
-    windowWidth = this.innerWidth;
-    document.getElementById("bodyEl").style.height = windowHeight + "px";
-    document.getElementById("bodyEl").style.width = windowWidth + "px";
-};
-
-var allEvents = ["event1", "event2"];
-var selectedEvents = []; // use this group of selected events to send as a comma separated list for python over 3005
-
-// select2 select box styling using jQuery
-$(".event-selector").select2({
-    placeholder: "Select an event"
+    /////////////////////////////////////
+    // future home of pillbox handling //
+    /////////////////////////////////////
+    $('#update-button').click(function(){
+        var chosenEvents = $('.event-selector').val();
+        alert(chosenEvents);
+    });
 });
-
-// Use cloneNode() instead to add the new div that includes the text area and buttons 
-// function addTextGroup() {
-//     console.log("hi");
-//     textGroupCounter = textGroupCounter + 1;
-//     var textSection = document.getElementById("text-section");
-//     var textGroup = document.createElement("div");
-//     textGroup.className = "text-group";
-//     var buttonGroup = document.createElement("div");
-//     textGroup.className = "button-group";
-//     var runButton = document.createElement("button");
-//     runButton.name = "run-button-" + textGroupCounter;
-//     runButton.type = "button";
-//     runButton.className = "run-button";
-//     runButton.innerHTML = "RUN";
-//     var removeButton = document.createElement("button");
-//     removeButton.type = "button";
-//     removeButton.className = "remove-button";
-//     removeButton.name = "remove-button-" + textGroupCounter;
-//     removeButton.innerHTML = "REMOVE";
-//     var textArea = document.createElement("textarea");
-//     textArea.name = 'text-input-' + textGroupCounter;
-//     textArea.className("text-area");
-//     textArea.rows = 6;
-//     textSection.appendChild(textGroup);
-//     textGroup.appendChild(buttonGroup);
-//     textGroup.appendChild(textArea);
-//     buttonGroup.appendChild(runButton);
-//     buttonGroup.appendChild(removeButton);
-// };
