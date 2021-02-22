@@ -68,7 +68,8 @@ def handle_message(message):
 
     This will be what gets stored in the database we are using
     '''
-    data = json.load(message)
+    data = json.dumps(message)
+    # eventName, FeetPosX, FeetPosZ
     return data
 
 def handle_all(message):
@@ -87,15 +88,15 @@ async def connect_minecraft(websocket, path):
     minecraft_socket = websocket # initializes the global variable
     try:
         async for message in websocket:
-            data = message
+            #data = json.loads(message)
             
             #TODO: Store Data
-            for event in active_subscriptions:
-                # only store events that the player is subscribed to
-                pass
+            # for event in active_subscriptions:
+            #     # only store events that the player is subscribed to
+            #     pass
 
 
-            print(data)
+            print(message)
     except:
         raise
             
@@ -129,13 +130,16 @@ async def receive_code(websocket, path):
         async for message in websocket:
             received_msg = True
             print(message)
-            with stdoutIO() as s:
-                exec(message)
+            try:
+                with stdoutIO() as s:
+                    exec(message)
 
-            code_return = s.getvalue()
+                code_return = s.getvalue()
+                print(code_return)
 
-        if received_msg:
-            await websocket.send(code_return)      
+                await websocket.send(code_return) 
+            except Exception as e:
+                await websocket.send(str(e))
     except:
         raise
 
