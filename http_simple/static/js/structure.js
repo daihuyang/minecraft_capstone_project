@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    setTimeout(function(){
+        var popUp = document.getElementById("popUp");
+        
+     },1000);
+
     $('#add-button').click(function(){
         // max of 10 entries currently
         if($('.text-group').length < 10){
@@ -50,4 +55,5 @@ $(document).ready(function(){
         socket.send(chosenEvents);
         // alert(chosenEvents);
     });
+
 });
