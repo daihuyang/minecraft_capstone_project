@@ -61,8 +61,8 @@ button.minecraft-button {
 
 .selector-div {
     width: 90%;
-    margin: 0% 3% 0% 3%;
-    padding: 0% 2% 2% 2%;
+    margin: 0% 10% 0% 3%;
+    padding: 0% 2% 0% 2%;
 }
 
 .event-selector {
@@ -95,19 +95,6 @@ div.text-group {
     margin: 0% 0% 0% 0%;
     padding: 1em 0% 0% 0%;
 }
-
-/* .code-input {
-    float: left;
-    color: white;
-    font-size: smaller;
-    background-color: dark;
-    background-color: rgb(69,69,69);
-    border: 4px solid black;
-    width: 80%;
-    resize: vertical; 
-    margin: 0% 0% 0% 0%;
-    padding: 0.3em 0.1em 0.3em 0.1em;
-} */
 
 div.button-group {
     float: right;
