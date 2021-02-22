@@ -19,11 +19,35 @@ $(document).ready(function(){
         placeholder: "Select an event"
     });
 
+    // initialize websocket
+    let socket = new WebSocket("ws://localhost:3005/");
+
+    // connection established
+    socket.onopen = function(e) {
+
+    };
+
+    // data received
+    socket.onmessage = function(e) {
+        
+    };
+
+    // connection closed
+    socket.onclose = function(e) {
+
+    };
+
+    // websocket error
+    socket.onerror = function(e) {
+
+    }
+
     /////////////////////////////////////
     // future home of pillbox handling //
     /////////////////////////////////////
     $('#update-button').click(function(){
         var chosenEvents = $('.event-selector').val();
-        alert(chosenEvents);
+        socket.send(chosenEvents);
+        // alert(chosenEvents);
     });
 });

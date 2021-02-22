@@ -11,10 +11,26 @@ import typing
 # HTTP Server
 from multiprocessing import Process
 import serve
+###########################################
+# TODO: Delete this stuff soon            #
+# Printing to CSV file (PEER TESTING ONLY)#
+###########################################
+import csv
+CSV_PATH = "../minecraft_data/event_data.csv"
+with open(CSV_PATH,'w', newline='') as csv_file:
+    writer = csv.writer(csv_file)
+    writer.writerow((
+        'eventName',
+        'block',
+        'posX',
+        'posZ'
+    ))
+###########################################
 
 minecraft_socket = ""
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
+
 
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     '''
@@ -68,9 +84,15 @@ def handle_message(message):
 
     This will be what gets stored in the database we are using
     '''
-    data = json.dumps(message)
-    # eventName, FeetPosX, FeetPosZ
-    return data
+    data = json.loads(message)
+    with open(CSV_PATH,'a', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow((
+            data['body']['eventName'],
+            data['body']['properties']['Block'],
+            data['body']['properties']['FeetPosX'],
+            data['body']['properties']['FeetPosZ']
+        ))
 
 def handle_all(message):
     pass
@@ -88,15 +110,7 @@ async def connect_minecraft(websocket, path):
     minecraft_socket = websocket # initializes the global variable
     try:
         async for message in websocket:
-            #data = json.loads(message)
-            
-            #TODO: Store Data
-            # for event in active_subscriptions:
-            #     # only store events that the player is subscribed to
-            #     pass
-
-
-            print(message)
+            handle_message(message) # stores message in the csv for the time being
     except:
         raise
             
