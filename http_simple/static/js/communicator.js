@@ -3,14 +3,11 @@ $(document).ready(function(){
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     
     $('#copy-button').click(function(){
-        var value = document.getElementById("myInput");
-        copyText.select(); 
-        document.execCommand("copy");
-        // navigator.clipboard.writeText("/connect localhost:8765").then(function() {
-        //     console.log('Async: Copying to clipboard was successful!');
-        //   }, function(err) {
-        //     console.error('Async: Could not copy text: ', err);
-        //   });
+        navigator.clipboard.writeText("/connect localhost:8765").then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+          }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
     });
 
     // set up the REPL buttons
