@@ -34,7 +34,7 @@ div#header-section {
     height: 1%;
     width: 100%;
     margin: 0% 0% 1% 0%;
-    padding: 3% 0% 0% 0%;
+    padding: 2% 0% 0% 0%;
 }
 
 h1#ide-title {
@@ -51,7 +51,7 @@ h1#ide-title {
 button.minecraft-button {
     font-family: mojangles;
     font-weight: bold;
-    background-image: url(../resources/button.png);
+    background-image: url(./resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
@@ -61,7 +61,7 @@ button.minecraft-button {
 
 .selector-div {
     width: 90%;
-    margin: 0% 10% 0% 3%;
+    margin: 0% 10% 1% 3%;
     padding: 0% 2% 0% 2%;
 }
 
@@ -138,7 +138,7 @@ button:active {
     background-image: url(./resources/buttonPress.png);
 }
 
-#run-all-button, #add-button {
+#run-all-button, #add-button, #dismiss-button {
     font-family: mojangles;
     font-weight: bold;
     background-image: url(./resources/button.png);
@@ -182,20 +182,74 @@ button:active {
     padding: 0.6em 0.6em 0.6em 0.6em;
 }
 
-#popUp{
-    background-image: url(./resources/full_background.png);
+#faded {
     position: absolute;
-    text-align: center;
-    top: 50%;
-    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 60%;
+    z-index: 2;
 }
 
-#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
+#popUp {
+    background-image: url(./resources/backgroundPopUp.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    text-align: center;
+    margin: 30% 0% 0% 10%;
+    width: 752px;
+    height: 288px;
+    min-width: 752px;
+    min-height: 288px;
+    z-index: 3;
+}
+
+h1 {
+    margin: 0.5em 0em 0em 0em;
+}
+
+#popUp p {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 0.7em;
+    width: 50%;
+    padding: 10px;
+}
+
+#copy-button {
+    background-image: url(./resources/copy.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 42px;
+    width: 42px;
+    margin: 0em 0.5em 0em 0em;
+}
+
+#copy-input-div {
+    width: 75%;
+}
+
+#myInput {
+    float: left;
+    font-size: 1.5em;
+    height: 36px;
+    margin: 0em 0.5em 0em 30%;
+}
+
+#dismiss-button {
+    clear: both;
+    background-image: url(./resources/button.png);
+    margin: 0.7em 0em 0em 0em;
+}
+
+#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover, #copy-button:hover, #dismiss-button:hover {
     background-image: url(./resources/buttonHover.png);
 }
 
-#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active {
-    background-image: url(../resources/buttonPress.png);
+#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
+    background-image: url(./resources/buttonPress.png);
 }
 
 

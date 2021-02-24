@@ -88,3 +88,9 @@ function closeSocket(sock){
     sock.onclose = function () {}; // disable onclose handler first
     sock.close();
 }
+
+function dismissPopUp(e){
+    // $(e.parent).remove();
+    $('#popUp').remove();
+    $('#faded').remove();
+}
