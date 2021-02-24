@@ -34,7 +34,7 @@ div#header-section {
     height: 1%;
     width: 100%;
     margin: 0% 0% 1% 0%;
-    padding: 3% 0% 0% 0%;
+    padding: 2% 0% 0% 0%;
 }
 
 h1#ide-title {
@@ -51,7 +51,7 @@ h1#ide-title {
 button.minecraft-button {
     font-family: mojangles;
     font-weight: bold;
-    background-image: url(../resources/button.png);
+    background-image: url(./resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
@@ -61,7 +61,7 @@ button.minecraft-button {
 
 .selector-div {
     width: 90%;
-    margin: 0% 10% 0% 3%;
+    margin: 0% 10% 1% 3%;
     padding: 0% 2% 0% 2%;
 }
 
@@ -249,7 +249,7 @@ h1 {
 }
 
 #run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
-    background-image: url(../resources/buttonPress.png);
+    background-image: url(./resources/buttonPress.png);
 }
 
 
