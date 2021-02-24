@@ -1,10 +1,14 @@
 ## Load into the "Peer Testing 2" Minecraft World
 
+## Open the CodeBuilder by pressing 'c' and choose "Localhost:3000"
+
+## Copy the connect command and run it in the Minecraft chat (you must close the CodeBuilder)
+
 ## Talk to "Tutorial Tom" for further instructions!
 
 ## Are you done the job that "Coal Smith" gave you? If so, it's time to open the CodeBuilder by pressing 'c' in Minecraft!
 
-## Now choose "Localhost:3000" and run the Python code below. You can copy and paste each chunk into a new cell
+## Now open the CodeBuilder again and run the Python code below. You can copy and paste each chunk into a new cell
 
 ```python
 # read in your updated Minecraft event data
