@@ -11,6 +11,11 @@ import typing
 # HTTP Server
 from multiprocessing import Process
 import serve
+# Data Science libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans, kmeans_plusplus
 ###########################################
 # TODO: Delete this stuff soon            #
 # Printing to CSV file (PEER TESTING ONLY)#
@@ -28,6 +33,13 @@ with open(CSV_PATH,'w', newline='') as csv_file:
         'posZ'
     ))
 ###########################################
+
+def update_event_data():
+    '''
+    Allows user to read in the latest event data CSV with a simplified function
+    '''
+    df = pd.read_csv("../minecraft_data/event_data.csv")
+    return df
 
 minecraft_socket = ""
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}

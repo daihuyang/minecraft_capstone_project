@@ -1,8 +1,4 @@
 $(document).ready(function(){
-    setTimeout(function(){
-        var popUp = document.getElementById("popUp");
-        
-     },1000);
 
     $('#add-button').click(function(){
         // max of 10 entries currently
@@ -17,43 +13,6 @@ $(document).ready(function(){
                 }
             });
         }
-    });
-
-    // select2 select box styling using jQuery
-    $(".event-selector").select2({
-        placeholder: "Select an event"
-    });
-
-    // initialize websocket
-    let socket = new WebSocket("ws://localhost:3005/");
-
-    // connection established
-    socket.onopen = function(e) {
-
-    };
-
-    // data received
-    socket.onmessage = function(e) {
-        
-    };
-
-    // connection closed
-    socket.onclose = function(e) {
-
-    };
-
-    // websocket error
-    socket.onerror = function(e) {
-
-    }
-
-    /////////////////////////////////////
-    // future home of pillbox handling //
-    /////////////////////////////////////
-    $('#update-button').click(function(){
-        var chosenEvents = $('.event-selector').val();
-        socket.send(chosenEvents);
-        // alert(chosenEvents);
     });
 
 });
