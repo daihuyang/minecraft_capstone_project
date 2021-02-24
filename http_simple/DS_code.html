@@ -2,7 +2,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>read in your updated Minecraft event data</title>
+        <title>1&period; Load into the &quot;Peer Testing 2&quot; Minecraft World</title>
         <style>
 </style>
         
@@ -23,8 +23,17 @@
         
     </head>
     <body class="vscode-body vscode-light">
-        <pre><code class="language-python"><div><span class="hljs-comment"># read in your updated Minecraft event data</span>
+        <h2 id="1-load-into-the-peer-testing-2-minecraft-world">1. Load into the &quot;Peer Testing 2&quot; Minecraft World</h2>
+<h2 id="2-open-the-codebuilder-by-pressing-c-and-choose-localhost3000">2. Open the CodeBuilder by pressing 'c' and choose &quot;Localhost:3000&quot;</h2>
+<h2 id="3-copy-the-connect-command-and-run-it-in-the-minecraft-chat-you-must-close-the-codebuilder">3. Copy the connect command and run it in the Minecraft chat (you must close the CodeBuilder)</h2>
+<h2 id="4-subscribe-to-the-block-broken-event">4. Subscribe to the &quot;Block Broken&quot; event</h2>
+<h2 id="5-talk-to-tutorial-tom-for-further-instructions">5. Talk to &quot;Tutorial Tom&quot; for further instructions!</h2>
+<h2 id="6-are-you-done-the-job-that-coal-smith-gave-you-if-so-its-time-to-open-the-codebuilder-by-pressing-c-in-minecraft">6. Are you done the job that &quot;Coal Smith&quot; gave you? If so, it's time to open the CodeBuilder by pressing 'c' in Minecraft!</h2>
+<h2 id="7-now-open-the-codebuilder-again-and-run-the-python-code-below-you-can-copy-and-paste-each-chunk-into-a-new-cell">7. Now open the CodeBuilder again and run the Python code below. You can copy and paste each chunk into a new cell</h2>
+<pre><code class="language-python"><div><span class="hljs-comment"># read in your updated Minecraft event data</span>
 df = update_event_data()
+
+
 <span class="hljs-comment"># let&#x27;s check what kinds of blocks you broke!</span>
 print(pd.unique(df[<span class="hljs-string">&quot;block&quot;</span>]))
 <span class="hljs-comment"># remove any extra blocks you may have mined (make sure there are only 6!)</span>
