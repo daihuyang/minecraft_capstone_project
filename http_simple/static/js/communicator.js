@@ -2,6 +2,14 @@ $(document).ready(function(){
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     
+    $('#copy-button').click(function(){
+        navigator.clipboard.writeText("/connect localhost:8765").then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+          }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+          });
+    });
+
     // set up the REPL buttons
     $('#add-button').click(function(){
         // max of 10 entries currently

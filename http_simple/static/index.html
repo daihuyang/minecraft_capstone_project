@@ -16,10 +16,9 @@
     <div id="popUp">
         <h1>Connect:</h1>
         <p>Copy and Paste this Command in Minecraft to a Establish Connection</p>
-        <div><input type="text" value="/connect localhost:8765" id="myInput" readonly><button copy>Copy text</button></div>
-        <button>I'm Connected!</button>
+        <div><input type="text" value="/connect localhost:8765" id="myInput" readonly><button id="copy-button" copy>Copy</button></div>
+        <button id="close-connection-popup">I'm Connected!</button>
     </div>
-
     <div id="header-section"></div>
     <div class="selector-div">
         <select class="event-selector" name="events[]" multiple="multiple">
@@ -41,7 +40,7 @@
     </div>
     <div id="bottom-section">
         <button type="button" id="add-button" class="minecraft-button">ADD</button>
-        <button type="button" id="run-all-button" class="minecraft-button">RUN ALL</button>
+        <button type="button" id="run-all-button" class="minecraft-button" style="display: none;">RUN ALL</button>
     </div>
 </body>
 </html>

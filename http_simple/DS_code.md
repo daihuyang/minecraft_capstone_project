@@ -1,3 +1,11 @@
+## Load into the "Peer Testing 2" Minecraft World
+
+## Talk to "Tutorial Tom" for further instructions!
+
+## Are you done the job that "Coal Smith" gave you? If so, it's time to open the CodeBuilder by pressing 'c' in Minecraft!
+
+## Now choose "Localhost:3000" and run the Python code below. You can copy and paste each chunk into a new cell
+
 ```python
 # read in your updated Minecraft event data
 df = update_event_data()
