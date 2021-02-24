@@ -16,13 +16,22 @@
     <div id="popUp">
         <h1 style="text-align: center;">Connect:</h1>
         <p style="text-align:center;">Copy and Paste this address in Minecraft to establish connection.</p>
-        <div style="text-align: center;"><input type="text" value="1XX.X.X" id="myInput" readonly><button copy >Copy text</button></div>
+        <div style="text-align: center;"><input type="text" value="1XX.X.X" id="myInput" readonly ><button onclick="copyButton()" >Copy text</button></div>
+        <script>
+            function copyButton() {
+              var copyText = document.getElementById("myInput");
+              copyText.select();
+              copyText.setSelectionRange(0, 999999);
+              document.execCommand("copy");
+            }
+            </script>
         <button></button>
     </div>
     <div style="text-align: center;"id="overlay">
         <div id="close">X</div>
         <h1>Connect!</h1>
-        <textarea >Text Here</textarea>
+        <textarea rows="10" cols="64">Text Here</textarea>
+        <h1></h1>
         <button type="button" id="connection-button" class="minecraft-button">Connection</button>
     </div>
 

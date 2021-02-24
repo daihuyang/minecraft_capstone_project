@@ -55,10 +55,9 @@ button.minecraft-button {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0% 0% 0% 0%;
-    width: 100%;
-    height: 41px;
+    width: 18%;
+    height: 70px;
 }
-
 .selector-div {
     width: 90%;
     margin: 0% 10% 0% 3%;
