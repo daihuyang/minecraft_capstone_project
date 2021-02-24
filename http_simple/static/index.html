@@ -10,16 +10,19 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="./js/communicator.js"></script>
-    <script type="text/javascript" src="./js/structure.js"></script>
+    <!-- <script type="text/javascript" src="./js/structure.js"></script> -->
 </head>
 <body id="bodyEl">
+    <div id="faded"></div>
     <div id="popUp">
         <h1>Connect:</h1>
         <p>Copy and Paste this Command in Minecraft to a Establish Connection</p>
-        <div><input type="text" value="/connect localhost:8765" id="myInput" readonly><button onclick="copyButton()" copy>Copy text</button></div>
-        <button id="connect">I'm Connected!</button>
+        <div id="copy-input-div">
+            <input type="text" value="/connect localhost:8765" id="myInput" readonly/>
+            <button id="copy-button" copy></button>
+        </div>
+        <button id="dismiss-button" onclick="dismissPopUp(this)">I'm Connected!</button>
     </div>
-
     <div id="header-section"></div>
     <div class="selector-div">
         <select class="event-selector" name="events[]" multiple="multiple">
@@ -41,7 +44,7 @@
     </div>
     <div id="bottom-section">
         <button type="button" id="add-button" class="minecraft-button">ADD</button>
-        <button type="button" id="run-all-button" class="minecraft-button">RUN ALL</button>
+        <button type="button" id="run-all-button" class="minecraft-button" style="display: none;">RUN ALL</button>
     </div>
 </body>
 </html>
