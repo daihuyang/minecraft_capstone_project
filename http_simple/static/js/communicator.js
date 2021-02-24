@@ -20,7 +20,7 @@ $(document).ready(function(){
 function primeRunButtons(sock){
     $('.run-button').click(function(){
         let $btn = $(this);
-        var pythonCommand = $(this).parent().parent().children('.code-input').html(); //.replace(/<div>/,'\n').replace(/<[^>]*>/gm,'');
+        var pythonCommand = $(this).parent().parent().children('.code-input').html().replace(/<div>/gm,'\n').replace(/<[^>]*>/gm,'');
         alert(pythonCommand);
         //sendReceive(sock,pythonCommand);
         sock.send(pythonCommand);

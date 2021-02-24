@@ -15,20 +15,12 @@
 <body id="bodyEl">
     <div id="popUp">
         <h1>Connect:</h1>
-        <p>Copy and Paste this address in Minecraft to establish connection.</p>
-        <div><input type="text" value="1XX.X.X" id="myInput" readonly><button copy>Copy text</button></div>
-        <button></button>
-    </div>
-    <div id="overlay">
-        <div id="close">X</div>
-        <h1>Connect!</h1>
-        <textarea>Text Here</textarea>
-        <button type="button" id="connection-button" class="minecraft-button">Connection</button>
+        <p>Copy and Paste this Command in Minecraft to a Establish Connection</p>
+        <div><input type="text" value="/connect localhost:8765" id="myInput" readonly><button copy>Copy text</button></div>
+        <button>I'm Connected!</button>
     </div>
 
-    <div id="header-section">
-        <!-- <h1 id="ide-title">REPL</h1> -->
-    </div>
+    <div id="header-section"></div>
     <div class="selector-div">
         <select class="event-selector" name="events[]" multiple="multiple">
             <option value="BlockPlaced">Block Placed</option>

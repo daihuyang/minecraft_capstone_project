@@ -176,10 +176,18 @@ button:active {
     border-left: 4px solid black;
     border-right: 4px solid black;
     width: 80%;
-    resize: vertical; 
+    resize: vertical;
     vertical-align: center;
     margin: 0em 0em 0em 1em;
     padding: 0.6em 0.6em 0.6em 0.6em;
+}
+
+#popUp{
+    background-image: url(./resources/full_background.png);
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
 }
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
@@ -189,7 +197,6 @@ button:active {
 #run-all-button:active, #add-button:active, .run-button:active, .remove-button:active {
     background-image: url(../resources/buttonPress.png);
 }
-
 
 
 

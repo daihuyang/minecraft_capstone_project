@@ -16,6 +16,8 @@ import serve
 # Printing to CSV file (PEER TESTING ONLY)#
 ###########################################
 import csv
+import os
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 CSV_PATH = "../minecraft_data/event_data.csv"
 with open(CSV_PATH,'w', newline='') as csv_file:
     writer = csv.writer(csv_file)
