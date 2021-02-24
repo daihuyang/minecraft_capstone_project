@@ -182,14 +182,27 @@ button:active {
     padding: 0.6em 0.6em 0.6em 0.6em;
 }
 
+#faded {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 60%;
+    z-index: 2;
+}
+
 #popUp {
-    background-image: url(./resources/background-altered.png);
+    background-image: url(./resources/backgroundPopUp.png);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
     text-align: center;
     margin: 30% 0% 0% 10%;
+    width: 752px;
     height: 288px;
+    min-width: 752px;
+    min-height: 288px;
+    z-index: 3;
 }
 
 h1 {
@@ -200,18 +213,17 @@ h1 {
     font-size: 1.3em;
     font-weight: bold;
     margin: auto;
-    margin-top: 1em;
+    margin-top: 0.7em;
     width: 50%;
     padding: 10px;
 }
 
 #copy-button {
-    /* float: right; */
     background-image: url(./resources/copy.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 48px;
-    width: 48px;
+    height: 42px;
+    width: 42px;
     margin: 0em 0.5em 0em 0em;
 }
 
@@ -222,29 +234,21 @@ h1 {
 #myInput {
     float: left;
     font-size: 1.5em;
-    height: 42px;
+    height: 36px;
     margin: 0em 0.5em 0em 30%;
 }
 
 #dismiss-button {
     clear: both;
     background-image: url(./resources/button.png);
-    margin: 1em 0em 0em 0em;
+    margin: 0.7em 0em 0em 0em;
 }
 
-#copy-button:hover {
-    background-image: url(./resources/copyHover.png);
-}
-
-#copy-button:active {
-    background-image: url(./resources/copyPress.png);
-}
-
-#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover {
+#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover, #copy-button:hover, #dismiss-button:hover {
     background-image: url(./resources/buttonHover.png);
 }
 
-#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active {
+#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
     background-image: url(../resources/buttonPress.png);
 }
 
