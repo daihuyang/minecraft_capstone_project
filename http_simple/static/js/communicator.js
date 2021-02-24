@@ -55,6 +55,16 @@ $(document).ready(function(){
     });
 });
 
+function copyButton() {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    document.execCommand("copy");
+  }
+
+function connectButton(){
+   
+        
+}
 function primeRunButtons(sock){
     $('.run-button').click(function(){
         let $btn = $(this);
