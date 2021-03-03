@@ -60,18 +60,21 @@ button.minecraft-button {
 }
 
 .selector-div {
+    text-align: center;
     width: 90%;
-    margin: 0% 10% 1% 3%;
+    /* margin: 0% 5% 1% 5%; */
     padding: 0% 2% 0% 2%;
 }
 
 .event-selector {
-    width: 82%;
+    margin: 0em 1.5em 0em 2em;
+    float: left;
+    width: 65%;
     height: 64px;
 }
 
 #update-button {
-    width: 132px;
+    width: 110px;
     height: 44px;
 }
 
@@ -191,17 +194,27 @@ button:active {
     z-index: 2;
 }
 
+#popup-background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 #popUp {
     background-image: url(./resources/backgroundPopUp.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     position: absolute;
     text-align: center;
-    margin: 30% 0% 0% 10%;
-    width: 752px;
+    top: 20%;
+    left: 10%;
+    /* margin: 30% 0% 0% 10%; */
+    /* width: 752px;
     height: 288px;
     min-width: 752px;
-    min-height: 288px;
+    min-height: 288px; */
+    width: 80%;
+    height: 55%;
     z-index: 3;
 }
 
@@ -228,14 +241,14 @@ h1 {
 }
 
 #copy-input-div {
-    width: 75%;
+    width: 100%;
 }
 
 #myInput {
     float: left;
     font-size: 1.5em;
     height: 36px;
-    margin: 0em 0.5em 0em 30%;
+    margin: 0em 0.5em 0em 3em;
 }
 
 #dismiss-button {
