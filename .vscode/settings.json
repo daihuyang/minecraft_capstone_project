@@ -4,5 +4,7 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "python.linting.enabled": true,
+    "python.pythonPath": "C:\\Python39\\python.exe"
 }

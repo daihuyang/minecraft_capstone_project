@@ -1,0 +1,307 @@
+@font-face {
+    font-family: mojangles;
+    src: url(./resources/fonts/mojangles.ttf);
+}
+
+@font-face {
+    font-family: hack;
+    src: url(./resources/fonts/Hack-Regular.ttf);
+}
+
+html {
+    font-family: mojangles;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+}
+
+body {
+    font-family: mojangles, Fallback, Impact;
+    background-image: url(./resources/full_background.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+}
+
+div#header-section {
+    height: 1%;
+    width: 100%;
+    margin: 0% 0% 1% 0%;
+    padding: 2% 0% 0% 0%;
+}
+
+h1#ide-title {
+    font-size: 2.6em;
+    margin: 0em 0em 0em 0em;
+    padding: 0% 0% 0% 0%;
+    height: 80%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    justify-content: center;
+}
+
+button.minecraft-button {
+    font-family: mojangles;
+    font-weight: bold;
+    background-image: url(./resources/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0% 0% 0% 0%;
+    width: 100%;
+    height: 41px;
+}
+
+.selector-div {
+    text-align: center;
+    width: 90%;
+    /* margin: 0% 5% 1% 5%; */
+    padding: 0% 2% 0% 2%;
+}
+
+.event-selector {
+    margin: 0em 1.5em 0em 2em;
+    float: left;
+    width: 65%;
+    height: 64px;
+}
+
+#update-button {
+    width: 110px;
+    height: 44px;
+}
+
+div#text-section {
+    width: 90%;
+    height: 74%;
+    max-height: 720px; /* This sets the maximum area for scrolling to begin */
+    background-image: url(./resources/full_foreground.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0% 3% 0% 3%;
+    padding: 2% 2% 2% 2%;
+}
+
+div.text-group {
+    clear:left;
+    width: 100%;
+    height: 128px;
+    margin: 0% 0% 0% 0%;
+    padding: 1em 0% 0% 0%;
+}
+
+div.button-group {
+    float: right;
+    width: 13%;
+    height: 100%;
+    margin: 0em 0em 0em 0em;
+    padding: 0% 0% 0% 0%;
+    align-items: center;
+}
+
+div.button-group button {
+    display: block;
+    margin: 0.1em 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+}
+
+div.button-group button:nth-child(2) {
+    margin: 1em 0% 0% 0%;
+}
+
+div#bottom-section {
+    height: 7%;
+    width: 30%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0% 35% 0% 35%;
+    padding: 0px 0px 0px 0px;
+}
+
+.run-button, .remove-button {
+    margin: auto;
+}
+
+button:hover {
+    background-image: url(./resources/buttonHover.png);
+}
+
+button:active {
+    background-image: url(./resources/buttonPress.png);
+}
+
+#run-all-button, #add-button, #dismiss-button {
+    font-family: mojangles;
+    font-weight: bold;
+    background-image: url(./resources/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0em 0em 0em 0em;
+    width: 128px;
+    height: 41px;
+}
+
+.code-input{
+    float: left;
+    color: white;
+    font-size: smaller;
+    font-family: hack;
+    text-decoration: none;
+    background-color: rgb(69,69,69);
+    border: 4px solid black;
+    width: 80%;
+    resize: vertical; 
+    vertical-align: center;
+    margin: 0em 0em 0em 1em;
+    padding: 0.6em 0.6em 0.6em 0.6em;
+}
+
+.code-output{
+    display: none;
+    float: left;
+    color: black;
+    font-size: smaller;
+    font-family: hack;
+    text-decoration: none;
+    background-color: grey;
+    border-bottom: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid black;
+    width: 80%;
+    resize: vertical;
+    vertical-align: center;
+    margin: 0em 0em 0em 1em;
+    padding: 0.6em 0.6em 0.6em 0.6em;
+}
+
+#faded {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 60%;
+    z-index: 2;
+}
+
+#popup-background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#popUp {
+    background-image: url(./resources/backgroundPopUp.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    text-align: center;
+    top: 20%;
+    left: 10%;
+    /* margin: 30% 0% 0% 10%; */
+    /* width: 752px;
+    height: 288px;
+    min-width: 752px;
+    min-height: 288px; */
+    width: 80%;
+    height: 55%;
+    z-index: 3;
+}
+
+h1 {
+    margin: 0.5em 0em 0em 0em;
+}
+
+#popUp p {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 0.7em;
+    width: 50%;
+    padding: 10px;
+}
+
+#copy-button {
+    background-image: url(./resources/copy.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 42px;
+    width: 42px;
+    margin: 0em 0.5em 0em 0em;
+}
+
+#copy-input-div {
+    width: 100%;
+}
+
+#myInput {
+    float: left;
+    font-size: 1.5em;
+    height: 36px;
+    margin: 0em 0.5em 0em 3em;
+}
+
+#dismiss-button {
+    clear: both;
+    background-image: url(./resources/button.png);
+    margin: 0.7em 0em 0em 0em;
+}
+
+#run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover, #copy-button:hover, #dismiss-button:hover {
+    background-image: url(./resources/buttonHover.png);
+}
+
+#run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
+    background-image: url(./resources/buttonPress.png);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
