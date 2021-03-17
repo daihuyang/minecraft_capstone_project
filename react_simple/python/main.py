@@ -43,7 +43,7 @@ def update_event_data():
     return df
 
 minecraft_socket = ""
-jsonl_file = "../minecraft_data/event_data.jsonl"
+jsonl_file = "../minecraft_data/event_data.jl"
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
 
