@@ -2,7 +2,7 @@
   <a href="https://github.com/ctakasakaubc/Minecraft_A-Minecraft_AI_Capstone">
     <img alt="UBC Data Science Addon for Minecraft: Education Edition" src="./Reference_Images/UBC_DS_Minecraft.png" height="200" />
   </a>
-  <h3 align="center">User-guided data collection, and Data Science Exploration in Minecraft: Education Edition.</h3>
+  <h3 align="center">User-guided data collection, and Data Science Exploration in Minecraft: Education Edition</h3>
 </p>
 
 ---
