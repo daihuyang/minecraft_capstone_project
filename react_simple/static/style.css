@@ -62,7 +62,6 @@ button.minecraft-button {
 .selector-div {
     text-align: center;
     width: 90%;
-    /* margin: 0% 5% 1% 5%; */
     padding: 0% 2% 0% 2%;
 }
 
@@ -81,7 +80,7 @@ button.minecraft-button {
 div#text-section {
     width: 90%;
     height: 74%;
-    max-height: 720px; /* This sets the maximum area for scrolling to begin */
+    max-height: 720px;
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -208,11 +207,6 @@ button:active {
     text-align: center;
     top: 20%;
     left: 10%;
-    /* margin: 30% 0% 0% 10%; */
-    /* width: 752px;
-    height: 288px;
-    min-width: 752px;
-    min-height: 288px; */
     width: 80%;
     height: 55%;
     z-index: 3;
