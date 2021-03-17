@@ -1,11 +1,13 @@
 <p align="center">
   <a href="https://github.com/ctakasakaubc/Minecraft_A-Minecraft_AI_Capstone">
-    <img alt="UBC Data Science Addon for Minecraft Education Edition" src="https://education.minecraft.net/wp-content/uploads/title_slide_2.jpg" height="200" />
+    <img alt="UBC Data Science Addon for Minecraft: Education Edition" src="https://education.minecraft.net/wp-content/uploads/title_slide_2.jpg" height="200" />
   </a>
   <h3 align="center">User-guided data collection, and Data Science Exploration in Minecraft: Education Edition.</h3>
 </p>
 
 ---
+
+<img alt="Image Showcasing the in-game Minecraft: Education Edition CodeBuilder with our REPL Environment app running inside" src="./Reference_Images/Minecraft_REPL.png" height="400"/>
 
 _Integrate Data Science Lessons Directly Into MEE_
 
@@ -16,8 +18,10 @@ _Integrate Data Science Lessons Directly Into MEE_
 Install [Python 3.X](https://www.python.org/downloads/)
 
 Install Flask, and several data science libraries with "pip"
+
 ```bash
-pip install flask numpy pandas sklearn...
+pip install flask websockets jsonlines 
+pip install numpy matplotlib pandas sklearn
 ```
 
 ## Lesson Plans
