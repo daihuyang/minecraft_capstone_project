@@ -33,17 +33,17 @@ from sklearn.cluster import KMeans, kmeans_plusplus
 #         'posX',
 #         'posZ'
 #     ))
-# ###########################################
+# ##########################################
 
 def update_event_data():
     '''
     Allows user to read in the latest event data CSV with a simplified function
     '''
-    jsonl_file = "../minecraft_data/event_data.jsonl"
-    df = pd.read_json(file, lines=True)
+    df = pd.read_json(jsonl_file, lines=True)
     return df
 
 minecraft_socket = ""
+jsonl_file = "../minecraft_data/event_data.jsonl"
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
 
@@ -100,8 +100,12 @@ def handle_message(message):
 
     This will be what gets stored in the json lines database we are using
     '''
+
     event_data = json.loads(message)
-    write_event(event_data)
+    write_event(jsonl_file, event_data)
+
+def handle_all():
+    pass
 
 # Communicates with Minecraft WebSockets
 async def connect_minecraft(websocket, path):

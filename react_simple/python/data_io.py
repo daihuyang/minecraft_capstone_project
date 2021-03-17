@@ -15,7 +15,7 @@ def write_event(file, event):
         JSON object that will be appended
     '''
     with jsonlines.open(file, mode='a') as writer:
-        writer.writer(event)
+        writer.write(event)
     
 def read_events(file):
     '''
