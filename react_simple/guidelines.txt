@@ -1,5 +1,0 @@
-EXPECTATIONS
-
-Whenever the JS sends code, it receives a reply.
-
-
