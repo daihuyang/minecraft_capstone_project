@@ -81,6 +81,7 @@ div#text-section {
     width: 90%;
     height: 74%;
     max-height: 720px;
+    z-index: 1;
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -258,6 +259,7 @@ h1 {
 #run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
     background-image: url(./resources/buttonPress.png);
 }
+
 
 
 
