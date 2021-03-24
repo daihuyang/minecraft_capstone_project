@@ -1,4 +1,6 @@
+const md = new Remarkable();
 $(document).ready(function(){
+    let currentLesson = -1;
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
     
@@ -53,6 +55,62 @@ $(document).ready(function(){
         socket.send(chosenEvents);
         // alert(chosenEvents);
     });
+
+    $("#lessons-button").click(function(){
+        toggleLessons(currentLesson);
+    })
+
+    function toggleLessons(){
+        var $lessonsWindow = $("#lessons-window");
+        if($lessonsWindow.css("display") == "none"){
+            // give some screenspace to the lessons window
+            $("#text-section").css("height",($("#text-section").css("height").replace("px","") / 2) + "px");
+            $lessonsWindow.css("display","block");
+            loadLessonsWindow();
+        }else{
+            $lessonsWindow.html("");
+            $lessonsWindow.css("display","none");
+            $("#text-section").css("height",($("#text-section").css("height").replace("px","") * 2) + "px");
+        }
+    }
+    
+    function loadLessonsWindow(){   
+        if(currentLesson == -1){
+            var $startPage = $("<div>",{id:"lesson-start-page"});
+            var $header = $("<h2>",{
+                id:"lessons-header",
+                class:"lessons-startpage",
+                text:"Choose a Lesson:",
+                align:"center"
+            })
+            var $selector = $("<select>",{multiple:"multiple"});
+            // this ideally holds all current lessons, loaded from a directory or DB
+            var dummyOptions = ["Example","Hierarchical Clustering","Boogers"];
+            dummyOptions.forEach(function(lesson,i){
+                var $choice = $("<option>",{value:i,name:lesson,text:lesson});
+                $choice.appendTo($selector);
+            });
+            $header.appendTo($startPage);
+            $selector.appendTo($startPage);
+            $startPage.appendTo($("#lessons-window"));
+            $selector.on("change",function(){
+                currentLesson = $("option:selected", this).attr("value");
+                loadLessonsWindow();
+            });
+        }else{
+            // clear lessons page
+            $("#lessons-window").html("");
+            // request lesson
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                $('#lessons-window').html(md.render(this.responseText));
+                }
+            };
+            xhttp.open("GET", "./resources/lessons/lesson_example.md", true);
+            xhttp.send();
+        }
+    }
 });
 
 function primeRunButtons(sock){
