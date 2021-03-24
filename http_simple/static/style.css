@@ -54,22 +54,22 @@ button.minecraft-button {
     background-image: url(./resources/button.png);
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0% 0% 0% 0%;
+    margin: 0em 0em 0em 0em;
     width: 100%;
     height: 41px;
 }
 
 .selector-div {
-    text-align: center;
-    width: 90%;
-    /* margin: 0% 5% 1% 5%; */
-    padding: 0% 2% 0% 2%;
+    align-content: center;
+    align-items: center;
+    margin: 0em 2em 0em 2em;
+    padding: 1em 0em 1em 0em;
 }
 
 .event-selector {
+    display: inline-block;
     margin: 0em 1.5em 0em 2em;
-    float: left;
-    width: 65%;
+    width: 60%;
     height: 64px;
 }
 
@@ -80,7 +80,7 @@ button.minecraft-button {
 
 div#text-section {
     width: 90%;
-    height: 74%;
+    height: 72%;
     max-height: 720px; /* This sets the maximum area for scrolling to begin */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
@@ -223,12 +223,10 @@ h1 {
 }
 
 #popUp p {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
-    margin: auto;
-    margin-top: 0.7em;
-    width: 50%;
-    padding: 10px;
+    margin: 0.5em 1em 2em 1em;
+    padding: 0.2em 0em 0.2em 0em;
 }
 
 #copy-button {
@@ -238,23 +236,34 @@ h1 {
     height: 42px;
     width: 42px;
     margin: 0em 0.5em 0em 0em;
+    display: block;
 }
 
 #copy-input-div {
-    width: 100%;
+    align-content: center;
+    align-items: center;
+    margin: 0em 0.5em 0em 0.5em;
+    display: inline-block;
+    clear:both;
 }
 
 #myInput {
+    display: block;
     float: left;
+    clear: both;
     font-size: 1.5em;
     height: 36px;
-    margin: 0em 0.5em 0em 3em;
+    margin: 0em 0.2em 0em 0.5em;
 }
 
 #dismiss-button {
+    display: block;
     clear: both;
+    align-items: center;
+    align-content: center;
     background-image: url(./resources/button.png);
-    margin: 0.7em 0em 0em 0em;
+    margin: auto;
+    margin-top: 2em;
 }
 
 #run-all-button:hover, #add-button:hover, .run-button:hover, .remove-button:hover, #copy-button:hover, #dismiss-button:hover {
@@ -265,7 +274,42 @@ h1 {
     background-image: url(./resources/buttonPress.png);
 }
 
+.nav {
+    margin: 0em 0em 0em 1em;
+    padding: 0em 0em 0em 0em;
+}
 
+.nav ul {
+    list-style-type: none;
+    margin: 0em 0em 0em 1em;
+    padding: 0em 0em 0em 1em;
+  }
+  
+.nav li {
+    display: inline;
+    padding: 1em;
+    text-decoration: none;
+}
+
+.nav li a {
+    text-decoration: none;
+}
+
+li a:active {
+    color: green;
+}
+
+li a:focus {
+    color: rgb(128, 0, 0);
+}
+
+li a:hover {
+    color: rgb(29, 236, 57);
+}
+
+li a:visited {
+    color: black;
+}
 
 
 
