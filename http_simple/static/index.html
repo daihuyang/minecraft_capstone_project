@@ -10,6 +10,7 @@
     <!-- for pillbox -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
     <script type="text/javascript" src="./js/communicator.js"></script>
     <!-- <script type="text/javascript" src="./js/structure.js"></script> -->
 </head>
@@ -25,11 +26,8 @@
         </div>
         <button id="dismiss-button" onclick="dismissPopUp(this)">I'm Connected!</button>
     </div>
-    <div id="header-section">
-        <ul class="nav">
-            <li><a href="index.html">IDE</a></li>
-            <li><a href="ajax.html">Lessons</a></li>
-        </ul>
+    <div id="header-section" style="width: 10%; height: 20px;">
+        <button type="button" id="lessons-button" class="minecraft-button">Lessons</button>
     </div>
     <div class="selector-div">
         <select class="event-selector" name="events[]" multiple="multiple">
@@ -48,6 +46,8 @@
             <div class="code-input" contenteditable="true" spellcheck="false" role="textbox"><br><br><br><br><br></div>
             <div class="code-output"></div>
         </div>
+    </div>
+    <div id="lessons-window">
     </div>
     <div id="bottom-section">
         <button type="button" id="add-button" class="minecraft-button">ADD TEXT AREA</button>
