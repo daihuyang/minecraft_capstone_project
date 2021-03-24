@@ -2,6 +2,7 @@
 import asyncio
 import websockets
 from io import StringIO
+from data_io import write_event 
 import contextlib
 import sys
 # Required for communicating with Minecraft
@@ -16,35 +17,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans, kmeans_plusplus
-###########################################
-# TODO: Delete this stuff soon            #
-# Printing to CSV file (PEER TESTING ONLY)#
-###########################################
-import csv
-import os
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
-CSV_PATH = "../minecraft_data/event_data.csv"
-with open(CSV_PATH,'w', newline='') as csv_file:
-    writer = csv.writer(csv_file)
-    writer.writerow((
-        'eventName',
-        'block',
-        'posX',
-        'posZ'
-    ))
-###########################################
 
+
+minecraft_socket = ""
+jsonl_file = "../minecraft_data/event_data.jl"
+_SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
+active_subscriptions = set()
+
+########## Functions for users
 def update_event_data():
     '''
     Allows user to read in the latest event data CSV with a simplified function
     '''
-    df = pd.read_csv("../minecraft_data/event_data.csv")
+    df = pd.read_json(jsonl_file, lines=True)
     return df
 
-minecraft_socket = ""
-_SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
-active_subscriptions = set()
-
+#####################
 
 async def subscribe_callback(websocket, event_name: str, callback,) -> str:
     '''
@@ -96,19 +84,12 @@ def handle_message(message):
     '''
     Handles JSON objects received over minecraft connection
 
-    This will be what gets stored in the database we are using
+    This will be what gets stored in the json lines database we are using
     '''
-    data = json.loads(message)
-    with open(CSV_PATH,'a', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerow((
-            data['body']['eventName'],
-            data['body']['properties']['Block'],
-            data['body']['properties']['FeetPosX'],
-            data['body']['properties']['FeetPosZ']
-        ))
+    event_data = json.loads(message)
+    write_event(jsonl_file, event_data)
 
-def handle_all(message):
+def handle_all():
     pass
 
 # Communicates with Minecraft WebSockets
