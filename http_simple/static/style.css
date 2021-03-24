@@ -266,8 +266,16 @@ h1 {
     margin-top: 2em;
 }
 
-#lessons-button{
+#lessons-button, #back-button {
     margin: 0.5em 0em 0.25em 2em;
+}
+
+#back-button {
+    width: auto !important;
+}
+
+#lesson-div {
+    padding: 0em 2em 0em 2em;
 }
 
 #lessons-window{
