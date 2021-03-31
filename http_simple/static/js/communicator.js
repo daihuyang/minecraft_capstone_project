@@ -35,6 +35,10 @@ $(document).ready(function () {
         }
     });
     // initialize socket
+    $("div.code-input").on("paste",function(event){
+        $(this).text($(this).text() + "\r\n");
+    });
+
     let sock = new WebSocket("ws://localhost:3001/"); // change later
 
     $('#copy-button').click(function () {
