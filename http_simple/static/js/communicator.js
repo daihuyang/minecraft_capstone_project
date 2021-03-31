@@ -2,6 +2,10 @@ const md = new Remarkable();
 let currentLesson = -1;
 $(document).ready(function () {
     // initialize socket
+    $("div.code-input").on("paste",function(event){
+        $(this).text($(this).text() + "\r\n");
+    });
+
     let sock = new WebSocket("ws://localhost:3001/"); // change later
 
     $('#copy-button').click(function () {
@@ -132,7 +136,16 @@ $(document).ready(function () {
 function primeRunButtons(sock) {
     $('.run-button').click(function () {
         let $btn = $(this);
-        var pythonCommand = $(this).parent().parent().children('.code-input').html().replace(/<div>/gm, '\n').replace(/<[^>]*>/gm, '');
+
+        // Parse the code in the code-input
+        var codeBlock = $(this).parent().parent().children('.code-input');
+        var codeLines = [];
+        codeBlock.children('div').each(function (){
+            var currText = $(this);
+            codeLines.push(currText.text());
+        })
+        var pythonCommand = codeLines.join("\n")
+        console.log(pythonCommand)
         //sendReceive(sock,pythonCommand);
         sock.send(pythonCommand);
         $(this).parent().parent().children('.code-output').html("Done with 0 Errors");
