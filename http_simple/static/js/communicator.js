@@ -1,5 +1,5 @@
 const md = new Remarkable();
-let currentLesson = -1;
+let lessonChosen = false;
 $(document).ready(function () {
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
 
     $("#lessons-button").click(function () {
-        toggleLessons(currentLesson);
+        toggleLessons();
     })
 
     function toggleLessons() {
@@ -75,26 +75,29 @@ $(document).ready(function () {
     }
 
     function loadLessonsWindow() {
-        if (currentLesson == -1) {
+        if (!lessonChosen) {
             var $startPage = $("<div>", { id: "lesson-start-page" });
             var $header = $("<h2>", {
                 id: "lessons-header",
                 class: "lessons-startpage",
                 text: "Choose a Lesson:",
                 align: "center"
-            })
-            var $selector = $("<select>", { multiple: "multiple" });
-            // this ideally holds all current lessons, loaded from a directory or DB
-            var dummyOptions = ["Example", "Hierarchical Clustering", "Boogers"];
-            dummyOptions.forEach(function (lesson, i) {
-                var $choice = $("<option>", { value: i, name: lesson, text: lesson });
-                $choice.appendTo($selector);
+            });
+            var $inputContainer = $("<div>",{
+                id: "lessons-body",
+                align: "center",
+                style: "text-align: center;"
+            });
+            var $filePicker = $("<input>", { 
+                id: "file-picker",
+                type: "file" 
             });
             $header.appendTo($startPage);
-            $selector.appendTo($startPage);
+            $filePicker.appendTo($inputContainer);
+            $inputContainer.appendTo($startPage);
             $startPage.appendTo($("#lessons-window"));
-            $selector.on("change", function () {
-                currentLesson = $("option:selected", this).attr("value");
+            $filePicker.on("change", function () {
+                lessonChosen = true;
                 loadLessonsWindow();
             });
         } else {
@@ -105,23 +108,17 @@ $(document).ready(function () {
                 id: "back-button",
                 class: "minecraft-button",
                 text: "Back"
-            }))
+            }));
             var $lessonDiv = $("<div>", {
                 id: "lesson-div"
-            })
+            });
             $lessonDiv.appendTo($("#lessons-window"));
             // request lesson
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    $lessonDiv.html(md.render(this.responseText));
-                }
-            };
-            xhttp.open("GET", "./resources/lessons/lesson_example.md", true);
-            xhttp.send();
+            var lessonInput = document.querySelector("#file-picker");
+            $lessonDiv.html(md.render(grabFile(lessonInput)));
             $backButton.click(function () {
                 $("#lessons-window").html("");
-                currentLesson = -1;
+                lessonChosen = false;
                 loadLessonsWindow();
             });
         }
@@ -167,4 +164,19 @@ function dismissPopUp(e) {
     // $(e.parent).remove();
     $('#popUp').remove();
     $('#faded').remove();
+}
+
+function grabFile(input) {
+    let file = input.files[0];
+    let reader = new FileReader();
+
+    reader.readAsText(file);
+
+    reader.onload = function() {
+        return reader.result;
+    };
+
+    reader.onerror = function() {
+        return reader.error;
+    };
 }
