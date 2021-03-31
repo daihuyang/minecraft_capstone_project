@@ -5,6 +5,7 @@ from io import StringIO
 from data_io import write_event 
 import contextlib
 import sys
+import pathlib
 # Required for communicating with Minecraft
 import json
 import uuid
@@ -20,7 +21,8 @@ from sklearn.cluster import KMeans, kmeans_plusplus
 
 
 minecraft_socket = ""
-jsonl_file = "../minecraft_data/event_data.jl"
+path = pathlib.Path(__file__).parent
+jsonl_file = path/"../minecraft_data/event_data.jsonl"
 _SUBSCRIPTIONS: typing.Dict[str, typing.List[typing.Any]] = {}
 active_subscriptions = set()
 
