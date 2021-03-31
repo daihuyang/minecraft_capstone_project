@@ -1,6 +1,39 @@
+// const md = new Remarkable({
+//     highlight: function (str, lang) {
+//         if (lang && hljs.getLanguage(lang)) {
+//           try {
+//             return hljs.highlight(lang, str).value;
+//           } catch (err) {}
+//         }
+    
+//         try {
+//           return hljs.highlightAuto(str).value;
+//         } catch (err) {}
+    
+//         return ''; // use external default escaping
+//     }
+// });
+// Above code introduces syntax highligthing, but is not used to avoid rich text copy errors
 const md = new Remarkable();
 let lessonChosen = false;
+let reader = new FileReader();
+
 $(document).ready(function () {
+    $("div.code-input").on("paste",function(event){
+        $(this).text($(this).text() + "\r\n");
+    });
+    $("div.code-input").on("keydown",function(event){
+        if(event.keyCode === 9){
+            event.preventDefault();
+            var range = window.getSelection().getRangeAt(0);
+
+            var tabNode = document.createTextNode("    ");
+            range.insertNode(tabNode);
+
+            range.setStartAfter(tabNode);
+            range.setEndAfter(tabNode); 
+        }
+    });
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
 
@@ -101,26 +134,31 @@ $(document).ready(function () {
                 loadLessonsWindow();
             });
         } else {
-            // clear lessons page
-            $("#lessons-window").html("");
-            var $backButton = $("#lessons-window").append($("<button>", {
+            var $backButton =$("<button>", {
                 type: "button",
                 id: "back-button",
                 class: "minecraft-button",
                 text: "Back"
-            }));
+            });
             var $lessonDiv = $("<div>", {
                 id: "lesson-div"
             });
-            $lessonDiv.appendTo($("#lessons-window"));
-            // request lesson
+            // read in lesson & render as HTML
             var lessonInput = document.querySelector("#file-picker");
-            $lessonDiv.html(md.render(grabFile(lessonInput)));
+            let file = lessonInput.files[0];
+            reader.readAsText(file);
+            reader.onload = function() {
+                $lessonDiv.html(md.render(reader.result));
+            };
             $backButton.click(function () {
                 $("#lessons-window").html("");
                 lessonChosen = false;
                 loadLessonsWindow();
             });
+            // clear lessons page and load new content
+            $("#lessons-window").html("");
+            $("#lessons-window").append($backButton);
+            $lessonDiv.appendTo($("#lessons-window"));
         }
 
     }
@@ -129,8 +167,12 @@ $(document).ready(function () {
 function primeRunButtons(sock) {
     $('.run-button').click(function () {
         let $btn = $(this);
-        var pythonCommand = $(this).parent().parent().children('.code-input').html().replace(/<div>/gm, '\n').replace(/<[^>]*>/gm, '');
-        //sendReceive(sock,pythonCommand);
+        var pythonCommand = "";
+        $(this).parent().parent().children('.code-input').children('div').each(function(){
+            var curr = $(this).text();
+            console.log($(this).parent().html());
+            pythonCommand += `${curr}\n`;
+        });
         sock.send(pythonCommand);
         $(this).parent().parent().children('.code-output').html("Done with 0 Errors");
         sock.onmessage = function (event) {
@@ -164,19 +206,4 @@ function dismissPopUp(e) {
     // $(e.parent).remove();
     $('#popUp').remove();
     $('#faded').remove();
-}
-
-function grabFile(input) {
-    let file = input.files[0];
-    let reader = new FileReader();
-
-    reader.readAsText(file);
-
-    reader.onload = function() {
-        return reader.result;
-    };
-
-    reader.onerror = function() {
-        return reader.error;
-    };
 }
