@@ -13,8 +13,8 @@ html {
     font-size: 16px;
     width: 100%;
     height: 100%;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
 }
 
 body {
@@ -23,18 +23,18 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     min-height: 100%;
     overflow: hidden;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    margin: 0em 0em 0em 0em;
+    padding: 1em 1.6em 1em 1.6em;
+    /* margin: 1em 2em 1em 2em;
+    padding: 0em 0em 0em 0em; */
 }
 
-div#header-section {
-    height: 1%;
-    width: 100%;
-    margin: 0% 0% 1% 0%;
-    padding: 2% 0% 0% 0%;
+#header-section {
+    margin: 0em 0em 1em 0em;
+    padding: 1em 0em 0em 0em;
 }
 
 h1#ide-title {
@@ -55,48 +55,53 @@ button.minecraft-button {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0em 0em 0em 0em;
-    width: 100%;
+    width: 110px;
     height: 41px;
 }
 
 .selector-div {
     align-content: center;
     align-items: center;
-    margin: 0em 2em 0em 2em;
-    padding: 1em 0em 1em 0em;
+    margin: 0.6em 0em 0.6em 0em;
+    /* padding: 1em 0em 1em 0em; */
+    padding: 0em 0em 0em 0em;
 }
 
-.event-selector {
+.event-selector, select2 {
     display: inline-block;
-    margin: 0em 1.5em 0em 2em;
-    width: 60%;
+    margin: auto;
+    /* width: auto; */
     height: 64px;
 }
 
 #update-button {
     width: 110px;
-    height: 44px;
+    height: 40px;
 }
 
-div#text-section {
-    width: 90%;
-    height: 72%;
-    max-height: 720px; /* This sets the maximum area for scrolling to begin */
+#text-section {
+    /* width: 90%; */
+    height: 100%;
+    max-height: 700px; /* This sets the maximum area for scrolling to begin */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 0% 3% 0% 3%;
-    padding: 2% 2% 2% 2%;
+    /* margin: 0% 3% 0% 3%; */
+    /* padding: 2% 2% 2% 2%; */
+    margin: 1em 0em 0em 0em;
+    padding: 1em 1em 1em 1em;
+    top: 0px;
+    bottom: 0px;
 }
 
 div.text-group {
     clear:left;
     width: 100%;
     height: 128px;
-    margin: 0% 0% 0% 0%;
-    padding: 1em 0% 0% 0%;
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
 }
 
 div.button-group {
@@ -148,8 +153,13 @@ button:active {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0em 0em 0em 0em;
-    width: 128px;
-    height: 41px;
+    width: 121px;
+    height: 44px;
+}
+
+#add-button {
+    position: absolute;
+    bottom: 2em;
 }
 
 .code-input{
@@ -163,7 +173,7 @@ button:active {
     width: 80%;
     resize: vertical; 
     vertical-align: center;
-    margin: 0em 0em 0em 1em;
+    margin: 0em 0em 0em 0em;
     padding: 0.6em 0.6em 0.6em 0.6em;
 }
 
@@ -208,11 +218,6 @@ button:active {
     text-align: center;
     top: 20%;
     left: 10%;
-    /* margin: 30% 0% 0% 10%; */
-    /* width: 752px;
-    height: 288px;
-    min-width: 752px;
-    min-height: 288px; */
     width: 80%;
     height: 55%;
     z-index: 3;
@@ -266,7 +271,7 @@ h1 {
     margin-top: 2em;
 }
 
-#lessons-button, #back-button {
+#back-button {
     margin: 0.5em 0em 0.25em 2em;
 }
 
