@@ -153,6 +153,7 @@ button:active {
 }
 
 .code-input{
+    white-space: pre;
     float: left;
     color: white;
     font-size: smaller;
