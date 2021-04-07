@@ -18,7 +18,31 @@ const md = new Remarkable();
 let lessonChosen = false;
 let reader = new FileReader();
 
+var minecraftEvents = [ 
+    "AgentCommand",
+    "BlockBroken",
+    "BlockPlaced",
+    "CameraUsed",
+    "EndOfDay",
+    "EntitySpawned",
+    "ItemAcquired",
+    "ItemCrafted",
+    "ItemDropped",
+    "ItemEquipped",
+    "ItemInteracted",
+    "ItemNamed",
+    "ItemSmelted",
+    "ItemUsed",
+    "MobKilled",
+    "PlayerBounced",
+    "PlayerDied",
+    "PlayerMessage",
+    "PlayerTeleported",
+    "PlayerTravelled",
+];
+
 $(document).ready(function () {
+    // handle proper python syntax within code blocks i.e. tabs
     $("div.code-input").on("paste",function(event){
         $(this).text($(this).text() + "\r\n");
     });
@@ -26,21 +50,20 @@ $(document).ready(function () {
         if(event.keyCode === 9){
             event.preventDefault();
             var range = window.getSelection().getRangeAt(0);
-
             var tabNode = document.createTextNode("    ");
             range.insertNode(tabNode);
-
             range.setStartAfter(tabNode);
             range.setEndAfter(tabNode); 
         }
     });
-    // initialize socket
     $("div.code-input").on("paste",function(event){
         $(this).text($(this).text() + "\r\n");
     });
-
+    
+    // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
 
+    // ensure copying of connection message works
     $('#copy-button').click(function () {
         navigator.clipboard.writeText("/connect localhost:8765").then(function () {
             console.log('Async: Copying to clipboard was successful!');
@@ -48,6 +71,16 @@ $(document).ready(function () {
             console.error('Async: Could not copy text: ', err);
         });
     });
+
+    // set up event subscription selector
+    var $subscriptionSelector = $("#subscription-selector");
+    minecraftEvents.forEach(function(m_e, i){
+        var $option = $("<option>",{
+            value: m_e,
+            text: prettyPrint(m_e)
+        })
+        $subscriptionSelector.append($option);
+    })
 
     // set up the REPL buttons
     $('#add-button').click(function () {
@@ -210,4 +243,8 @@ function dismissPopUp(e) {
     // $(e.parent).remove();
     $('#popUp').remove();
     $('#faded').remove();
+}
+
+function prettyPrint(phrase){
+    return phrase.match(/[A-Z][a-z]+/g).join(" ")
 }
