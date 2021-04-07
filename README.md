@@ -15,7 +15,7 @@ _Integrate Data Science Lessons Directly Into MEE_
 
 **❗️Important**: Python 2 is not supported
 
-Install [Python 3.X](https://www.python.org/downloads/)
+Install [Python 3.9](https://www.python.org/downloads/)
 
 Install Flask, and several data science libraries with "pip"
 

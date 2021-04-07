@@ -1,9 +1,69 @@
+// const md = new Remarkable({
+//     highlight: function (str, lang) {
+//         if (lang && hljs.getLanguage(lang)) {
+//           try {
+//             return hljs.highlight(lang, str).value;
+//           } catch (err) {}
+//         }
+    
+//         try {
+//           return hljs.highlightAuto(str).value;
+//         } catch (err) {}
+    
+//         return ''; // use external default escaping
+//     }
+// });
+// Above code introduces syntax highligthing, but is not used to avoid rich text copy errors
 const md = new Remarkable();
-let currentLesson = -1;
+let lessonChosen = false;
+let reader = new FileReader();
+
+var minecraftEvents = [ 
+    "AgentCommand",
+    "BlockBroken",
+    "BlockPlaced",
+    "CameraUsed",
+    "EndOfDay",
+    "EntitySpawned",
+    "ItemAcquired",
+    "ItemCrafted",
+    "ItemDropped",
+    "ItemEquipped",
+    "ItemInteracted",
+    "ItemNamed",
+    "ItemSmelted",
+    "ItemUsed",
+    "MobKilled",
+    "PlayerBounced",
+    "PlayerDied",
+    "PlayerMessage",
+    "PlayerTeleported",
+    "PlayerTravelled",
+];
+
 $(document).ready(function () {
+    // handle proper python syntax within code blocks i.e. tabs
+    $("div.code-input").on("paste",function(event){
+        $(this).text($(this).text() + "\r\n");
+    });
+    $("div.code-input").on("keydown",function(event){
+        if(event.keyCode === 9){
+            event.preventDefault();
+            var range = window.getSelection().getRangeAt(0);
+            var tabNode = document.createTextNode("    ");
+            range.insertNode(tabNode);
+            range.setStartAfter(tabNode);
+            range.setEndAfter(tabNode); 
+        }
+    });
+    $("div.code-input").on("paste",function(event){
+        $(this).text($(this).text() + "\r\n");
+    });
+    
     // initialize socket
     let sock = new WebSocket("ws://localhost:3001/"); // change later
 
+    // ensure copying of connection message works
     $('#copy-button').click(function () {
         navigator.clipboard.writeText("/connect localhost:8765").then(function () {
             console.log('Async: Copying to clipboard was successful!');
@@ -11,6 +71,16 @@ $(document).ready(function () {
             console.error('Async: Could not copy text: ', err);
         });
     });
+
+    // set up event subscription selector
+    var $subscriptionSelector = $("#subscription-selector");
+    minecraftEvents.forEach(function(m_e, i){
+        var $option = $("<option>",{
+            value: m_e,
+            text: prettyPrint(m_e)
+        })
+        $subscriptionSelector.append($option);
+    })
 
     // set up the REPL buttons
     $('#add-button').click(function () {
@@ -57,7 +127,7 @@ $(document).ready(function () {
     });
 
     $("#lessons-button").click(function () {
-        toggleLessons(currentLesson);
+        toggleLessons();
     })
 
     function toggleLessons() {
@@ -75,55 +145,57 @@ $(document).ready(function () {
     }
 
     function loadLessonsWindow() {
-        if (currentLesson == -1) {
+        if (!lessonChosen) {
             var $startPage = $("<div>", { id: "lesson-start-page" });
             var $header = $("<h2>", {
                 id: "lessons-header",
                 class: "lessons-startpage",
                 text: "Choose a Lesson:",
                 align: "center"
-            })
-            var $selector = $("<select>", { multiple: "multiple" });
-            // this ideally holds all current lessons, loaded from a directory or DB
-            var dummyOptions = ["Example", "Hierarchical Clustering", "Boogers"];
-            dummyOptions.forEach(function (lesson, i) {
-                var $choice = $("<option>", { value: i, name: lesson, text: lesson });
-                $choice.appendTo($selector);
+            });
+            var $inputContainer = $("<div>",{
+                id: "lessons-body",
+                align: "center",
+                style: "text-align: center;"
+            });
+            var $filePicker = $("<input>", { 
+                id: "file-picker",
+                type: "file" 
             });
             $header.appendTo($startPage);
-            $selector.appendTo($startPage);
+            $filePicker.appendTo($inputContainer);
+            $inputContainer.appendTo($startPage);
             $startPage.appendTo($("#lessons-window"));
-            $selector.on("change", function () {
-                currentLesson = $("option:selected", this).attr("value");
+            $filePicker.on("change", function () {
+                lessonChosen = true;
                 loadLessonsWindow();
             });
         } else {
-            // clear lessons page
-            $("#lessons-window").html("");
-            var $backButton = $("#lessons-window").append($("<button>", {
+            var $backButton =$("<button>", {
                 type: "button",
                 id: "back-button",
                 class: "minecraft-button",
                 text: "Back"
-            }))
+            });
             var $lessonDiv = $("<div>", {
                 id: "lesson-div"
-            })
-            $lessonDiv.appendTo($("#lessons-window"));
-            // request lesson
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    $lessonDiv.html(md.render(this.responseText));
-                }
+            });
+            // read in lesson & render as HTML
+            var lessonInput = document.querySelector("#file-picker");
+            let file = lessonInput.files[0];
+            reader.readAsText(file);
+            reader.onload = function() {
+                $lessonDiv.html(md.render(reader.result));
             };
-            xhttp.open("GET", "./resources/lessons/lesson_example.md", true);
-            xhttp.send();
             $backButton.click(function () {
                 $("#lessons-window").html("");
-                currentLesson = -1;
+                lessonChosen = false;
                 loadLessonsWindow();
             });
+            // clear lessons page and load new content
+            $("#lessons-window").html("");
+            $("#lessons-window").append($backButton);
+            $lessonDiv.appendTo($("#lessons-window"));
         }
 
     }
@@ -132,8 +204,12 @@ $(document).ready(function () {
 function primeRunButtons(sock) {
     $('.run-button').click(function () {
         let $btn = $(this);
-        var pythonCommand = $(this).parent().parent().children('.code-input').html().replace(/<div>/gm, '\n').replace(/<[^>]*>/gm, '');
-        //sendReceive(sock,pythonCommand);
+        var pythonCommand = "";
+        $(this).parent().parent().children('.code-input').children('div').each(function(){
+            var curr = $(this).text();
+            console.log($(this).parent().html());
+            pythonCommand += `${curr}\n`;
+        });
         sock.send(pythonCommand);
         $(this).parent().parent().children('.code-output').html("Done with 0 Errors");
         sock.onmessage = function (event) {
@@ -167,4 +243,8 @@ function dismissPopUp(e) {
     // $(e.parent).remove();
     $('#popUp').remove();
     $('#faded').remove();
+}
+
+function prettyPrint(phrase){
+    return phrase.match(/[A-Z][a-z]+/g).join(" ")
 }
