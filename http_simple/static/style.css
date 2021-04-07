@@ -79,21 +79,30 @@ button.minecraft-button {
     height: 40px;
 }
 
-#text-section {
-    /* width: 90%; */
-    height: 100%;
-    max-height: 700px; /* This sets the maximum area for scrolling to begin */
+#text-section, #lessons-window {
+    height: 70%;
+    max-height: 640px; /* This sets the maximum area for scrolling to begin */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* margin: 0% 3% 0% 3%; */
-    /* padding: 2% 2% 2% 2%; */
     margin: 1em 0em 0em 0em;
     padding: 1em 1em 1em 1em;
-    top: 0px;
-    bottom: 0px;
+    top: auto;
+    bottom: auto;
+}
+
+#bottom-section {
+    height: 3em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1em 0em 1em 0em;
+    padding: 0em 0em 0em 0em;
+    bottom: 2em;
 }
 
 div.text-group {
@@ -123,17 +132,6 @@ div.button-group button:nth-child(2) {
     margin: 1em 0% 0% 0%;
 }
 
-div#bottom-section {
-    height: 7%;
-    width: 30%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0% 35% 0% 35%;
-    padding: 0px 0px 0px 0px;
-}
-
 .run-button, .remove-button {
     margin: auto;
 }
@@ -146,7 +144,7 @@ button:active {
     background-image: url(./resources/buttonPress.png);
 }
 
-#run-all-button, #add-button, #dismiss-button {
+#add-button, #dismiss-button {
     font-family: mojangles;
     font-weight: bold;
     background-image: url(./resources/button.png);
@@ -159,7 +157,6 @@ button:active {
 
 #add-button {
     position: absolute;
-    bottom: 2em;
 }
 
 .code-input{
@@ -279,24 +276,22 @@ h1 {
     width: auto !important;
 }
 
-#lesson-div {
-    padding: 0em 2em 0em 2em;
-}
-
 #lessons-window{
+    clear: both;
     display: none;
     position: absolute;
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: scroll;
-    width: 100%;
+    width: 90%;
     height: 40%;
     bottom: 0;
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
 }
 
-#lessons-startpage{
+#lessons-start-page{
+    clear: both;
     text-align: center;
     align-items: center;
 }
@@ -345,10 +340,6 @@ li a:hover {
 li a:visited {
     color: black;
 }
-
-
-
-
 
 
 
