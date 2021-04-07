@@ -23,29 +23,20 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100%;
-    /* width: 100%; */
+    /* width: 100%;  */
     min-height: 100%;
     overflow: hidden;
     margin: 0em 0em 0em 0em;
+}
+
+#body-padding {
     padding: 1em 1.6em 1em 1.6em;
-    /* margin: 1em 2em 1em 2em;
-    padding: 0em 0em 0em 0em; */
+    height: 100%;
 }
 
 #header-section {
     margin: 0em 0em 1em 0em;
     padding: 1em 0em 0em 0em;
-}
-
-h1#ide-title {
-    font-size: 2.6em;
-    margin: 0em 0em 0em 0em;
-    padding: 0% 0% 0% 0%;
-    height: 80%;
-    width: 100%;
-    vertical-align: middle;
-    text-align: center;
-    justify-content: center;
 }
 
 button.minecraft-button {
@@ -63,25 +54,25 @@ button.minecraft-button {
     align-content: center;
     align-items: center;
     margin: 0.6em 0em 0.6em 0em;
-    /* padding: 1em 0em 1em 0em; */
     padding: 0em 0em 0em 0em;
 }
 
-.event-selector, select2 {
+.event-selector, span.select2-container {
     display: inline-block;
-    margin: auto;
-    /* width: auto; */
-    height: 64px;
+    flex-grow: 1;
+    z-index: -1;
 }
 
 #update-button {
+    float: right;
+    display: block;
     width: 110px;
     height: 40px;
 }
 
 #text-section, #lessons-window {
     height: 70%;
-    max-height: 640px; /* This sets the maximum area for scrolling to begin */
+    max-height: 680px; /* This sets the maximum area for scrolling to begin */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -89,8 +80,8 @@ button.minecraft-button {
     overflow-x: hidden;
     margin: 1em 0em 0em 0em;
     padding: 1em 1em 1em 1em;
-    top: auto;
-    bottom: auto;
+    top: 0;
+    bottom: 0;
 }
 
 #bottom-section {
@@ -106,9 +97,10 @@ button.minecraft-button {
 }
 
 div.text-group {
-    clear:left;
+    clear: left;
     width: 100%;
-    height: 128px;
+    height: 6em;
+    min-height: 6em;
     margin: 0em 0em 0em 0em;
     padding: 0em 0em 0em 0em;
 }
@@ -118,14 +110,14 @@ div.button-group {
     width: 13%;
     height: 100%;
     margin: 0em 0em 0em 0em;
-    padding: 0% 0% 0% 0%;
-    align-items: center;
+    padding: 0em 0em 0em 0em;
+    /* align-items: center; */
 }
 
 div.button-group button {
     display: block;
-    margin: 0.1em 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    margin: 0.1em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
 }
 
 div.button-group button:nth-child(2) {
@@ -155,10 +147,6 @@ button:active {
     height: 44px;
 }
 
-#add-button {
-    position: absolute;
-}
-
 .code-input{
     float: left;
     color: white;
@@ -168,13 +156,17 @@ button:active {
     background-color: rgb(69,69,69);
     border: 4px solid black;
     width: 80%;
-    resize: vertical; 
+    /* resize: vertical;  */
+    min-height: 6em;
+    max-height: 6em;
     vertical-align: center;
     margin: 0em 0em 0em 0em;
     padding: 0.6em 0.6em 0.6em 0.6em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.code-output{
+.code-output {
     display: none;
     float: left;
     color: black;
@@ -194,11 +186,12 @@ button:active {
 
 #faded {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     background-color: black;
     opacity: 60%;
-    z-index: 2;
+    position: absolute;
+    
 }
 
 #popup-background{
@@ -302,6 +295,11 @@ h1 {
 
 #run-all-button:active, #add-button:active, .run-button:active, .remove-button:active, #copy-button:active, #dismiss-button:active {
     background-image: url(./resources/buttonPress.png);
+}
+
+#lessons-button {
+    padding: 0em;
+    margin: 0em;
 }
 
 .nav {

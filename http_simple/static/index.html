@@ -16,44 +16,46 @@
 </head>
 
 <body>
-    <div id="faded"></div>
-    <div id="popUp">
-        <h1>Connect:</h1>
-        <p>Copy and Paste this command in Minecraft to establish a Connection.</p>
-        <div id="copy-input-div">
-            <input type="text" value="/connect localhost:8765" id="myInput" readonly />
-            <button id="copy-button"></button>
-        </div>
-        <button id="dismiss-button" onclick="dismissPopUp(this)">I'm Connected!</button>
-    </div>
-    <div id="header-section">
-        <button type="button" id="lessons-button" class="minecraft-button">Lessons</button>
-    </div>
-    <!-- <button type="button" id="lessons-button" class="minecraft-button">Lessons</button> -->
-    <div class="selector-div">
-        <select class="event-selector" name="events[]" multiple="multiple">
-            <option value="BlockPlaced">Block Placed</option>
-            <option value="BlockBroken">Block Broken</option>
-            <option value="ItemDropped">Item Dropped</option>
-        </select>
-        <button type="button" id="update-button" class="minecraft-button">Update</button>
-    </div>
-    <div id="text-section">
-        <div class="text-group">
-            <div class="button-group">
-                <button type="button" class="run-button minecraft-button">RUN</button>
-                <button type="button" class="remove-button minecraft-button">REMOVE</button>
+    <div id="faded" coords="0,0"></div>
+    <div id="body-padding">
+        <div id="popUp">
+            <h1>Connect:</h1>
+            <p>Copy and Paste this command in Minecraft to establish a Connection.</p>
+            <div id="copy-input-div">
+                <input type="text" value="/connect localhost:8765" id="myInput" readonly />
+                <button id="copy-button"></button>
             </div>
-            <div class="code-input" contenteditable="true" spellcheck="false" role="textbox"><br><br><br><br><br>
-            </div>
-            <div class="code-output"></div>
+            <button id="dismiss-button" onclick="dismissPopUp(this)">I'm Connected!</button>
         </div>
-    </div>
-    <div id="bottom-section">
-        <button type="button" id="add-button" class="minecraft-button">ADD TEXT AREA</button>
-        <!-- <button type="button" id="run-all-button" class="minecraft-button" style="display: none;">RUN ALL</button> -->
-    </div>
-    <div id="lessons-window">
+        <div id="header-section">
+            <button type="button" id="lessons-button" class="minecraft-button">Lessons</button>
+        </div>
+        <!-- <button type="button" id="lessons-button" class="minecraft-button">Lessons</button> -->
+        <div class="selector-div">
+            <select class="event-selector" name="events[]" multiple="multiple">
+                <option value="BlockPlaced">Block Placed</option>
+                <option value="BlockBroken">Block Broken</option>
+                <option value="ItemDropped">Item Dropped</option>
+            </select>
+            <button type="button" id="update-button" class="minecraft-button">Update</button>
+        </div>
+        <div id="text-section">
+            <div class="text-group">
+                <div class="button-group">
+                    <button type="button" class="run-button minecraft-button">RUN</button>
+                    <button type="button" class="remove-button minecraft-button">REMOVE</button>
+                </div>
+                <div class="code-input" contenteditable="true" spellcheck="false" role="textbox"><br><br><br><br><br>
+                </div>
+                <div class="code-output"></div>
+            </div>
+        </div>
+        <div id="bottom-section">
+            <button type="button" id="add-button" class="minecraft-button">ADD TEXT AREA</button>
+            <!-- <button type="button" id="run-all-button" class="minecraft-button" style="display: none;">RUN ALL</button> -->
+        </div>
+        <div id="lessons-window">
+        </div>
     </div>
 </body>
 
