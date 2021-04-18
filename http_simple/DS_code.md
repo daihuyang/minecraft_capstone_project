@@ -1,3 +1,11 @@
+# Determine Optimal Mining Location Per Ore
+
+## What You'll Need:
+
+- A mine (World is Provided!)
+- A pick
+- 15 minutes
+
 ## 1. Load into the "Peer Testing 2" Minecraft World
 
 ## 2. Open the CodeBuilder by pressing 'c' and choose "Localhost:3000"
@@ -45,3 +53,5 @@ z_arr = df["posZ"].values
 plt.scatter(x_arr, z_arr, c=k_means.labels_, cmap='rainbow')
 plt.show()
 ```
+
+## This printed out a map of sorts that tries to tell us where each ore is located in the mine. Try to figure out which ore is marked in blue!
