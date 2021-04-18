@@ -24,9 +24,9 @@ pip install flask websockets jsonlines
 pip install numpy matplotlib pandas sklearn
 ```
 
-## This application is made to introduce students to datascience concepts. While these concepts are more suitable for upper middle-school ages and higschool ages, sufficiently computer literate students will be able to work with the application and begin to understand many fundamental ideas. 
+This application is made to introduce students to datascience concepts. While these concepts are more suitable for upper middle-school ages and higschool ages, sufficiently computer literate students will be able to work with the application and begin to understand many fundamental ideas. 
 
-## Learn how to collect data, and use it to enhance your gameplay!
+Learn how to collect data, and use it to enhance your gameplay!
 
 ## Features:
 
