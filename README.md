@@ -81,12 +81,8 @@ A [complete example lesson](lessons/example_lesson/example_lesson.md) is include
 
 ## Resources
 
-markdown syntax cheatsheet
+- [Quick Markdown Reference](https://www.markdownguide.org/cheat-sheet/)
 
-minecraft wiki
+- [Minecraft: Education Edition](https://education.minecraft.net/)
 
-etc.
-
-## Trouble shooting
-
-## Feedback
+- [Minecraft Wiki](https://minecraft.fandom.com/wiki/Minecraft_Wiki) - All information may not pertain to "Education Edition"
