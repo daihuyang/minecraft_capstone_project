@@ -57,10 +57,9 @@ button.minecraft-button {
     padding: 0em 0em 0em 0em;
 }
 
-.event-selector, span.select2-container {
+.event-selector {
     display: inline-block;
-    flex-grow: 1;
-    z-index: -1;
+    width: 80%;
 }
 
 #update-button {
@@ -101,7 +100,7 @@ div.text-group {
     width: 100%;
     height: 6em;
     min-height: 6em;
-    margin: 0em 0em 0em 0em;
+    margin: 0em 0em 3em 0em;
     padding: 0em 0em 0em 0em;
 }
 
@@ -181,7 +180,7 @@ button:active {
     width: 80%;
     resize: vertical;
     vertical-align: center;
-    margin: 0em 0em 0em 1em;
+    margin: 0em 0em 0em 0em;
     padding: 0.6em 0.6em 0.6em 0.6em;
 }
 
@@ -270,21 +269,18 @@ h1 {
     width: auto !important;
 }
 
-#lessons-window{
+#lessons-window {
     clear: both;
     display: none;
-    position: absolute;
+    /* position: absolute; */
     background-image: url(./resources/full_foreground.png);
     background-repeat: no-repeat;
     background-size: cover;
     overflow-y: scroll;
-    width: 90%;
-    height: 40%;
-    bottom: 0;
-    /* border: 3px solid blue; */
+    max-height: 30%;
 }
 
-#lessons-start-page{
+#lessons-start-page {
     clear: both;
     text-align: center;
     align-items: center;
