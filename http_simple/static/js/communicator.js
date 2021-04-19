@@ -198,12 +198,14 @@ function primeRunButtons(sock) {
         // attempt to catch first line (parsing doesn't work on first line withour a carriage return)
         try{
             var startLineEnd = inputField.html().indexOf("<br>");
-            pythonCommand = `${inputField.html().slice(0,startLineEnd)}\n`;
+            if(inputField.html().slice(0,startLineEnd).indexOf("<") == -1){
+                pythonCommand = `${inputField.html().slice(0,startLineEnd)}\n`;
+            }
         }catch(e){}
         // parse rest of input
         inputField.children('div').each(function(){
             var curr = $(this).text();
-            // console.log($(this).parent().html());
+            console.log($(this).parent().html());
             pythonCommand += `${curr}\n`;
         });
         console.log(pythonCommand);
