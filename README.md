@@ -24,23 +24,9 @@ pip install flask websockets jsonlines
 pip install numpy matplotlib pandas sklearn
 ```
 
-This application is made to introduce students to datascience concepts. While these concepts are more suitable for upper middle-school ages and higschool ages, sufficiently computer literate students will be able to work with the application and begin to understand many fundamental ideas. 
+## Running the Project
 
-Learn how to collect data, and use it to enhance your gameplay!
-
-## Features:
-
-- 📁 __Minecraft event data collection__: Collects data as users play, tracking events such as breaking a wood block, or throwing a piece of cobblestone.
-  
-- 📑 __Data Importing__: A simple function allows users to load all of their event data into a built-in Python environment.
-  
-- 🐍 __Python REPL Environment__: A built-in REPL environment allows users to immediately work with their data after collectiong it, right inside of Minecraft!
-  
-- 📈 __Python Data Science Libraries__: Preloaded Python libraries allow users easily visualize and sort their data, as well as train sophisticated models.
-
-## How to Run
-
-1. Clone this repo!
+1. Clone this repo (main branch)!
 
 2. Locate and travel to the 'http_simple' directory 
 
@@ -57,6 +43,20 @@ Windows (Commandline)
 cd path_to_repo\http_simple\
 python python\main.py
 ```
+
+This application is made to introduce students to datascience concepts. While these concepts are more suitable for upper middle-school ages and higschool ages, sufficiently computer literate students will be able to work with the application and begin to understand many fundamental ideas. 
+
+Learn how to collect data, and use it to enhance your gameplay!
+
+## Features:
+
+- 📁 __Minecraft event data collection__: Collects data as users play, tracking events such as breaking a wood block, or throwing a piece of cobblestone.
+  
+- 📑 __Data Importing__: A simple function allows users to load all of their event data into a built-in Python environment.
+  
+- 🐍 __Python REPL Environment__: A built-in REPL environment allows users to immediately work with their data after collectiong it, right inside of Minecraft!
+  
+- 📈 __Python Data Science Libraries__: Preloaded Python libraries allow users easily visualize and sort their data, as well as train sophisticated models.
 
 ## Lesson Plans
 
