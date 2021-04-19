@@ -85,4 +85,4 @@ A [complete example lesson](lessons/example_lesson/example_lesson.md) is include
 
 - [Minecraft: Education Edition](https://education.minecraft.net/)
 
-- [Minecraft Wiki](https://minecraft.fandom.com/wiki/Minecraft_Wiki) - All information may not pertain to "Education Edition"
+- [Minecraft Wiki](https://minecraft.fandom.com/wiki/Minecraft_Wiki) - All information may not pertain to "Education Edition

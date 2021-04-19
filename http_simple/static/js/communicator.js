@@ -43,8 +43,11 @@ var minecraftEvents = [
 
 $(document).ready(function () {
     // handle proper python syntax within code blocks i.e. tabs
-    $("div.code-input").on("paste",function(event){
-        $(this).text($(this).text() + "\r\n");
+    $("div.code-input").on("paste",function(e){
+        e.preventDefault();
+        var text = (e.originalEvent || e).clipboardData.getData('text/plain') + "\r\n";
+        document.execCommand("insertHTML", false, text);
+        // $(this).text($(this).text() + "\r\n");
     });
     $("div.code-input").on("keydown",function(event){
         if(event.keyCode === 9){
@@ -205,11 +208,19 @@ function primeRunButtons(sock) {
     $('.run-button').click(function () {
         let $btn = $(this);
         var pythonCommand = "";
-        $(this).parent().parent().children('.code-input').children('div').each(function(){
+        var inputField = $(this).parent().parent().children('.code-input');
+        // attempt to catch first line (parsing doesn't work on first line withour a carriage return)
+        try{
+            var startLineEnd = inputField.html().indexOf("<br>");
+            pythonCommand = `${inputField.html().slice(0,startLineEnd)}\n`;
+        }catch(e){}
+        // parse rest of input
+        inputField.children('div').each(function(){
             var curr = $(this).text();
-            console.log($(this).parent().html());
+            // console.log($(this).parent().html());
             pythonCommand += `${curr}\n`;
         });
+        console.log(pythonCommand);
         sock.send(pythonCommand);
         $(this).parent().parent().children('.code-output').html("Done with 0 Errors");
         sock.onmessage = function (event) {
