@@ -38,6 +38,26 @@ Learn how to collect data, and use it to enhance your gameplay!
   
 - 📈 __Python Data Science Libraries__: Preloaded Python libraries allow users easily visualize and sort their data, as well as train sophisticated models.
 
+## How to Run
+
+1. Clone this repo!
+
+2. Locate and travel to the 'http_simple' directory 
+
+3. Run 'main.py' in the 'python' directory!
+
+Mac / Unix-like (and PowerShell)
+``` bash
+cd path_to_repo/http_simple/
+python python/main.py
+```
+
+Windows (Commandline)
+```
+cd path_to_repo\http_simple\
+python python\main.py
+```
+
 ## Lesson Plans
 
 Lessons are written as default Markdown ( .md ) files. What this means is that you can write an entire lesson in Markdown (or Word / some other word processor, then convert), as if you were going to give users a normal handout for an assignment.
