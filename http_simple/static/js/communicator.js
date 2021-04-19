@@ -43,22 +43,7 @@ var minecraftEvents = [
 
 $(document).ready(function () {
     // handle proper python syntax within code blocks i.e. tabs
-    $("div.code-input").on("paste",function(e){
-        e.preventDefault();
-        var text = (e.originalEvent || e).clipboardData.getData('text/plain') + "\r\n";
-        document.execCommand("insertHTML", false, text);
-        // $(this).text($(this).text() + "\r\n");
-    });
-    $("div.code-input").on("keydown",function(event){
-        if(event.keyCode === 9){
-            event.preventDefault();
-            var range = window.getSelection().getRangeAt(0);
-            var tabNode = document.createTextNode("    ");
-            range.insertNode(tabNode);
-            range.setStartAfter(tabNode);
-            range.setEndAfter(tabNode); 
-        }
-    });
+    primeInputs();
     $("div.code-input").on("paste",function(event){
         $(this).text($(this).text() + "\r\n");
     });
@@ -94,6 +79,7 @@ $(document).ready(function () {
             $(newBox).children('.code-output').html('');
             $(newBox).children('.code-output').css('display', 'none');
             $(newBox).appendTo($('#text-section'));
+            primeInputs();
             // update remove button to work
             $('.remove-button').click(function (e) {
                 if ($('.text-group').length > 1) {
@@ -258,4 +244,24 @@ function dismissPopUp(e) {
 
 function prettyPrint(phrase){
     return phrase.match(/[A-Z][a-z]+/g).join(" ")
+}
+
+function primeInputs(){
+    // handle proper python syntax within code blocks i.e. tabs
+    $("div.code-input").on("paste",function(e){
+        e.preventDefault();
+        var text = (e.originalEvent || e).clipboardData.getData('text/plain') + "\r\n";
+        document.execCommand("insertHTML", false, text);
+        // $(this).text($(this).text() + "\r\n");
+    });
+    $("div.code-input").on("keydown",function(event){
+        if(event.keyCode === 9){
+            event.preventDefault();
+            var range = window.getSelection().getRangeAt(0);
+            var tabNode = document.createTextNode("    ");
+            range.insertNode(tabNode);
+            range.setStartAfter(tabNode);
+            range.setEndAfter(tabNode);
+        }
+    });
 }
